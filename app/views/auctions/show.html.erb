@@ -2,8 +2,8 @@
 
 <p>
   <strong>Bill:</strong>
-  <%= @auction.bill %>
+  <%= @auction %>
 </p>
 
-<%= link_to 'Edit', edit_auction_path(@auction) %> |
-<%= link_to 'Back', auctions_path %>
+<%= link_to 'Destroy', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', bills_path %>
