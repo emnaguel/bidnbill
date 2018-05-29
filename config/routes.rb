@@ -6,7 +6,5 @@ Rails.application.routes.draw do
   resources :bids, only: [:index, :show]
   devise_for :users
   root to: 'pages#home'
-  get "dashboards", to: "dashboards#index"
-  get "dashboards/new", to: "dashboards#new"
-  post "dashboards", to: "dashboards#create"
+  get "dashboards", to: "dashboards#all_auctions"
 end
