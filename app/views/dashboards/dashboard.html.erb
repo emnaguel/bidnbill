@@ -1,0 +1,31 @@
+<h1>All auctions</h1>
+<% unless @other_auctions == nil %>
+  <ul>
+    <% @other_auctions.each do |auction| %>
+      <li><%= auction.id %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<h1>My auctions</h1>
+<% unless @my_auctions == nil %>
+  <% @my_auctions.each do |auction| %>
+    <li><%= auction %> </li>
+  <% end %>
+<% end %>
+
+
+<h1>Won auctions</h1>
+<% unless @won_auctions == nil %>
+  <% @won_auctions.each do |won_auction| %>
+    <li><%= won_auction %></li>
+  <% end %>
+<% end %>
+
+<h1>Clients</h1>
+<% unless @my_clients == nil %>
+  <% @my_clients.each do |client| %>
+    <li><%= client %></li>
+  <% end %>
+<% end %>
