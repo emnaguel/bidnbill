@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get "provider_dashboard", to: "dashboards#all_auctions"
+  get "dashboards/dashboards", to: "dashboards#dashboards"
+
 end

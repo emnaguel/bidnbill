@@ -8,4 +8,10 @@ class User < ApplicationRecord
   def won_auctions
     self.bids.where(status: "completed").map {|bid| bid.auction}
   end
+
+  def my_clients
+   self.bids.where(status: "completed", payment_status: "completed").map {|bid| bid.auction}
+  end
+
+
 end

@@ -1,0 +1,13 @@
+<% current_user.won_auctions.each do |won_auction| %>
+<li><%= current_user.won_auction %></li>
+<% end %>
+
+
+<% current_user.my_clients.each do |client| %>
+<li><%= current_user.client %></li>
+<% end %>
+
+ <% current_user.auctions.each do |auction| %>
+ <li><%= current_user.auction %> </li>
+ <% end %>
+
