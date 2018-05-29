@@ -2,21 +2,24 @@ class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy, :select, :pay]
 
   def index
-    @bids = Bid.all
+     @bids = policy_scope(Bid).order(created_at: :desc)
   end
 
   def show
+    authorize @bid
   end
 
   def new
     @auction = Auction.find(params[:auction_id])
     @bid = Bid.new
+    authorize @bid
   end
 
   def create
     @bid = Bid.new(bid_params)
     @bid.auction = Auction.find(params[:auction_id])
     @bid.provider = current_user
+    authorize @bid
     @bid.status = 'pending'
     if @bid.save
       redirect_to auction_path(@bid.auction)
@@ -27,6 +30,7 @@ class BidsController < ApplicationController
 
   def select
     can_select = true
+    authorize @bid
     @bid.auction.bids.each do |bid|
       if bid.status == 'completed'
         can_select = false

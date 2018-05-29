@@ -2,22 +2,26 @@ class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bills = Bill.all
+    @bills = policy_scope(Bill).order(created_at: :desc)
   end
 
   def show
+    authorize @bill
   end
 
   def new
     @bill = Bill.new
+     authorize @bill
   end
 
   def edit
+    authorize @bill
   end
 
   def create
     @bill = Bill.new(bill_params)
     @bill.client = current_user
+    authorize @bill
     if @bill.save
       redirect_to dashboard_path
     else
@@ -26,6 +30,7 @@ class BillsController < ApplicationController
   end
 
   def update
+    authorize @bill
     if @bill.update(bill_params)
       redirect_to dashboard_path
     else
@@ -34,6 +39,7 @@ class BillsController < ApplicationController
   end
 
   def destroy
+    authorize @bill
     @bill.destroy
     redirect_to bills_url
   end
