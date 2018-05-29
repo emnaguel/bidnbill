@@ -28,3 +28,4 @@ class AuctionsController < ApplicationController
     params.require(:auction).permit(:bill_id)
   end
 end
+
