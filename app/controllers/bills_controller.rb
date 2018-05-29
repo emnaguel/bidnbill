@@ -11,7 +11,7 @@ class BillsController < ApplicationController
 
   def new
     @bill = Bill.new
-     authorize @bill
+    authorize @bill
   end
 
   def edit
@@ -41,7 +41,7 @@ class BillsController < ApplicationController
   def destroy
     authorize @bill
     @bill.destroy
-    redirect_to bills_url
+    redirect_to dashboard_path
   end
 
   private

@@ -1,21 +1,22 @@
 class BidPolicy < ApplicationPolicy
-   def create?
-    return true
-    end
+  def show?
+    scope.where(:id => record.id).exists? && (record.client == user || record.provider == user)
+  end
 
-    def update?
-      record.provider == user
-    # - record: the restaurant passed to the `authorize` method in controller
-    # - user:   the `current_user` signed in with Devise.
-    end
+  def new?
+    user.user_type == "provider"
+  end
 
-    def destroy?
-      record.provider == user
-    end
+  def create?
+    new?
+  end
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def select?
+    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+  end
+
+  def pay?
+    scope.where(:id => record.id).exists? && record.provider == user && record.client.user_type == "provider"
   end
 end
+
