@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :bids, only: [:index, :show] do
     member do
       get 'select', to: "bids#select"
+      get 'pay', to: "bids#pay"
     end
   end
   devise_for :users
