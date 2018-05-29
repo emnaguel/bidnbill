@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :bills
+  resources :bills, only: [:show, :new, :create, :edit, :update, :destroy]
+  get "dashboard", to: "bills#index"
   resources :auctions, only: [:show, :create, :destroy] do
     resources :bids, only: [:new, :create]
   end
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: 'pages#home'
-  get "dashboards", to: "dashboards#all_auctions"
+  get "provider_dashboard", to: "dashboards#all_auctions"
 end
