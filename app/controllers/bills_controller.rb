@@ -19,7 +19,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.client = current_user
     if @bill.save
-      redirect_to bills_path
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class BillsController < ApplicationController
 
   def update
     if @bill.update(bill_params)
-      redirect_to bills_path
+      redirect_to dashboard_path
     else
       render :edit
     end

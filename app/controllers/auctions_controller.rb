@@ -7,12 +7,12 @@ class AuctionsController < ApplicationController
   def create
     @auction = Auction.new(bill: Bill.find(params[:bill_id]))
     @auction.save
-    redirect_to bills_path
+    redirect_to dashboard_path
   end
 
   def destroy
     @auction.destroy
-    redirect_to bills_path
+    redirect_to dashboard_path
   end
 
   private
