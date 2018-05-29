@@ -2,11 +2,11 @@
 
 
   <% @auction_filter.each do |auction| %>
-      <ul>
-        <li>
-          <p><%= auction.bill.client.first_name %>
-          <%= auction.bill.client.last_name %>
-              <p><%= auction.bill %></p>
-          </p>
-      </ul>
-    <% end %>
+    <ul>
+      <li>
+        <p><%= auction.bill.client.first_name %>
+        <%= auction.bill.client.last_name %>
+        <p><%= auction.bill %></p>
+        </p>
+    </ul>
+  <% end %>
