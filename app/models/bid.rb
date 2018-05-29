@@ -5,5 +5,5 @@ class Bid < ApplicationRecord
   has_one :client, through: :auction
   validate :status
   STATUS = ["cancelled","pending", "completed"]
-
+  PAYMENT_STATUS = ["cancelled","pending", "completed"]
 end

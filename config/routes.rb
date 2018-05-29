@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get "dashboards", to: "dashboards#all_auctions"
+  get "dashboards/dashboards", to: "dashboards#dashboards"
 end

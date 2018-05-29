@@ -5,4 +5,6 @@ class DashboardsController < ApplicationController
     @auctions = Auction.all
     @auction_filter = @auctions - @my_auctions
   end
+
+
 end
