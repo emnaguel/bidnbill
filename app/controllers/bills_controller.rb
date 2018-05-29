@@ -17,8 +17,9 @@ class BillsController < ApplicationController
 
   def create
     @bill = Bill.new(bill_params)
+    @bill.client = current_user
     if @bill.save
-      redirect_to @bill
+      redirect_to bills_path
     else
       render :new
     end

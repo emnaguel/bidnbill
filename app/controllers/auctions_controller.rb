@@ -8,17 +8,10 @@ class AuctionsController < ApplicationController
   def show
   end
 
-  def new
-    @auction = Auction.new
-  end
-
   def create
-    @auction = Auction.new(auction_params)
-    if @auction.save
-      redirect_to @auction
-    else
-      render :new
-    end
+    @auction = Auction.new(bill: Bill.find(params[:bill_id]))
+    @auction.save
+    redirect_to bills_path
   end
 
   def destroy

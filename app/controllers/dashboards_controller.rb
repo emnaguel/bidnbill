@@ -8,11 +8,29 @@ class DashboardsController < ApplicationController
   end
 
   def won_auctions
-    @auctions = Auction.where(provider: current_user && bill.status = 'completed')
+    @auctions = my_auctions
+    @won_auctions = []
+    @auctions.each do |auction|
+      auction.bids.each do |bid|
+        if bid.status == 'completed' && bid.provider == current_user
+          @won_auctions << auction
+        end
+      end
+    end
+    @won_auctions
   end
 
   def my_clients
-    @auctions = Auction.where(provider: current_user && bill.status = 'completed')
+    @auctions = won_auctions
+    @my_clients = []
+    @auctions.each do |auction|
+      auction.bids.each do |bid|
+        if bid.status == 'completed' && bid.provider == current_user && bid.payment_status == 'completed'
+          @my_clients << auction
+        end
+      end
+    end
+    @my_clients
   end
 
 
