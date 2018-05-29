@@ -2,12 +2,12 @@
 
 <p>
   <strong>Auction:</strong>
-  <%= @bid.auction %>
+  <%= @bid.auction.id %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @bid.user %>
+  <strong>Provider:</strong>
+  <%= @bid.provider.email %>
 </p>
 
 <p>
@@ -20,5 +20,4 @@
   <%= @bid.content %>
 </p>
 
-<%= link_to 'Edit', edit_bid_path(@bid) %> |
-<%= link_to 'Back', bids_path %>
+<%= link_to 'Back', auction_path(@bid.auction) %>

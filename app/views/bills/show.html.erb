@@ -24,4 +24,7 @@
 </p>
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
+<%= link_to 'Back to client dashboard', bills_path %> |
+<% unless @bill.auction == nil %>
+  <%= link_to 'Back to auction', auction_path(@bill.auction) %>
+<% end %>

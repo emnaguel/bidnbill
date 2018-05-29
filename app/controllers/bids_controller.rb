@@ -9,13 +9,17 @@ class BidsController < ApplicationController
   end
 
   def new
+    @auction = Auction.find(params[:auction_id])
     @bid = Bid.new
   end
 
   def create
     @bid = Bid.new(bid_params)
+    @bid.auction = Auction.find(params[:auction_id])
+    @bid.provider = current_user
+    @bid.status = 'pending'
       if @bid.save
-        redirect_to @bid
+        redirect_to auction_path(@bid.auction)
       else
         render :new
       end

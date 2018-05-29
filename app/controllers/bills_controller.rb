@@ -27,7 +27,7 @@ class BillsController < ApplicationController
 
   def update
     if @bill.update(bill_params)
-      redirect_to @bill
+      redirect_to bills_path
     else
       render :edit
     end
