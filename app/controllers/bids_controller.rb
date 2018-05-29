@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_action :set_bid, only: [:show, :edit, :update, :destroy, :select]
 
   def index
     @bids = Bid.all
@@ -18,11 +18,25 @@ class BidsController < ApplicationController
     @bid.auction = Auction.find(params[:auction_id])
     @bid.provider = current_user
     @bid.status = 'pending'
-      if @bid.save
-        redirect_to auction_path(@bid.auction)
-      else
-        render :new
+    if @bid.save
+      redirect_to auction_path(@bid.auction)
+    else
+      render :new
+    end
+  end
+
+  def select
+    can_select = true
+    @bid.auction.bids.each do |bid|
+      if bid.status == 'completed'
+        can_select = false
       end
+    end
+    if can_select == true
+      @bid.status = 'completed'
+      @bid.save
+    end
+    redirect_to auction_path(@bid.auction)
   end
 
   private

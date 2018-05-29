@@ -6,7 +6,10 @@
   <h2>Bids:</h2>
   <ul>
     <% @auction.bids.each do |bid| %>
-      <li><%= link_to "Bid number #{bid.id}", bid_path(bid) %></li>
+      <li>
+        <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
+        <%= link_to "Select this bid", select_bid_path(bid) %>
+      </li>
     <% end %>
   </ul>
 <% end %>
