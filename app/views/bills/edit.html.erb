@@ -2,5 +2,5 @@
 <h2>Please note that your auction will be destroyed if you edit your bill</h2>
 <%= render 'form', bill: @bill %>
 
-<%= link_to 'Show', @bill %> |
-<%= link_to 'Back', bills_path %>
+<%= link_to 'Show', bill_path(@bill) %> |
+<%= link_to 'Back', dashboard_path %>
