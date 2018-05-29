@@ -1,10 +1,6 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @auctions = Auction.all
-  end
-
   def show
   end
 
@@ -16,7 +12,7 @@ class AuctionsController < ApplicationController
 
   def destroy
     @auction.destroy
-    redirect_to auctions_url
+    redirect_to bills_path
   end
 
   private

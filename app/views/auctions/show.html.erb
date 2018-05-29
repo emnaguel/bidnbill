@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category%> bill number <%= @auction.bill.id%></h1>
 
-<p>
-  <strong>Bill:</strong>
-  <%= @auction %>
-</p>
+<%= link_to "Create a bid", new_auction_bid_path(@auction) %>
 
-<%= link_to 'Destroy', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% unless @auction.bids == nil %>
+  <h2>Bids:</h2>
+  <ul>
+    <% @auction.bids.each do |bid| %>
+      <li><%= link_to "Bid number #{bid.id}", bid_path(bid) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+<%= link_to 'Destroy', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', bills_path %>

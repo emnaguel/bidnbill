@@ -1,5 +1,13 @@
 <h1>New Bid</h1>
 
-<%= render 'form', bid: @bid %>
+<%= simple_form_for [@auction, @bid] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', bids_path %>
