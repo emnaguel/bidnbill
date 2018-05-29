@@ -7,6 +7,8 @@ class Bill < ApplicationRecord
   private
 
   def destroy_auction
-    auction.destroy
+    unless auction == nil
+      auction.destroy
+    end
   end
 end
