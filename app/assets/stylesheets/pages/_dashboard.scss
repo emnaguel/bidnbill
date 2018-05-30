@@ -1,0 +1,64 @@
+body {
+  padding : 10px ;
+
+}
+
+#exTab1 .tab-content {
+  color : white;
+  background-color: $my-yellow;
+  padding : 5px 15px;
+   width: 700px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: $my-green;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: $my-green;
+  padding : 5px 15px;
+    width: 700px;
+}
+
+
+.flex {
+  display: flex;
+}
+
+.couleur {
+  background-color: $my-yellow;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #447604;
+}
+
+.verte {
+  color: $my-green
+
+}
+
+.white {
+  color: white;
+}
+
+
+li {
+  list-style-type:none;
+}

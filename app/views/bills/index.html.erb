@@ -1,30 +1,50 @@
 <div class="container">
   <h1>Bills</h1>
   <ul>
-  <% @bills.each do |bill| %>
-    <li>
-      <h2>Bill:</h2>
-      <p>User: <%= bill.client.email %></p>
-      <p>Category: <%= bill.category %></p>
-      <p>Current provider: <%= bill.current_provider %></p>
-      <p>Address: <%= bill.address %></p>
-      <p>Price: <%= bill.price %></p>
-      <%= link_to 'Show', bill_path(bill) %>
-      <%= link_to 'Edit', edit_bill_path(bill) %>
-      <%= link_to 'Destroy', bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= form_tag auctions_path do %>
-        <%= hidden_field_tag 'bill_id', bill.id %>
-        <%= submit_tag 'Create an auction', class: 'btn btn-primary' %>
-      <% end %>
-      <% unless bill.auction == nil %>
-        <br>
-        <h2>Bid:</h2>
-        <%= link_to "My auction", auction_path(bill.auction.id) %>
-      <% end %>
-      <br><br><br>
-    </li>
-  <% end %>
+    <% @bills.each do |bill| %>
+      <li>
+        <h2>Bill:</h2>
+        <p>User: <%= bill.client.email %></p>
+        <p>Category: <%= bill.category.name %></p>
+        <p>Current provider: <%= bill.current_provider %></p>
+        <p>Address: <%= bill.address %></p>
+        <p>Price: <%= bill.price %></p>
+        <% if policy(bill).show? %>
+          <%= link_to 'Show', bill_path(bill) %> |
+        <% end %>
+        <% if policy(bill).edit? %>
+          <%= link_to 'Edit', edit_bill_path(bill) %> |
+        <% end %>
+        <% if policy(bill).destroy? %>
+          <%= link_to 'Destroy', bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% if policy(Auction).create? %>
+          <%= form_tag auctions_path do %>
+            <%= hidden_field_tag 'bill_id', bill.id %>
+            <%= submit_tag 'Create an auction', class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+
+
+
+
+
+        <% unless bill.auction == nil %>
+          <% if policy(bill.auction).show? %>
+            <br>
+            <h2>Bid:</h2>
+            <%= link_to "My auction", auction_path(bill.auction.id) %> |
+            <% if policy(bill.auction).destroy? %>
+              <%= link_to "Destroy", auction_path(bill.auction.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <br><br><br>
+      </li>
+    <% end %>
   </ul>
-  <%= link_to 'New Bill', new_bill_path %>
+  <% if policy(Bill).create? %>
+    <%= link_to 'New Bill', new_bill_path %>
+  <% end %>
 </div>
 

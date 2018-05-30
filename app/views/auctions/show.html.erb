@@ -1,16 +1,33 @@
-<h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category%> bill number <%= @auction.bill.id%></h1>
+<h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category.name%> bill number <%= @auction.bill.id%></h1>
 
-<%= link_to "Create a bid", new_auction_bid_path(@auction) %>
-
-<% unless @auction.bids == nil %>
-  <h2>Bids:</h2>
-  <ul>
-    <% @auction.bids.each do |bid| %>
-      <li><%= link_to "Bid number #{bid.id}", bid_path(bid) %></li>
-    <% end %>
-  </ul>
+<% if policy(Bid).create? %>
+  <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
 <% end %>
 
-<%= link_to "Bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
-<%= link_to 'Destroy', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', bills_path %>
+<% if @bids.present? %>
+  <h2>Bids:</h2>
+  <% @bids.each do |bid| %>
+    <ul>
+      <li>
+        <% if policy(bid).show? %>
+          <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
+        <% end %>
+        <% if policy(bid).select? %>
+          <%= link_to "Select this bid", select_bid_path(bid) %>
+        <% end %>
+        <% if policy(bid).pay? %>
+          <%= link_to "Pay this bid", pay_bid_path(bid) %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+
+<% if policy(@auction).destroy? %>
+  <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<% if policy(@auction.bill).show? %>
+  <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+<% end %>
+<%= link_to 'Back to dashboard', dashboard_path %>
+<% end %>
+

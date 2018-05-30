@@ -23,8 +23,13 @@
   <%= @bill.price %>
 </p>
 
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back to client dashboard', bills_path %> |
-<% unless @bill.auction == nil %>
-  <%= link_to 'Back to auction', auction_path(@bill.auction) %>
+<% if policy(@bill).edit? %>
+  <%= link_to 'Edit', edit_bill_path(@bill) %> |
+  <%= link_to 'Back to dashboard', dashboard_path %>
+  <% unless @bill.auction == nil %>
+    | <%= link_to 'Back to auction', auction_path(@bill.auction) %>
+  <% end %>
 <% end %>
+
+<br><br>
+<%= cl_image_tag @bill.photo%>

@@ -1,16 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Auctions</h1>
-
-
-    <% @auctions.each do |auction| %>
-      <ul>
-        <li><%= auction.bill %></li>
-        <li><%= link_to 'Show', auction %></li>
-        <li><%= link_to 'Edit', edit_auction_path(auction) %></li>
-        <li><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      </ul>
-    <% end %>
+<%# if auction.client == %>
+ <%= form_tag auctions_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an auction"
+  %>
+<% end %>
 
 
-<%= link_to 'New Auction', new_auction_path %>
+
+
+ <ul><%@auctions.each do |auction| %>
+ <li><%= auction.client.email%></li>
+ <li><%= auction.bill.category%></li>
+ <li><%= auction.bill.address%></li>
+ <% end %>
+</ul>
+
+
+
+
+

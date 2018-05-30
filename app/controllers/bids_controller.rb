@@ -1,16 +1,14 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @bids = Bid.all
-  end
+  before_action :set_bid, only: [:show, :edit, :update, :destroy, :select, :pay]
 
   def show
+    authorize @bid
   end
 
   def new
     @auction = Auction.find(params[:auction_id])
     @bid = Bid.new
+    authorize @bid
   end
 
   def create
@@ -18,11 +16,42 @@ class BidsController < ApplicationController
     @bid.auction = Auction.find(params[:auction_id])
     @bid.provider = current_user
     @bid.status = 'pending'
-      if @bid.save
-        redirect_to auction_path(@bid.auction)
-      else
-        render :new
+    authorize @bid
+    if @bid.save
+      redirect_to auction_path(@bid.auction)
+    else
+      render :new
+    end
+  end
+
+  def select
+    authorize @bid
+    can_select = true
+    @bid.auction.bids.each do |bid|
+      if bid.status == 'completed'
+        can_select = false
       end
+    end
+    if can_select == true
+      @bid.status = 'completed'
+      @bid.save
+    end
+    redirect_to auction_path(@bid.auction)
+  end
+
+  def pay
+    authorize @bid
+    can_pay = true
+    @bid.auction.bids.each do |bid|
+      if bid.payment_status == 'completed'
+        can_pay = false
+      end
+    end
+    if can_pay == true
+      @bid.payment_status = 'completed'
+      @bid.save
+    end
+    redirect_to provider_dashboard_path
   end
 
   private
