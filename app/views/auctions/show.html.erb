@@ -1,4 +1,4 @@
-<h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category%> bill number <%= @auction.bill.id%></h1>
+<h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category.name%> bill number <%= @auction.bill.id%></h1>
 
 <% if policy(Bid).create? %>
   <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
