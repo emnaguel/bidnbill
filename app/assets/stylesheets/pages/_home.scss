@@ -1,154 +1,115 @@
 // Specific CSS for your home-page
 
+.container {
+  align-content: center;
+}
+
+.row-title {
+  color: rgb(89, 136, 131);
+  font-size: 32px;
+  text-align: center;
+}
+
 .profile-dashboard {
-  // height: 100vh;
-  height: calc(100vh - 70px);
-  display: grid;
   background-image: asset-url('darkdenim3.png');
   background-repeat: repeat;
+  display: grid;
+  grid-row-gap: 2px;
+  grid-column-gap: 2px;
   grid-template-rows: 25% 1fr 1fr 1fr 1fr;
   grid-template-columns: 50% 50%;
+  color: rgb(89, 136, 131);
 }
 
 .main-title {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  border: solid;
-  border-color: black;
   border-shadow: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
-  color: rgb(145, 145, 145);
+  // color: rgb(145, 145, 145);
   font-family: $my-font;
-  font-size: 64px;
-}
-.subtitle {
-  border: solid;
-  border-color: black;
-  border-shadow: 1px;
-  grid-row: 1 / span 1;
-  grid-column: 2 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  color: rgb(145, 145, 145);
-  font-family: $my-font;
-  font-size: 32px;
+  font-size: 16px;
 }
 
 .subtitle-two {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  border: solid;
-  border-color: black;
   border-shadow: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: 4 / span 1;
   grid-column: 2 / span 1;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
   font-family: $my-font;
   font-size: 32px;
 }
 
 .subtitle-three {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  border: solid;
-  border-color: black;
   border-shadow: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
   font-family: $my-font;
   font-size: 32px;
 }
 
 .subtitle-four {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  border: solid;
-  border-color: black;
-  border-shadow: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: 4 / span 1;
   grid-column: 1 / span 1;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
   font-family: $my-font;
   font-size: 32px;
 }
 
 .subtitle-five {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  border: solid;
-  border-color: black;
-  border-shadow: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row: 3 / span 1;
   grid-column: 1 / span 1;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
   font-family: $my-font;
   font-size: 32px;
 }
 
 .subtitle-six {
-  border: solid;
-  border-color: black;
-  border-shadow: 1px;
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
   font-family: $my-font;
   font-size: 32px;
 }
 
 .subtitle-seven {
-  border: solid;
-  border-color: black;
-  border-shadow: 1px;
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
   font-family: $my-font;
   font-size: 32px;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
 }
 
 .subtitle-eight {
-  border: solid;
-  border-color: black;
-  border-shadow: 1px;
-  grid-row: 2 / span 1;
+  grid-row: 1 / span 1;
   grid-column: 2 / span 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
   font-family: $my-font;
   font-size: 32px;
-  color: rgb(145, 145, 145);
+  // color: rgb(175, 175, 175);
 }
+
+
