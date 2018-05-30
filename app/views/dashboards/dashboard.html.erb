@@ -42,7 +42,7 @@
           <% if params[:query].present? %>
             <ul>
              <li><%= auction.client.email%></li>
-             <li><%= auction.bill.category%></li>
+             <li><%= auction.bill.category.name%></li>
              <li><%= auction.bill.address%></li>
             </ul>
           <% end %>

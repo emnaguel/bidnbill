@@ -4,8 +4,9 @@ class Auction < ApplicationRecord
   pg_search_scope :search,
     against: [],
     associated_against: {
-      bill: [ :address, :category ],
-      client: [ :email ]
+      bill: [ :address ],
+      client: [ :email ],
+      category: [ :name ]
     },
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
