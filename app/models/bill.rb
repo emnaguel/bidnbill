@@ -3,6 +3,8 @@ class Bill < ApplicationRecord
   has_one :auction, dependent: :destroy
   CATEGORIES = ['Electricité', 'Gaz', 'Téléphonie', 'Box Internet']
   after_update :destroy_auction
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   private
 
