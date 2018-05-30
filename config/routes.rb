@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :bills, only: [:show, :new, :create, :edit, :update, :destroy]
   get "dashboard", to: "bills#index"
-  resources :auctions, only: [:show, :create, :destroy] do
+  resources :auctions, only: [:index, :show, :create, :destroy] do
     resources :bids, only: [:new, :create]
   end
   resources :bids, only: [:index, :show] do

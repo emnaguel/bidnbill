@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="auctions">
+        <% @auctions.each do |auction| %>
+        <h4><%= auction.id %></h4>
+        <h4><%=auction.client.email%></h4>
+        <h4><%=auction.bills %></h4>
+           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -4,6 +4,7 @@ class AuctionsController < ApplicationController
 
   def index
     @auctions = policy_scope(Auction).order(created_at: :desc)
+
   end
 
   def show
