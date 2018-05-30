@@ -1,22 +1,47 @@
 Bill.destroy_all
 User.destroy_all
 
-provider = User.create(user_type: "provider", email: "provider@gmail.com", password: "azerty", first_name: "My", last_name: "Provider")
-client = User.create(user_type: "client", email: "client@gmail.com", password: "azerty", first_name: "My", last_name: "Client")
-provider2 = User.create(user_type: "provider", email: "provider2@gmail.com", password: "azerty", first_name: "My", last_name: "Provider2")
+provelecgaz = User.new(user_type: "provider", email: "provelecgaz@gmail.com", password: "azerty", first_name: "My", last_name: "Provider")
+client = User.new(user_type: "client", email: "client@gmail.com", password: "azerty", first_name: "My", last_name: "Client")
+provelec = User.new(user_type: "provider", email: "provelec@gmail.com", password: "azerty", first_name: "My", last_name: "Provider2")
+user_url = "http://kitt.lewagon.com/placeholder/users/ssaunier"
+provelecgaz.remote_photo_url = user_url
+provelecgaz.save
+client.remote_photo_url = user_url
+client.save
+provelec.remote_photo_url = user_url
+provelec.save
 
-bill_elec = Bill.create(client: client, category: "Electricité", address: "Paris")
-bill_gaz = Bill.create(client: client, category: "Gaz", address: "Marseille")
-bill_tel = Bill.create(client: client, category: "Téléphonie", address: "Deauville")
-bill_box = Bill.create(client: client, category: "Box Internet", address: "Paris")
+elec = Category.create(name: "Electricité")
+gaz = Category.create(name: "Gaz")
+tel = Category.create(name: "Téléphonie")
+box = Category.create(name: "Box Internet")
+
+bill_elec = Bill.new(client: client, category: elec, address: "Paris")
+bill_gaz = Bill.new(client: client, category: gaz, address: "Marseille")
+bill_elec2 = Bill.new(client: client, category: elec, address: "Deauville")
+bill_elec3 = Bill.new(client: client, category: elec, address: "Paris")
+bill_url = "https://www.fournisseurs-electricite.com/images/fournisseurs/edf/facture/facture-EDF-page-1.jpg"
+bill_elec.remote_photo_url = bill_url
+bill_elec.save
+bill_gaz.remote_photo_url = bill_url
+bill_gaz.save
+bill_elec2.remote_photo_url = bill_url
+bill_elec2.save
+bill_elec3.remote_photo_url = bill_url
+bill_elec3.save
+
+ProviderCategory.create(user:provelecgaz, category:elec)
+ProviderCategory.create(user:provelecgaz, category:gaz)
+ProviderCategory.create(user:provelec, category:elec)
 
 a1 = Auction.create(bill: bill_elec)
 a2 = Auction.create(bill: bill_gaz)
-a3 = Auction.create(bill: bill_tel)
-a4 = Auction.create(bill: bill_box)
+a3 = Auction.create(bill: bill_elec2)
+a4 = Auction.create(bill: bill_elec3)
 
 
-Bid.create(auction: a1, provider: provider2, status: "pending", payment_status: "pending")
-Bid.create(auction: a2, provider: provider, status: "pending", payment_status: "pending")
-Bid.create(auction: a3, provider: provider, status: "completed", payment_status: "pending")
-Bid.create(auction: a4, provider: provider, status: "completed", payment_status: "completed")
+Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
+Bid.create(auction: a2, provider: provelecgaz, status: "pending", payment_status: "pending")
+Bid.create(auction: a3, provider: provelecgaz, status: "completed", payment_status: "pending")
+Bid.create(auction: a4, provider: provelecgaz, status: "completed", payment_status: "completed")
