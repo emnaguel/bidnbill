@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+#ActiveRecord::Schema.define(version: 2018_05_30_162152) do
 ActiveRecord::Schema.define(version: 2018_05_30_144431) do
 
   # These are extensions that must be enabled in order to support this database
@@ -41,9 +42,14 @@ ActiveRecord::Schema.define(version: 2018_05_30_144431) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.float "latitude"
+    t.float "longitude"
+
     t.string "photo"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_bills_on_category_id"
+
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
 

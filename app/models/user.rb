@@ -27,6 +27,10 @@ class User < ApplicationRecord
   end
 
   def other_auctions
-    Auction.left_outer_joins(:bids).where("bids.status IS NULL OR bids.status != 'completed'") - auctions
+    # Auction.left_outer_joins(:bids).where("bids.status IS NULL OR bids.status != 'completed'") - auctions
+
+    Auction.left_outer_joins(:bids).
+      where("bids.status IS NULL OR bids.status != 'completed'").
+      where.not(id: auctions.pluck(:id))
   end
 end
