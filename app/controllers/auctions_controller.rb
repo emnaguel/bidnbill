@@ -1,6 +1,11 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
 
+
+  def index
+    @auctions = policy_scope(Auction).order(created_at: :desc)
+  end
+
   def show
     authorize @auction
     @bids = policy_scope(@auction.bids)
