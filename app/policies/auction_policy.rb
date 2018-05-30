@@ -7,14 +7,6 @@ class AuctionPolicy < ApplicationPolicy
     end
   end
 
-  def show_bids?
-    if user.user_type == "client"
-      return scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
-    else
-      return false
-    end
-  end
-
   def showprovider?
     true
   end
@@ -29,6 +21,12 @@ class AuctionPolicy < ApplicationPolicy
 
   def destroy?
     scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+  end
+
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
   end
 end
 

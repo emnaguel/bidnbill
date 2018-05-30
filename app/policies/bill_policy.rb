@@ -25,7 +25,11 @@ class BillPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      if user.user_type == "client"
+        user.bills.all
+      else
+        scope.all
+      end
     end
   end
 end

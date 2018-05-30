@@ -3,6 +3,7 @@ class AuctionsController < ApplicationController
 
   def show
     authorize @auction
+    @bids = policy_scope(@auction.bids)
   end
 
   def create
@@ -28,4 +29,3 @@ class AuctionsController < ApplicationController
     params.require(:auction).permit(:bill_id)
   end
 end
-

@@ -4,21 +4,19 @@
   <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
 <% end %>
 
-<% if policy(Auction).show_bids? %>
-  <% unless @auction.bids == nil %>
-    <% @auction.bids.each do |bid| %>
-      <h2>Bids:</h2>
-      <ul>
-        <li>
-          <% if policy(bid).show? %>
-            <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
-          <% end %>
-          <% if policy(bid).select? %>
-            <%= link_to "Select this bid", select_bid_path(bid) %>
-          <% end %>
-        </li>
-      </ul>
-    <% end %>
+<% if @bids.present? %>
+  <% @bids.each do |bid| %>
+    <h2>Bids:</h2>
+    <ul>
+      <li>
+        <% if policy(bid).show? %>
+          <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
+        <% end %>
+        <% if policy(bid).select? %>
+          <%= link_to "Select this bid", select_bid_path(bid) %>
+        <% end %>
+      </li>
+    </ul>
   <% end %>
 
 <% if policy(@auction).destroy? %>
