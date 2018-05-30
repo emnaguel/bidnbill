@@ -3,7 +3,7 @@ User.destroy_all
 
 provider = User.create(user_type: "provider", email: "provider@gmail.com", password: "azerty", first_name: "My", last_name: "Provider")
 client = User.create(user_type: "client", email: "client@gmail.com", password: "azerty", first_name: "My", last_name: "Client")
-provider2 = User.create(user_type: "provider2", email: "provider2@gmail.com", password: "azerty", first_name: "My", last_name: "Provider2")
+provider2 = User.create(user_type: "provider", email: "provider2@gmail.com", password: "azerty", first_name: "My", last_name: "Provider2")
 
 bill_elec = Bill.create(client: client, category: "Electricité", address: "Paris")
 bill_gaz = Bill.create(client: client, category: "Gaz", address: "Marseille")
