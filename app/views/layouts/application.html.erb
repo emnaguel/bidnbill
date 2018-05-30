@@ -9,14 +9,18 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%#= stylesheet_pack_tag 'application', media: 'all' %>
 
+
 </head>
 <body>
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
-  <%= javascript_pack_tag 'application' %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+    <div class="wrapper"><%= yield %></div>
+    <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
   <%= javascript_pack_tag "map" %>
-</body>
+  </body>
+
 </html>

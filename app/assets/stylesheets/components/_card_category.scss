@@ -1,0 +1,31 @@
+.card {
+  height: 120px;
+  background-position: center;
+  background-size: cover !important;
+  position: relative;
+  border-color: black;
+  border: solid;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: rgb(88, 137, 132);
+}
+
+.title {
+margin-top: 1px;
+}
+
+.title h1 {
+  color: rgb(88, 137, 132);
+  margin: 0;
+  padding: 0;
+}
+
+.card:hover {
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
+}
