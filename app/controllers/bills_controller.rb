@@ -1,4 +1,5 @@
 class BillsController < ApplicationController
+  before_action :ensure_user_is_client
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,7 +12,7 @@ class BillsController < ApplicationController
 
   def new
     @bill = Bill.new
-     authorize @bill
+    authorize @bill
   end
 
   def edit
@@ -41,10 +42,15 @@ class BillsController < ApplicationController
   def destroy
     authorize @bill
     @bill.destroy
-    redirect_to bills_url
+    redirect_to dashboard_path
   end
 
   private
+
+  def ensure_user_is_client
+    redirect_to provider_dashboard_path unless current_user.user_type == "client"
+  end
+
     def set_bill
       @bill = Bill.find(params[:id])
     end

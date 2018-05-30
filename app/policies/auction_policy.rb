@@ -1,20 +1,32 @@
 class AuctionPolicy < ApplicationPolicy
-    def create?
+  def show?
+    if user.user_type == "client"
+      return scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+    else
       return true
     end
+  end
 
-    def update?
-      record.client == user
-    # - record: the restaurant passed to the `authorize` method in controller
-    # - user:   the `current_user` signed in with Devise.
-    end
+  def showprovider?
+    true
+  end
 
-    def destroy?
-      record.client == user
+  def dashboard?
+    user.user_type == "provider"
+  end
+
+  def create?
+    user.user_type == "client"
+  end
+
+  def destroy?
+    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+  end
+
+  class Scope < Scope
+    def resolve
+      scope.all
     end
-    class Scope < Scope
-      def resolve
-        scope.all
-      end
-    end
+  end
 end
+

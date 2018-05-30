@@ -1,23 +1,35 @@
 class BillPolicy < ApplicationPolicy
-  def create?
-    return true
+  def show?
+    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
   end
 
+  def new?
+    user.user_type == "client"
+  end
+
+  def create?
+    new?
+  end
+
+  def edit?
+    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+  end
 
   def update?
-    record.client == user
-    # - record: the restaurant passed to the `authorize` method in controller
-    # - user:   the `current_user` signed in with Devise.
+    edit?
   end
 
   def destroy?
-    record.client == user
+    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
   end
-
 
   class Scope < Scope
     def resolve
-      scope.all
+      if user.user_type == "client"
+        user.bills.all
+      else
+        scope.all
+      end
     end
   end
 end

@@ -8,6 +8,7 @@ class AuctionsController < ApplicationController
 
   def show
     authorize @auction
+    @bids = policy_scope(@auction.bids)
   end
 
   def create
