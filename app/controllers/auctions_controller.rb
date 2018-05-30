@@ -3,7 +3,8 @@ class AuctionsController < ApplicationController
 
 
   def index
-    @auctions = policy_scope(Auction).order(created_at: :desc)
+
+      @auctions = Auction.where(client: params[:query])
 
   end
 
@@ -35,3 +36,5 @@ class AuctionsController < ApplicationController
     params.require(:auction).permit(:bill_id)
   end
 end
+
+

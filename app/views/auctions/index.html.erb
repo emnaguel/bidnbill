@@ -1,13 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div id="auctions">
-        <% @auctions.each do |auction| %>
-        <h4><%= auction.id %></h4>
-        <h4><%=auction.client.email%></h4>
-        <h4><%=auction.bills %></h4>
-           <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+<%# if auction.client == %>
+ <%= form_tag auctions_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an auction"
+  %>
+<% end %>
+
+
+
+
+ <ul><%@auctions.each do |auction| %>
+ <li><%= auction.client.email%></li>
+ <li><%= auction.bill.category%></li>
+ <li><%= auction.bill.address%></li>
+ <% end %>
+</ul>
+
+
+
+
+
