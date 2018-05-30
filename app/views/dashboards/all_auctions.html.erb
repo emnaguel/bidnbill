@@ -1,0 +1,62 @@
+
+<div class="container text-center"><h1 class= "verte"> My dashboard </h1></div>
+<div id="exTab1" class="container flex">
+  <ul  class="nav nav-pills nav-stacked"">
+    <li class="active">
+     <a  href="#1a" data-toggle="tab" class = "couleur">
+       <h3>All actions</h3>
+
+     </a>
+   </li>
+   <li><a href="#2a" data-toggle="tab" class = "couleur">
+    <h3>My auctions</h3>
+
+  </li>
+  <li><a href="#3a" data-toggle="tab" class = "couleur">
+    <h3>Won auctions</h3>
+  </a>
+  </li>
+  <li><a href="#4a" data-toggle="tab" class = "couleur">
+    <h3>My Clients</h3>
+    </a>
+  </li>
+</ul>
+
+<div class="tab-content clearfix">
+  <div class="tab-pane active" id="1a">
+    <h3>  <% unless @other_auctions == nil %>
+      <% @other_auctions.each do |auction| %>
+      <%= link_to "Auction #{auction.id}", auction_path(auction) %>
+      <% end %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="tab-pane" id="2a">
+    <h3><% unless @my_auctions == nil %>
+      <% @my_auctions.each do |auction| %>
+      <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
+      <% end %>
+      <% end %></h3>
+    </div>
+    <div class="tab-pane" id="3a">
+      <h3>  <% unless @won_auctions == nil %>
+        <% @won_auctions.each do |auction| %>
+        <li>
+          <% won_bid = auction.bids.where(status: "completed").first %>
+          <%= link_to "Auction #{auction.id}", auction_path(auction) %> |
+          <%= link_to "Pay", pay_bid_path(won_bid) %>
+        </li>
+        <% end %>
+        <% end %></h3>
+      </div>
+      <div class="tab-pane" id="4a">
+        <h3><% unless @my_clients == nil %>
+        <% @my_clients.each do |auction| %>
+        <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
+        <% end %>
+        <% end %></h3>
+      </div>
+    </div>
+  </div>
+
+
