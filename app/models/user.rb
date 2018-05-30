@@ -7,18 +7,19 @@ class User < ApplicationRecord
 
   def my_auctions
     auctions - Auction.joins(:bids).where(bids: {status: "completed"})
+
     #bids.where(status: "pending").map {|bid| bid.auction}
   end
 
   def won_auctions
-    self.bids.where(status: "completed", payment_status: "pending").map {|bid| bid.auction}
+    bids.where(status: "completed", payment_status: "pending").map {|bid| bid.auction}
   end
 
   def my_clients
-    self.bids.where(status: "completed", payment_status: "completed").map {|bid| bid.auction}
+    bids.where(status: "completed", payment_status: "completed").map {|bid| bid.auction}
   end
 
   def other_auctions
-    Auction.joins(:bids).where.not(bids: { status: "completed"}) - auctions
+    Auction.left_outer_joins(:bids).where("bids.status IS NULL OR bids.status != 'completed'") - auctions
   end
 end

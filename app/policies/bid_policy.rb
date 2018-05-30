@@ -16,7 +16,7 @@ class BidPolicy < ApplicationPolicy
   end
 
   def pay?
-    scope.where(:id => record.id).exists? && record.provider == user && record.client.user_type == "provider"
+    scope.where(:id => record.id).exists? && record.provider == user && record.provider.user_type == "provider"
   end
 
   class Scope < Scope

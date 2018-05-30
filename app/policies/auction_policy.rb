@@ -7,10 +7,6 @@ class AuctionPolicy < ApplicationPolicy
     end
   end
 
-  def showprovider?
-    true
-  end
-
   def dashboard?
     user.user_type == "provider"
   end
