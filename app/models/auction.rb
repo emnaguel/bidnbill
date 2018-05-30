@@ -4,7 +4,7 @@ class Auction < ApplicationRecord
   pg_search_scope :search,
     against: [],
     associated_against: {
-      bill: [ :address, :category ],
+      bill: [ :address, :category.name ],
       client: [ :email ]
     },
     using: {
