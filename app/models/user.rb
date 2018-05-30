@@ -5,6 +5,11 @@ class User < ApplicationRecord
   has_many :bids
   has_many :auctions, through: :bids
 
+  USERTYPE = ['client', 'provider']
+  CLIENTTYPE = ['particulier', 'professionnel']
+
+  mount_uploader :photo, PhotoUploader
+
   def my_auctions
     auctions - Auction.joins(:bids).where(bids: {status: "completed"})
 
