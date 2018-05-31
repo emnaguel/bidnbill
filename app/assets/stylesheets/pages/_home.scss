@@ -1,115 +1,73 @@
 // Specific CSS for your home-page
 
-.container {
-  align-content: center;
+.wrapper {
+  background-image: asset-url('darkdenim3.png');
+  background-repeat: repeat;
+  height: calc(100vh - 130px);
+  overflow-y: scroll;
+  // margin: 0;
+  // padding: 0;
+  // align-items: center;
 }
 
-.row-title {
-  color: rgb(89, 136, 131);
-  font-size: 32px;
+.container-banner {
+display: flex;
+align-items: center;
+justify-content: space-around;
+height: 100vh;
+margin-top: 15px;
+}
+
+.banner-content {
+  // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  // background-image: asset-url('landing-page.jpg');
+  // background-size: cover !important;
+  border: solid;
+  color: rgb(88, 137, 132);
+  padding: 80px 0;
   text-align: center;
 }
 
-.profile-dashboard {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
-  display: grid;
-  grid-row-gap: 2px;
-  grid-column-gap: 2px;
-  grid-template-rows: 25% 1fr 1fr 1fr 1fr;
-  grid-template-columns: 50% 50%;
-  color: rgb(89, 136, 131);
+.banner-content h1 {
+    font-family: $my-font;
+    color: rgb(88, 137, 132);
+    font-weight: bolder;
 }
 
-.main-title {
-  border-shadow: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 1;
-  // color: rgb(145, 145, 145);
-  font-family: $my-font;
-  font-size: 16px;
+.banner-content h2 {
+  color: rgb(88, 137, 132);
 }
 
-.subtitle-two {
-  border-shadow: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-row: 4 / span 1;
-  grid-column: 2 / span 1;
-  // color: rgb(175, 175, 175);
-  font-family: $my-font;
-  font-size: 32px;
+.container-cards {
+align-items: center;
+justify-content: space-around;
 }
 
-.subtitle-three {
-  border-shadow: 2px;
-  display: flex;
+.card-ui {
+  background-color: rgb(145,145,145);
+  border: solid;
+  text-align: center;
+  color: rgb(88, 137, 132);
   align-items: center;
-  justify-content: center;
-  grid-row: 3 / span 1;
-  grid-column: 2 / span 1;
-  // color: rgb(175, 175, 175);
-  font-family: $my-font;
-  font-size: 32px;
 }
 
-.subtitle-four {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-row: 4 / span 1;
-  grid-column: 1 / span 1;
-  // color: rgb(175, 175, 175);
-  font-family: $my-font;
-  font-size: 32px;
+.card-ui h1 {
+  color: rgb(88, 137, 132);
+  font-size: 18px;
+  font-weight: bolder;
+
+}
+.card-ui p {
+font-size: 14px;
+color: rgb(88, 137, 132);
+font-weight: lighter;
 }
 
-.subtitle-five {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-row: 3 / span 1;
-  grid-column: 1 / span 1;
-  // color: rgb(175, 175, 175);
-  font-family: $my-font;
-  font-size: 32px;
+.card-description {
+  color: rgb(88, 137, 132);
+  font-size: 14px;
 }
 
-.subtitle-six {
-  grid-row: 2 / span 1;
-  grid-column: 1 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // color: rgb(175, 175, 175);
-  font-family: $my-font;
-  font-size: 32px;
-}
 
-.subtitle-seven {
-  grid-row: 2 / span 1;
-  grid-column: 2 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $my-font;
-  font-size: 32px;
-  // color: rgb(175, 175, 175);
-}
-
-.subtitle-eight {
-  grid-row: 1 / span 1;
-  grid-column: 2 / span 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $my-font;
-  font-size: 32px;
-  // color: rgb(175, 175, 175);
-}
 
 
