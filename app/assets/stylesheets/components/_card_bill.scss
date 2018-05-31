@@ -1,0 +1,86 @@
+.card-bill {
+  height: 50vh;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border: black solid 1px;
+  border-radius: 20px;
+}
+.card-bill-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  border-radius: 50%;
+}
+.card-bill-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.card-bill-description {
+  position: absolute;
+  bottom: 25%;
+  left: 10px;
+}
+.card-bill-description h2 {
+  font-size: 24px;
+}
+.card-bill-description p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+.card-bill-alter {
+  position: absolute;
+  bottom: 85%;
+  left: 10px;
+}
+.card-bill-bids {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.9;
+}
+.card-bill-bids h2 {
+  font-size: 24px;
+  margin-left: 10px;
+  color: black;
+  margin-top: 10px;
+}
+.card-bill-bids i {
+  font-size: 24px;
+  margin-right: 10px;
+  color: black;
+}
+.card-bill-bids-new {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.card-bill-link {
+  position: absolute;
+  top: 17%;
+  bottom: 0;
+  right: 7%;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+.card-bill:hover {
+  opacity: 0.8;
+}
+
+.card-bill i {
+  color: white;
+  font-size: 24px;
+  }
