@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
   padding: 0px 50px;
   color: rgb(175, 175, 175);
   border-top: 1px solid rgb(175, 175, 175);
@@ -15,6 +15,7 @@
 .footer-links {
   display: flex;
   align-items: left;
+  font-size: 12px;
 }
 
 .footer-links a {
@@ -35,6 +36,7 @@
   color: (175, 175, 175);
 }
 
-.credit {
-
+.credits {
+font-size: 10px;
+align-items: left center;
 }

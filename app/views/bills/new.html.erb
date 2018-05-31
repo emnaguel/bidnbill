@@ -1,4 +1,4 @@
-<br><br>
+
 <div class="title text-center">
     <h1>New Bill</h1>
 </div>
@@ -6,9 +6,9 @@
 <div class="container">
   <div class="container-cards">
     <div class="row">
-      <% Bill::CATEGORIES.each do |category| %>
+      <% Category.all.each do |category| %>
         <div class="col-xs-12 col-md-6">
-          <div class="card"><h1><%= category %></h1>
+          <div class="card"><h1><%= category.name %></h1>
           </div>
         </div>
       <% end %>
@@ -17,5 +17,4 @@
 </div>
 
 <%= render 'form', bill: @bill %>
-
 <%= link_to 'Back', dashboard_path %>
