@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :bills, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :bills, only: [:show, :new, :create, :edit, :update, :destroy] do
+    collection do
+      get "new_cat", to: "bills#new_category"
+    end
+  end
   get "dashboard", to: "bills#index"
   resources :auctions, only: [:index, :show, :create, :destroy] do
     resources :bids, only: [:new, :create]
