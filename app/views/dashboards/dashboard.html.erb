@@ -4,39 +4,57 @@
   <ul  class="nav nav-pills nav-stacked"">
     <li class="active">
      <a  href="#1a" data-toggle="tab" class = "couleur">
-       <h3 class="white">All actions</h3>
-
+       <h3 class="white">All auctions</h3>
      </a>
    </li>
    <li><a href="#2a" data-toggle="tab" class = "couleur">
-    <h3 class="white">My auctions</h3>
-
+    <h3 class="white">My auctions</h3></a>
   </li>
   <li><a href="#3a" data-toggle="tab" class = "couleur">
-    <h3 class="white">Won auctions</h3>
-  </a>
+    <h3 class="white">Won auctions</h3></a>
 </li>
 <li><a href="#4a" data-toggle="tab" class = "couleur">
-  <h3 class="white">My Clients</h3>
-</a>
+  <h3 class="white">My Clients</h3></a>
 </li>
 </ul>
 
 <div class="tab-content clearfix">
   <div class="tab-pane active" id="1a">
+    <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an auction"%>
+
+       <%= text_field_tag :where,
+          params[:where],
+          class: "form-control",
+          placeholder: "Where?",
+          id: "bill_address"
+          %>
+             <%= submit_tag "Search", class: "form-control btn btn-info" %>
+      <% end %>
     <h3>
-     <% if @other_auctions.present? %>
-     <% @other_auctions.each do |auction| %>
-     <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
+      <% if @other_auctions.present? %>
+      <% @other_auctions.each do |auction| %>
+        <li>
+          <%= link_to "Auction #{auction.id}", auction_path(auction) %>
+          <% if params[:query].present? %>
+            <ul>
+             <li><%= auction.client.email%></li>
+             <li><%= auction.bill.category.name%></li>
+             <li><%= auction.bill.address%></li>
+            </ul>
+          <% end %>
+        </li>
+      <% end %>
      <% end %>
-    <% end %>
-   </h3>
+    </h3>
  </div>
  <div class="tab-pane" id="2a">
   <h3>   <% @my_auctions.each do |auction| %>
     <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
     <% end %>
-
   </h3>
 </div>
 <div class="tab-pane" id="3a">
@@ -59,6 +77,12 @@
 </div>
 </div>
 
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
 
 
 

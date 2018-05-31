@@ -4,17 +4,6 @@
 </div>
 <br><br><br><br>
 <div class="container">
-  <div class="container-cards">
-    <div class="row">
-      <% Category.all.each do |category| %>
-        <div class="col-xs-12 col-md-6">
-          <div class="card"><h1><%= category.name %></h1>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'form', bill: @bill %>
+  <%= link_to 'Back', dashboard_path %>
 </div>
-
-<%= render 'form', bill: @bill %>
-<%= link_to 'Back', dashboard_path %>
