@@ -83,132 +83,132 @@
 
                 <% end %>
                 <% end %>
+              </div>
             </div>
+
           </div>
 
-        </div>
+          <div class="tab-pane" id="2a">
+            <div class="card card-auction">
+              <div class="card-body">
 
-        <div class="tab-pane" id="2a">
-          <div class="card card-auction">
-            <div class="card-body">
-
-              <% if @my_auctions.present? %>
-              <% @my_auctions.each do |auction| %>
-              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5><button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
-            </div>
-          </div>
-          <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-
+                <% if @my_auctions.present? %>
                 <% @my_auctions.each do |auction| %>
-                <li><%= auction.client.first_name%><%= auction.client.last_name%></li>
-                <li><%= auction.bill.category.name%></li>
-                <li>Number: <%= auction.bill.id%></li>
-
-
-                <% if policy(Bid).create? %>
-                <%= link_to "Create a bid", new_auction_bid_path(auction) %>
-                <% end %>
-                <% end %>
-
-                <% if @bids.present? %>
-                <h2>Bids:</h2>
-                <% @bids.each do |bid| %>
-                <ul>
-                  <li>
-                    <% if policy(bid).show? %>
-                    <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
-                    <% end %>
-                    <% if policy(bid).select? %>
-                    <%= link_to "Select this bid", select_bid_path(bid) %>
-                    <% end %>
-                    <% if policy(bid).pay? %>
-                    <%= link_to "Pay this bid", pay_bid_path(bid) %>
-                    <% end %>
-                  </li>
-                </ul>
-                <% end %>
-
-                <% if policy(@auction).destroy? %>
-                <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-                <% end %>
-                <% if policy(@auction.bill).show? %>
-                <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
-                <% end %>
-                <%= link_to 'Back to dashboard', dashboard_path %>
-                <% end %>
+                <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5><button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
               </div>
             </div>
-          </div>
-          <% end %>
-          <% end %>
-        </h3>
-      </div>
+            <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                  <% @my_auctions.each do |auction| %>
+                  <li><%= auction.client.first_name%><%= auction.client.last_name%></li>
+                  <li><%= auction.bill.category.name%></li>
+                  <li>Number: <%= auction.bill.id%></li>
 
 
+                  <% if policy(Bid).create? %>
+                  <%= link_to "Create a bid", new_auction_bid_path(auction) %>
+                  <% end %>
+                  <% end %>
 
-      <div class="tab-pane" id="3a">
+                  <% if @bids.present? %>
+                  <h2>Bids:</h2>
+                  <% @bids.each do |bid| %>
+                  <ul>
+                    <li>
+                      <% if policy(bid).show? %>
+                      <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
+                      <% end %>
+                      <% if policy(bid).select? %>
+                      <%= link_to "Select this bid", select_bid_path(bid) %>
+                      <% end %>
+                      <% if policy(bid).pay? %>
+                      <%= link_to "Pay this bid", pay_bid_path(bid) %>
+                      <% end %>
+                    </li>
+                  </ul>
+                  <% end %>
 
-
-        <% @won_auctions.each do |auction| %>
-
-
-        <% won_bid = auction.bids.where(status: "completed").first %>
-        <%= link_to "Auction #{auction.id}", auction_path(auction) %>
-
-
-        <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price_cents) %></span>
-
-
-        <%= form_tag orders_path do %>
-        <%= hidden_field_tag 'category_id', auction.category.id %>
-        <%= submit_tag 'Add', class: 'btn btn-primary' %>
-        <% end %>
-
-
-        <div class="col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Basket
-            </div>
-            <div class="panel-body text-left">
-              <div id="cart">
-
+                  <% if policy(@auction).destroy? %>
+                  <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+                  <% end %>
+                  <% if policy(@auction.bill).show? %>
+                  <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+                  <% end %>
+                  <%= link_to 'Back to dashboard', dashboard_path %>
+                  <% end %>
+                </div>
               </div>
-              <div class="clearfix">&nbsp;</div>
-
-              <a href="#" onclick="alert('Ok, on va commander !')" class="btn btn-success btn-block" id="order">
-
-              Commander !</a>
-              <%= form_tag orders_path do %>
-
-              <%= submit_tag 'Commander', class: 'commander btn btn-primary' %>
-              <% end %>
-
             </div>
-          </div>
+            <% end %>
+            <% end %>
+          </h3>
         </div>
 
-        <% end %>
+
+
+        <div class="tab-pane" id="3a">
+
+
+          <% @won_auctions.each do |auction| %>
+
+
+          <% won_bid = auction.bids.where(status: "completed").first %>
+          <%= link_to "Auction #{auction.id}", auction_path(auction) %>
+
+
+          <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price_cents) %></span>
+
+
+          <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'category_id', auction.category.id %>
+          <%= submit_tag 'Add', class: 'btn btn-primary' %>
+          <% end %>
+
+
+          <div class="col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Basket
+              </div>
+              <div class="panel-body text-left">
+                <div id="cart">
+
+                </div>
+                <div class="clearfix">&nbsp;</div>
+
+                <a href="#" onclick="alert('Ok, on va commander !')" class="btn btn-success btn-block" id="order">
+
+                Commander !</a>
+                <%= form_tag orders_path do %>
+
+                <%= submit_tag 'Commander', class: 'commander btn btn-primary' %>
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+
+          <% end %>
+        </div>
+
+
+
       </div>
-
-
-
     </div>
-  </div>
 
 
 
 
 
-  <div class="tab-pane" id="4a">
-   <% @my_clients.each do |auction| %>
-   <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
-   <% end %>
+    <div class="tab-pane" id="4a">
+     <% @my_clients.each do |auction| %>
+     <li><%= link_to "Auction #{auction.id}", auction_path(auction) %></li>
+     <% end %>
 
- </h3>
-</div>
+   </h3>
+ </div>
 </div>
 </div>
 </div>
