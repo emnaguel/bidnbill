@@ -1,20 +1,65 @@
-body {
-  padding : 10px ;
 
+.wrapper {
+  min-height: calc(100vh-70px-80px);
+  background-color: white;
+}
+
+.nav {
+  width: 200px;
+  position: fixed;
+  top: 70px;
+  bottom: 80px;
+  left: 0;
+  background: gray;
+  height: 578px;
+
+}
+
+ul .nav .nav-pills .nav-stacked {
+  width: 200px;
+  position: fixed !important;
+  top: 70px;
+  bottom: 80px;
+  left: 0;
+  background: gray;
+
+}
+
+
+.panel-default {
+  border-color: #ddd;
+  width: 414px;
+  top: 70px;
+  right: 0px;
+  height: 578px;
+  position: fixed;
+}
+
+.contain {
+ margin-left: 298px;
+}
+.container-fluid {
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #exTab1 .tab-content {
-  color : white;
-  background-color: $my-yellow;
-  padding : 5px 15px;
-   width: 700px;
-}
+  margin-top: 10px;
+  color: black;
+  background-color: white;
+  padding: 27px 153px;
+    /* width: 100%; */
+    height: calc(100vh - 70px - 80px - 50px);
+    margin-bottom: 30px;
+    width: 900px;
+  }
 
-#exTab2 h3 {
-  color : white;
-  background-color: $my-green;
-  padding : 5px 15px;
-}
+  #exTab2 h3 {
+    color : black;
+    background-color: $light-gray;
+    padding : 5px 15px;
+  }
 
 /* remove border radius for the tab */
 
@@ -29,10 +74,9 @@ body {
 }
 
 #exTab3 .tab-content {
-  color : white;
-  background-color: $my-green;
-  padding : 5px 15px;
-    width: 700px;
+  color : black;
+  background-color: $light-gray;
+
 }
 
 
@@ -41,24 +85,50 @@ body {
 }
 
 .couleur {
-  background-color: $my-yellow;
+  background-color: gray;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    color: #fff;
-    background-color: #447604;
+ color: white;
+ background-color: #333333;
+    /* margin-top: 10px; */
+    opacity: 1;
+
+  }
+
+
+  .container-fluid .contain .tab-content .clearfix {
+    margin-top: 10px;
+    color: black;
+    background-color: white;
+    padding: 27px 153px;
+    /* width: 100%; */
+    height: calc(100vh - 70px - 80px - 50px);
+    margin-bottom: 30px;
+  }
+
+
+  .verte {
+    color: #598883;
+
+  }
+
+  .black {
+    color: white;
+  }
+
+
+  li {
+    list-style-type:none;
+  }
+
+  span.prix {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display:block;
+  }
+
+.commander {
+
 }
 
-.verte {
-  color: $my-green
-
-}
-
-.white {
-  color: white;
-}
-
-
-li {
-  list-style-type:none;
-}
