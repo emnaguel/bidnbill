@@ -5,7 +5,6 @@ class AddElementsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :address, :string
-    add_column :users, :photo, :string
     add_column :users, :company, :string
     add_column :users, :phone_number, :string
   end

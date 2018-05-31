@@ -3,9 +3,10 @@ class AuctionsController < ApplicationController
 
 
   def index
-
-      @auctions = Auction.where(client: params[:query])
-
+    @auctions = policy_scope(Auction).order(created_at: :desc)
+      if params[:query].present?
+      @auctions = @auctions.search(params[:query])
+    end
   end
 
   def show

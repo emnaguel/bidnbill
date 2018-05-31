@@ -8,6 +8,15 @@ class BillsController < ApplicationController
 
   def show
     authorize @bill
+    @bills = Bill.where.not(latitude: nil, longitude: nil)
+
+    @marker =
+      [{
+        lat: @bill.latitude,
+        lng: @bill.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }]
+
   end
 
   def new
@@ -56,6 +65,6 @@ class BillsController < ApplicationController
     end
 
     def bill_params
-      params.require(:bill).permit(:user_id, :category, :current_provider, :address, :price)
+      params.require(:bill).permit(:user_id, :category_id, :current_provider, :address, :price, :photo)
     end
 end

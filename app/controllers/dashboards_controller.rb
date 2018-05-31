@@ -4,9 +4,26 @@ class DashboardsController < ApplicationController
 
   def dashboard
     @other_auctions = current_user.other_auctions
+
+    if params[:query].present? && params[:where].present?
+       @other_auctions = @other_auctions.search("#{params[:query]} #{params[:where]}")
+    elsif params[:query].present?
+       @other_auctions = @other_auctions.search(params[:query])
+    elsif params[:where].present?
+      @other_auctions = @other_auctions.search(params[:where])
+    end
+
     @my_auctions = current_user.my_auctions
     @won_auctions = current_user.won_auctions
     @my_clients = current_user.my_clients
+
+    @markers = @other_auctions.map do |auction|
+      {
+        lat: auction.bill.latitude,
+        lng: auction.bill.longitude,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   private

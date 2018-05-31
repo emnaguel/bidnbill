@@ -4,6 +4,13 @@ class User < ApplicationRecord
   has_many :bills
   has_many :bids
   has_many :auctions, through: :bids
+  has_many :provider_categories
+  has_many :categories, through: :provider_categories
+
+  USERTYPE = ['client', 'provider']
+  CLIENTTYPE = ['particulier', 'professionnel']
+
+  mount_uploader :photo, PhotoUploader
 
   def my_auctions
     auctions - Auction.joins(:bids).where(bids: {status: "completed"})
@@ -20,6 +27,10 @@ class User < ApplicationRecord
   end
 
   def other_auctions
-    Auction.left_outer_joins(:bids).where("bids.status IS NULL OR bids.status != 'completed'") - auctions
+    # Auction.left_outer_joins(:bids).where("bids.status IS NULL OR bids.status != 'completed'") - auctions
+
+    Auction.left_outer_joins(:bids).
+      where("bids.status IS NULL OR bids.status != 'completed'").
+      where.not(id: auctions.pluck(:id))
   end
 end
