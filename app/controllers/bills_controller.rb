@@ -1,6 +1,7 @@
 class BillsController < ApplicationController
   before_action :ensure_user_is_client
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized, except: [:index, :new_category], unless: :skip_pundit?
 
   def index
     @bills = policy_scope(Bill).order(created_at: :desc)
@@ -19,7 +20,11 @@ class BillsController < ApplicationController
 
   end
 
+  def new_category
+  end
+
   def new
+    @category = Category.find_by(name: params[:category])
     @bill = Bill.new
     authorize @bill
   end

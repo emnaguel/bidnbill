@@ -1,6 +1,6 @@
 <%= simple_form_for(@bill) do |f| %>
   <div class="form-inputs">
-    <%= f.association :category, prompt: "Select a category" %>
+    <%= f.association :category, prompt: "Select a category", selected: @category&.id %>
     <%= f.input :current_provider %>
     <%= f.input :address %>
     <%= f.input :price %>
