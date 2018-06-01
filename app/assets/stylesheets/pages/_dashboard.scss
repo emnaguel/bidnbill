@@ -1,4 +1,8 @@
-
+#exTab1 .tab-content {
+  color : white;
+  background-color: $my-yellow;
+  padding : 5px 15px;
+  width: 700px;
 
 .wrapper {
   min-height: calc(100vh-70px-80px);
@@ -86,11 +90,13 @@
 }
 
 #exTab3 .tab-content {
+  //color : white;
+  //background-color: $my-green;
+  //padding : 5px 15px;
+  //width: 700px;
   color : black;
   background-color: $light-gray;
-
 }
-
 
 .flex {
   display: flex;
@@ -190,4 +196,6 @@
 
 }
 
-
+li {
+  list-style-type:none;
+}

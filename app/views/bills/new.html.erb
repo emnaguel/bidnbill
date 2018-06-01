@@ -1,9 +1,10 @@
 
-<div class="title text-center">
-    <h1>New Bill</h1>
-</div>
-<br><br><br><br>
 <div class="container">
-  <%= render 'form', bill: @bill %>
-  <%= link_to 'Back', dashboard_path %>
+  <div class="title text-center">
+    <h1>New Bill</h1>
+  </div>
+    <div class="cards">
+      <%= render 'form', bill: @bill %>
+      <%= link_to 'Back', dashboard_path %>
+    </div>
 </div>

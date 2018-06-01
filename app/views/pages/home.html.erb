@@ -1,50 +1,48 @@
-<div class="wrapper">
-    <div class="container">
-
-      <div class="banner-content">
-          <h1>
-            BIDNBILL
-          </h1>
-          <h2>
-            Reprenez le contrôle de vos factures
-          </h2>
-      </div>
+<div class="wrapper-landing-page">
+  <div class="container">
+    <div class="banner-content">
+      <h1>BIDNBILL</h1>
+        <h2>Reprenez le contrôle de vos factures</h2>
     </div>
+  </div>
 
   <div class="container">
     <div class="row">
-      <div class="row-for-logos">
-
+      <div class="row-merged">
+        <div class="col-xs-12 col-md-4">
+          <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
+          <%= link_to root_path, class: "card-icons invoice" do %>
+          <%= image_tag "bill.svg" %>
+          <% end %>
+            <div class="card-description">
+              <h1>Sélectionner une facture</h1>
+              <p>Télécharger votre dernière facture d'électricité, gaz, box/téléponie, assurance etc...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
+            <%= link_to root_path, class: "card-icons law" do %>
+            <%= image_tag "law.svg" %>
+            <% end %>
+            <div class="card-description">
+              <h1>Créer une enchère inversée</h1>
+              <p>L'enchère inversée que vous créez vous permet de soumettre directement, de manière anonymisée, vos données de consommation à la concurrence .</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+        <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
+          <%= link_to root_path, class: "card-icons eyeglasses" do %>
+          <%= image_tag "eyeglasses.png" %>
+          <% end %>
+          <div class="card-description">
+            <h1>Consulter les résultats</h1>
+            <p>Accéder aux résultats de votre enchère et sélectionner l'offre de marché qui correspond à vos besoins.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="container-cards">
-
-          <div class="col-xs-12 col-md-4">
-            <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
-                <div class="card-description">
-                  <h1>Sélectionner une facture</h1>
-                  <p>Télécharger votre dernière facture d'électricité, gaz, assurance etc...</p>
-                </div>
-            </div>
-          </div>
-
-           <div class="col-xs-12 col-md-4">
-            <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
-                <div class="card-description">
-                  <h1>Enchères inversées</h1>
-                  <p>L'enchère vous permet de soumettre vos données de consommation à la concurrence et ce de manière anonymisées </p>
-                </div>
-            </div>
-          </div>
-
-           <div class="col-xs-12 col-md-4">
-            <div class="card-ui" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), asset-url('');">
-                <div class="card-description">
-                  <h1>Résultat</h1>
-                  <p>Accédez aux résultats de votre enchère et sélectionnez la meilleure offre de marché</p>
-                </div>
-            </div>
-          </div>
     </div>
   </div>
 </div>
+

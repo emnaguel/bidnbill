@@ -1,71 +1,88 @@
 // Specific CSS for your home-page
 
-.wrapper {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
+.wrapper-landing-page {
+  background-color: rgb(13,135,135);
   height: calc(100vh - 130px);
   overflow-y: scroll;
-  // margin: 0;
-  // padding: 0;
-  // align-items: center;
-}
-
-.container-banner {
-display: flex;
-align-items: center;
-justify-content: space-around;
-height: 100vh;
-margin-top: 15px;
-}
-
-.banner-content {
-  // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
-  // background-image: asset-url('landing-page.jpg');
-  // background-size: cover !important;
-  border: solid;
-  color: rgb(88, 137, 132);
-  padding: 80px 0;
-  text-align: center;
-}
-
-.banner-content h1 {
-    font-family: $my-font;
-    color: rgb(88, 137, 132);
-    font-weight: bolder;
-}
-
-.banner-content h2 {
-  color: rgb(88, 137, 132);
-}
-
-.container-cards {
-align-items: center;
-justify-content: space-around;
-}
-
-.card-ui {
-  background-color: rgb(145,145,145);
-  border: solid;
-  text-align: center;
-  color: rgb(88, 137, 132);
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
   align-items: center;
 }
 
-.card-ui h1 {
-  color: rgb(88, 137, 132);
-  font-size: 18px;
-  font-weight: bolder;
 
+
+.banner-content {
+  margin-top: 30px;
+  background-color: rgb(13,135,135);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  // height: 50vh;
+  // margin-top: 15px;
+}
+
+.banner-content h1 {
+  color: white;
+  font-weight: bolder;
+  font-size: 88px;
+  font-family: $my-font;
+  letter-spacing: 4px;
+}
+
+// (140,179,244)
+.banner-content h2 {
+  font-size: 28px;
+  color: white;
+  font-family: $my-font;
+  font-weight: bolder;
+}
+
+.row-merged {
+  margin-top: 40px;
+  display: flex;
+  align-items: stretch;
+}
+
+.container-cards-landing-page {
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-ui {
+  // background-image: asset-url('darkdenim3.png');
+  // background-repeat: repeat;
+  background-color: white;
+  text-align: center;
+  color: white;
+  align-items: center;
+  padding: 28px 19px;
+  height: 100%;
+  border-radius: 40px;
+}
+
+.card-ui h1 {
+  font-family: $my-font;
+  color: rgb(13,135,135);
+  font-size: 22px;
+  font-weight: bolder;
 }
 .card-ui p {
-font-size: 14px;
-color: rgb(88, 137, 132);
-font-weight: lighter;
+font-family: $my-font;
+color: rgb(13,135,135);
+font-size: 12px;
+font-weight: bolder;
 }
 
-.card-description {
-  color: rgb(88, 137, 132);
-  font-size: 14px;
+.card-icons img {
+ height: 60px;
+ background-color: white;
+ border-radius: 20px;
+}
+// rgb(13,135,135)
+.card-icons.invoice img {
+  height: 58px;
+  margin-top: 5px;
 }
 
 
