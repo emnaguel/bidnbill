@@ -30,10 +30,12 @@
   letter-spacing: 4px;
 }
 
+// (140,179,244)
 .banner-content h2 {
   font-size: 28px;
   color: white;
   font-family: $my-font;
+  font-weight: bolder;
 }
 
 .row-merged {
@@ -48,8 +50,9 @@
 }
 
 .card-ui {
-  background-image: asset-url('darkdenim3.png');
-  background-repeat: repeat;
+  // background-image: asset-url('darkdenim3.png');
+  // background-repeat: repeat;
+  background-color: white;
   text-align: center;
   color: white;
   align-items: center;
@@ -60,23 +63,23 @@
 
 .card-ui h1 {
   font-family: $my-font;
-  color: white;
+  color: rgb(13,135,135);
   font-size: 22px;
   font-weight: bolder;
 }
 .card-ui p {
 font-family: $my-font;
-color: white;
+color: rgb(13,135,135);
 font-size: 12px;
 font-weight: bolder;
 }
 
 .card-icons img {
  height: 60px;
- background-color: rgb(13,135,135);
+ background-color: white;
  border-radius: 20px;
 }
-
+// rgb(13,135,135)
 .card-icons.invoice img {
   height: 58px;
   margin-top: 5px;
