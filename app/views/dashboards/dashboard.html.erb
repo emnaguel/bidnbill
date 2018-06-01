@@ -75,15 +75,15 @@
       </div>
     </div>
 
-    <div class="tab-pane" id="second-a">
+       <div class="tab-pane" id="second-a">
 
       <% if @my_auctions.present? %>
         <% @my_auctions.each do |auction| %>
           <div class="card card-auction">
            <div class="card-body">
-
               <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
               <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+            </div>
               <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
@@ -130,8 +130,7 @@
             <% end %>
           <% end %>
         </div>
-      </div>
-    </div>
+        </div>
 
     <div class="tab-pane" id="third-a">
       <div class="dashboard-container-flexbox">
