@@ -75,8 +75,7 @@
       </div>
     </div>
 
-       <div class="tab-pane" id="second-a">
-
+    <div class="tab-pane" id="second-a">
       <% if @my_auctions.present? %>
         <% @my_auctions.each do |auction| %>
           <div class="card card-auction">
@@ -127,10 +126,11 @@
                   </div>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        </div>
-        </div>
+        <% end %>
+      </div>
+
 
     <div class="tab-pane" id="third-a">
       <div class="dashboard-container-flexbox">
@@ -160,7 +160,7 @@
               </div>
               <div class="clearfix">&nbsp;</div>
               <%= form_tag orders_path do %>
-                <%= submit_tag 'Commander', class: 'commander btn btn-primary btn-block', id: "order" %>
+                <%= submit_tag 'Commander', class: 'btn btn-primary btn-block' %>
               <% end %>
             </div>
           </div>
@@ -168,7 +168,7 @@
       </div>
     </div>
 
-     <div class="tab-pane" id="forth-a">
+    <div class="tab-pane" id="forth-a">
       <div class="dashboard-container-flexbox">
         <% @my_clients.each do |auction| %>
           <div class="card card-auction">
