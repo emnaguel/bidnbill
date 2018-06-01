@@ -1,50 +1,58 @@
 <div class="container">
-  <h1>Bills</h1>
-  <ul>
+  <div class="row">
     <% @bills.each do |bill| %>
-      <li>
-        <h2>Bill:</h2>
-        <p>User: <%= bill.client.email %></p>
-        <p>Category: <%= bill.category.name %></p>
-        <p>Current provider: <%= bill.current_provider %></p>
-        <p>Address: <%= bill.address %></p>
-        <p>Price: <%= bill.price %></p>
-        <% if policy(bill).show? %>
-          <%= link_to 'Show', bill_path(bill) %> |
-        <% end %>
-        <% if policy(bill).edit? %>
-          <%= link_to 'Edit', edit_bill_path(bill) %> |
-        <% end %>
-        <% if policy(bill).destroy? %>
-          <%= link_to 'Destroy', bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        <% if policy(Auction).create? %>
-          <%= form_tag auctions_path do %>
-            <%= hidden_field_tag 'bill_id', bill.id %>
-            <%= submit_tag 'Create an auction', class: 'btn btn-primary' %>
-          <% end %>
-        <% end %>
-
-
-
-
-
-        <% unless bill.auction == nil %>
-          <% if policy(bill.auction).show? %>
-            <br>
-            <h2>Bid:</h2>
-            <%= link_to "My auction", auction_path(bill.auction.id) %> |
-            <% if policy(bill.auction).destroy? %>
-              <%= link_to "Destroy", auction_path(bill.auction.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if bill.category.name == 'Electricité' %>
+        <% cat_img = 'http://www.truemanestates.co.uk/s/cc_images/teaserbox_2447945127.png?t=1477571843' %>
+      <% elsif bill.category.name == 'Gaz' %>
+        <% cat_img = 'https://png.icons8.com/metro/1600/gas.png' %>
+      <% elsif bill.category.name == 'Téléphonie' %>
+        <% cat_img = 'https://library.wwu.edu/files/Icon-Phone.png' %>
+      <% elsif bill.category.name == 'Box Internet' %>
+        <% cat_img = 'https://loewener.dk/wp-content/uploads/2017/09/wifi.png' %>
+      <% end %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card-bill" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.05)), url(<%= cat_img %>);">
+          <div class="card-bill-category"><%= bill.category.name %></div>
+          <div class="card-bill-description">
+            <h2><%= bill.current_provider %></h2>
+            <p>Price: <%= bill.price %></p>
+            <p>Address: <%= bill.address %></p>
+          </div>
+          <div class="card-bill-alter">
+            <% if policy(bill).edit? %>
+              <%= link_to edit_bill_path(bill) do %>
+                <i class="far fa-edit"></i>
+              <% end %>
             <% end %>
+            <% if policy(bill).destroy? %>
+              <%= link_to bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-bill-bids">
+            <% if bill.auction.present? %>
+              <h2><%= bill.auction.bids.count %> BIDS</h2>
+              <% if policy(bill.auction).destroy? %>
+                <%= link_to auction_path(bill.auction.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% if policy(Auction).create? %>
+                <%= form_tag auctions_path do %>
+                  <%= hidden_field_tag 'bill_id', bill.id %>
+                  <%= submit_tag 'Create an auction', class: 'card-bill-bids-new' %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <img class="card-bill-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <% if policy(bill).show? %>
+            <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
           <% end %>
-        <% end %>
-        <br><br><br>
-      </li>
+        </div>
+      </div>
     <% end %>
-  </ul>
-  <% if policy(Bill).create? %>
-    <%= link_to 'New Bill', new_bill_path %>
-  <% end %>
+  </div>
 </div>
-

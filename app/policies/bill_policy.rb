@@ -7,6 +7,10 @@ class BillPolicy < ApplicationPolicy
     user.user_type == "client"
   end
 
+  def new_category?
+    new?
+  end
+
   def create?
     new?
   end
