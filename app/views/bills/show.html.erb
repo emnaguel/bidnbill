@@ -17,9 +17,6 @@
       <% if policy(@bill).edit? %>
         <%= link_to 'Edit', edit_bill_path(@bill) %> |
         <%= link_to 'Back to dashboard', dashboard_path %>
-        <% unless @bill.auction == nil %>
-          | <%= link_to 'Back to auction', auction_path(@bill.auction) %>
-        <% end %>
       <% end %>
     </div>
 
@@ -61,9 +58,6 @@
 
       <% if policy(@auction).destroy? %>
         <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <% end %>
-      <% if policy(@auction.bill).show? %>
-        <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
       <% end %>
       <%= link_to 'Back to dashboard', dashboard_path %>
       <% end %>
