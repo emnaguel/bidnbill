@@ -1,6 +1,6 @@
 #exTab1 .tab-content {
   color : white;
-  background-color: $my-yellow;
+  background-color: rgb(13,135,135);
   padding : 5px 15px;
   width: 700px;
 }
@@ -14,13 +14,16 @@
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 
     color: #000000;
-    background-color: black;
+    background-color: rgb(13,135,135);
     border: 1px solid #ddd;
     border-bottom-color: transparent;
     cursor: default;
 }
 
-
+.form-inline {
+    margin-left: 33px;
+    margin-top: 47px;
+}
 // .nav {
 //   width: 200px;
 //   position: fixed;
@@ -104,7 +107,7 @@
 }
 
 .couleur {
-  background-color: gray;
+  background-color: #0d8787;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
@@ -139,7 +142,7 @@
 
   li {
     list-style-type:none;
-    background-color: black;
+
   }
 
   span.prix {
@@ -157,7 +160,7 @@
     align-items: stretch;
     > ul {
       flex: 0 0 200px;
-      background: black;
+      background-color: #0d8787;;
       margin: 0;
       padding: 0;
       min-height: calc(100vh - 70px - 80px);
