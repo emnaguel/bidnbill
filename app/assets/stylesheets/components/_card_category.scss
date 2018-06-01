@@ -29,3 +29,13 @@
 //   opacity: 0.8;
 //   text-decoration: none;
 // }
+.card h1 {
+  border: solid;
+  color: white;
+}
+
+.card h1:hover {
+  color: rgb(13,135,135);
+  background-color: white;
+  text-decoration: none;
+}
