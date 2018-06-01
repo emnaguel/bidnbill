@@ -1,8 +1,17 @@
 <div class="container">
   <div class="row">
     <% @bills.each do |bill| %>
+      <% if bill.category.name == 'Electricité' %>
+        <% cat_img = 'http://www.truemanestates.co.uk/s/cc_images/teaserbox_2447945127.png?t=1477571843' %>
+      <% elsif bill.category.name == 'Gaz' %>
+        <% cat_img = 'https://png.icons8.com/metro/1600/gas.png' %>
+      <% elsif bill.category.name == 'Téléphonie' %>
+        <% cat_img = 'https://library.wwu.edu/files/Icon-Phone.png' %>
+      <% elsif bill.category.name == 'Box Internet' %>
+        <% cat_img = 'https://loewener.dk/wp-content/uploads/2017/09/wifi.png' %>
+      <% end %>
       <div class="col-xs-12 col-sm-6">
-        <div class="card-bill" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.05)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-bill" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.05)), url(<%= cat_img %>);">
           <div class="card-bill-category"><%= bill.category.name %></div>
           <div class="card-bill-description">
             <h2><%= bill.current_provider %></h2>

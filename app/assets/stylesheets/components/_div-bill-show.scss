@@ -2,16 +2,17 @@
   display: flex;
 }
 .div-bill-show {
+  height: calc(100vh - 70px);
   flex: 0 0 30%;
-  height: 100vh;
   position: sticky !important;
   top: 0 !important;
   border: black solid 1px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.div_bill_info {
-  position: absolute;
+.div-bill-info {
   padding: 10px;
+  flex: 1 1 auto;
 }
 .div_bill_edit {
   padding: 10px !important;
@@ -19,13 +20,11 @@
 .map-bill {
   height: 200px;
   width: 100%;
-  bottom: 5px;
-  position: absolute;
   padding: 10px;
+  flex: 0 0 25vh;
 }
 .div-auction-show {
   flex: 1 1 auto;
-  height: 100vh;
   top: 0;
   border: black solid 1px;
   padding: 10px;
