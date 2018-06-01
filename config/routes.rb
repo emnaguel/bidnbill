@@ -19,5 +19,9 @@ Rails.application.routes.draw do
 
   get "provider_dashboard", to: "dashboards#dashboard"
 
+  resources :orders, only: [:show, :create] do
+  resources :payments, only: [:new, :create]
+end
+
 end
 
