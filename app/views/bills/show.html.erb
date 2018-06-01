@@ -1,44 +1,75 @@
-<p>
-  <strong>User:</strong>
-  <%= @bill.client.email %>
-</p>
+<div class="container-bill-show">
+  <div class="div-bill-show">
+    <div class="div-bill-info">
+      <p><strong>User:</strong>
+        <%= @bill.client.email %></p>
+      <p><strong>Category:</strong>
+        <%= @bill.category.name %></p>
+      <p><strong>Current provider:</strong>
+        <%= @bill.current_provider %></p>
+      <p><strong>Address:</strong>
+        <%= @bill.address %></p>
+      <p><strong>Price:</strong>
+        <%= @bill.price %></p>
+    </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @bill.category.name %>
-</p>
+    <div class="div_bill_edit">
+      <% if policy(@bill).edit? %>
+        <%= link_to 'Edit', edit_bill_path(@bill) %> |
+        <%= link_to 'Back to dashboard', dashboard_path %>
+        <% unless @bill.auction == nil %>
+          | <%= link_to 'Back to auction', auction_path(@bill.auction) %>
+        <% end %>
+      <% end %>
+    </div>
 
-<p>
-  <strong>Current provider:</strong>
-  <%= @bill.current_provider %>
-</p>
+    <div class="map-bill">
+      <div
+        id="map"
+        style="width: 100%;
+        height: 200px;"
+        data-markers="<%= @marker.to_json %>"
+      ></div>
+    </div>
+  </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @bill.address %>
-</p>
+  <div class="div-auction-show">
+    <% unless @auction == nil %>
+      <h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category.name%> bill number <%= @auction.bill.id%></h1>
 
-<p>
-  <strong>Price:</strong>
-  <%= @bill.price %>
-</p>
+      <% if policy(Bid).create? %>
+        <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
+      <% end %>
 
-<% if policy(@bill).edit? %>
-  <%= link_to 'Edit', edit_bill_path(@bill) %> |
-  <%= link_to 'Back to dashboard', dashboard_path %>
-  <% unless @bill.auction == nil %>
-    | <%= link_to 'Back to auction', auction_path(@bill.auction) %>
-  <% end %>
-<% end %>
+      <% if @bids.present? %>
+        <h2>Bids:</h2>
+        <% @bids.each do |bid| %>
+          <ul>
+            <li>
+              <% if policy(bid).show? %>
+                <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
+              <% end %>
+              <% if policy(bid).select? %>
+                <%= link_to "Select this bid", select_bid_path(bid) %>
+              <% end %>
+              <% if policy(bid).pay? %>
+                <%= link_to "Pay this bid", pay_bid_path(bid) %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
 
-
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @marker.to_json %>"
-></div>
+      <% if policy(@auction).destroy? %>
+        <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% end %>
+      <% if policy(@auction.bill).show? %>
+        <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+      <% end %>
+      <%= link_to 'Back to dashboard', dashboard_path %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <br><br>
 <%= cl_image_tag @bill.photo%>
-

@@ -1,0 +1,32 @@
+.container-bill-show {
+  display: flex;
+}
+.div-bill-show {
+  flex: 0 0 30%;
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+  border: black solid 1px;
+  position: relative;
+}
+.div_bill_info {
+  position: absolute;
+  padding: 10px;
+}
+.div_bill_edit {
+  padding: 10px !important;
+}
+.map-bill {
+  height: 200px;
+  width: 100%;
+  bottom: 5px;
+  position: absolute;
+  padding: 10px;
+}
+.div-auction-show {
+  flex: 1 1 auto;
+  height: 100vh;
+  top: 0;
+  border: black solid 1px;
+  padding: 10px;
+}
