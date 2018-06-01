@@ -9,8 +9,12 @@ class BillsController < ApplicationController
 
   def show
     authorize @bill
+    @auction = @bill.auction
+    unless @auction == nil
+      authorize @auction
+      @bids = policy_scope(@auction.bids)
+    end
     @bills = Bill.where.not(latitude: nil, longitude: nil)
-
     @marker =
       [{
         lat: @bill.latitude,

@@ -1,19 +1,13 @@
-<br><br>
-<div class="title text-center">
-    <h1>New Bill</h1>
-</div>
-<br><br><br><br>
-<div class="container">
-  <div class="container-cards">
+<div class="wrapper-category">
+  <div class="container">
     <div class="row">
       <% Category.all.each do |category| %>
         <div class="col-xs-12 col-md-6">
           <%= link_to new_bill_path(Bill.new, category: category.name) do %>
-            <div class="card"><h1><%= category.name %></h1>
+            <div class="card"><h1><%= category.name %></h1></div>
           <% end %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
