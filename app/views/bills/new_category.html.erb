@@ -2,12 +2,13 @@
   <div class="container">
     <div class="row">
       <% Category.all.each do |category| %>
-        <div class="col-xs-12 col-md-6">
-          <%= link_to new_bill_path(Bill.new, category: category.name) do %>
-            <div class="card"><h1><%= category.name %></h1></div>
-          <% end %>
+      <div class="col-xs-12 col-md-6">
+        <%= link_to new_bill_path(Bill.new, category: category.name) do %>
+        <div class="card"><h1><%= category.name %></h1></div>
         <% end %>
       </div>
+      <% end %>
+
     </div>
   </div>
 </div>

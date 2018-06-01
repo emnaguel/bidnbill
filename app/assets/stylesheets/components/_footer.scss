@@ -9,7 +9,7 @@
   justify-content: space-between;
   height: 60px;
   padding: 0px 50px;
-  // border-top: 1px solid rgb(175, 175, 175);
+  border-top: 1px solid rgb(175, 175, 175);
   color: rgb(13,135,135);
 }
 
@@ -37,7 +37,8 @@
   color: rgb(13,135,135);
 }
 
-.credits p {
+.credits ul .credits {
+display:inline;
 font-size: 10px;
 padding-top: 6px;
 }
