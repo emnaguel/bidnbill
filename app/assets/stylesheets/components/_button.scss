@@ -13,13 +13,39 @@ button {
   box-shadow: inset 0 -3.25em 0 0 var(--hover);
 }
 
-.commander {
-    margin-top: 278px;
-    width: 300px;
-    margin-left: 50px;
-}
+//.commander {
+  //  margin-top: 278px;
+    //width: 300px;
+    //margin-left: 50px;
+//}
 
 .btn {
   border:solid;
   border-color: rgb(13,135,135);
+}
+
+.btn-eye {
+  color: #fff;
+  background-color: #0d8787;
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  border-color: none;
+  border: none;
+}
+
+.add {
+  color: #fff;
+  background-color: #0d8787;
+  position: absolute;
+  top: 11px;
+  right: 72px;
+  border-radius: 3px;
+  height: 31px;
+  border: none;
+
+}
+
+.btn-info {
+  background-color: #0d8787;
 }

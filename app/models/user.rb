@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_welcome_email
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bills
@@ -15,8 +16,6 @@ class User < ApplicationRecord
 
   def my_auctions
     auctions - Auction.joins(:bids).where(bids: {status: "completed"})
-
-    #bids.where(status: "pending").map {|bid| bid.auction}
   end
 
   def won_auctions
@@ -33,5 +32,11 @@ class User < ApplicationRecord
     Auction.left_outer_joins(:bids).
       where("bids.status IS NULL OR bids.status != 'completed'").
       where.not(id: auctions.pluck(:id))
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

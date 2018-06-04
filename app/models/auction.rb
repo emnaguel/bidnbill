@@ -1,4 +1,6 @@
 class Auction < ApplicationRecord
+  after_create :send_creation_email
+
   include PgSearch
 
   pg_search_scope :search,
@@ -18,4 +20,10 @@ class Auction < ApplicationRecord
   has_many :providers, through: :bids
   has_many :bids, dependent: :destroy
   validates :bill_id, uniqueness: true
+
+  private
+
+  def send_creation_email
+    AuctionMailer.new_auction(self.client).deliver_now
+  end
 end

@@ -1,6 +1,9 @@
 puts "Cleaning database..."
 Bid.destroy_all
 Bill.destroy_all
+Category.destroy_all
+ProviderCategory.destroy_all
+Order.destroy_all
 User.destroy_all
 
 
@@ -17,10 +20,10 @@ provelec.remote_photo_url = user_url
 provelec.save
 
 puts "Creating categories..."
-elec = Category.create(name: "Electricité")
-gaz = Category.create(name: "Gaz")
-tel = Category.create(name: "Téléphonie")
-box = Category.create(name: "Box Internet")
+elec = Category.create(name: "Electricité", price_cents: 1500)
+gaz = Category.create(name: "Gaz", price_cents: 1500)
+tel = Category.create(name: "Téléphonie", price_cents: 1000)
+box = Category.create(name: "Box Internet", price_cents: 500)
 
 puts "Creating bills..."
 bill_elec = Bill.new(client: client, category: elec, address: "Paris")

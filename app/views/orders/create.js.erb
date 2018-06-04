@@ -1,0 +1,6 @@
+function addCartItem() {
+  const cart = document.getElementById("cart");
+  cart.insertAdjacentHTML("beforeend", "<%= j render 'dashboards/basket_item', bid: @bid %>");
+}
+
+addCartItem();
