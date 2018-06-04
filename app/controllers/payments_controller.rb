@@ -19,6 +19,8 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
+    @order.bids.update_all(payment_status: "completed")
+
     redirect_to order_path(@order)
 
   rescue Stripe::CardError => e

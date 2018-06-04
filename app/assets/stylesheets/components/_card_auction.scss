@@ -16,6 +16,7 @@
   color: black;
   border: none;
   background-color: white;
+  width: 766px;
 }
 
 .btn-eye {
@@ -26,12 +27,12 @@
   right: 10px;
   border-color: none;
   border: none;
-  }
+}
 
- .black-auction {
-    color: black;
-    margin-top: 5px;
-    > a, > span, > form {
-      flex: 0 0 auto;
-    }
+.black-auction {
+  color: black;
+  margin-top: 5px;
+  > a, > span, > form {
+    flex: 0 0 auto;
   }
+}
