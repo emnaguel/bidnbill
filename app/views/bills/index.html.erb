@@ -47,7 +47,7 @@
               <% end %>
             <% end %>
           </div>
-          <img class="card-bill-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <%= cl_image_tag bill.client.photo, class: "card-bill-user" %>
           <% if policy(bill).show? %>
             <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
           <% end %>
