@@ -16,21 +16,24 @@ var cart = {
 };
 
 function displayCart(){
-  if(cart.products.length == 0){
-    document.getElementById('cart').innerHTML = '<h3>Aucun produit</h3>';
-    document.getElementById('order').style.display = 'none';
-  } else {
-    var cartCode = "";
-    for(var i = 0; i < cart.products.length; i++){
-      var product = cart.products[i];
-      var div = "<div><strong>" + product.title + "</strong> : " + product.price + "</div>";
-      cartCode += div;
+  const cart = document.getElementById('cart');
+  if (cart) {
+    if(cart.products.length == 0){
+      document.getElementById('cart').innerHTML = '<h3>Aucun produit</h3>';
+      document.getElementById('order').style.display = 'none';
+    } else {
+      var cartCode = "";
+      for(var i = 0; i < cart.products.length; i++){
+        var product = cart.products[i];
+        var div = "<div><strong>" + product.title + "</strong> : " + product.price + "</div>";
+        cartCode += div;
+      }
+
+      cartCode += "<h2>TOTAL : " + cart.total.toString().replace('.', ',') + " &euro;</h2>";
+
+      document.getElementById('cart').innerHTML = cartCode;
+      document.getElementById('order').style.display = 'block';
     }
-
-    cartCode += "<h2>TOTAL : " + cart.total.toString().replace('.', ',') + " &euro;</h2>";
-
-    document.getElementById('cart').innerHTML = cartCode;
-    document.getElementById('order').style.display = 'block';
   }
 }
 

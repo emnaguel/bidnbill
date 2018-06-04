@@ -1,27 +1,29 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :user_type, required: true, collection: User::USERTYPE %>
-    <%= f.input :client_type, collection: User::CLIENTTYPE %>
-    <%= f.input :company %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :address %>
-    <%= f.input :phone_number %>
-    <%= f.input :photo, input_html: {value: f.object.photo || "https://hadeplatform.com/img/default.png"} %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.input :password_confirmation, required: true %>
+      <%= f.input :user_type, required: true, collection: User::USERTYPE %>
+      <%= f.input :client_type, collection: User::CLIENTTYPE, wrapper_html: { class: "hidden" } %>
+      <%= f.input :company, wrapper_html: { class: "hidden" } %>
+      <%= f.input :first_name, wrapper_html: { class: "hidden" } %>
+      <%= f.input :last_name, wrapper_html: { class: "hidden" } %>
+      <%= f.input :address, wrapper_html: { class: "hidden" } %>
+      <%= f.input :phone_number, wrapper_html: { class: "hidden" } %>
+      <%= f.input :photo, input_html: {value: f.object.photo || "https://hadeplatform.com/img/default.png", wrapper_html: { class: "hidden" }} %>
+      <%= f.input :photo_cache, as: :hidden %>
 
-  </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
