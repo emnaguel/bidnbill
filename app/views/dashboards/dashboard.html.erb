@@ -30,11 +30,13 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <%# @other_auctions.each do |auction| %>
-                      <div><%= auction.client.first_name%><%= auction.client.last_name%></div>
-                      <div><%= auction.bill.category.name%></div>
-                      <div>Number: <%= auction.bill.id%></div>
-                      <div>Address: <%= auction.bill.address%></div>
-                      <div>Number: <%= auction.bill.price%></div>
+                      <div class = "text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class = "text-center"><%= auction.bill.category.name%></div>
+                      <div class = "text-center">Number: <%= auction.bill.id%></div>
+                      <div class = "text-center">Address: <%= auction.bill.address%></div>
+                      <div class = "text-center">Number: <%= auction.bill.price%></div>
+                      <div class = "text-center"><%= auction.bill.price%></div>
+                      <div class = "text-center"><%= auction.category.price_cents%></div>
                       <% if policy(Bid).create? %>
                         <%= link_to "Create a bid", new_auction_bid_path(auction) %>
                       <% end %>
@@ -88,10 +90,11 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
 
-                      <li><%= auction.client.first_name%><%= auction.client.last_name%></li>
-                      <li><%= auction.bill.category.name%></li>
-                      <li>Number: <%= auction.bill.id%></li>
-                      <li><%= auction.bill.price%></li>
+                      <div class = "text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class = "text-center"><%= auction.bill.category.name%></div>
+                      <div class = "text-center">Number: <%= auction.bill.id%></div>
+                      <div class = "text-center"><%= auction.bill.price%></div>
+                      <div class = "text-center"><%= auction.category.price_cents%></div>
 
 
                       <% if policy(Bid).create? %>
@@ -158,15 +161,15 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
 
-                      <li><%= auction.client.first_name%><%= auction.client.last_name%></li>
-                      <li><%= auction.bill.category.name%></li>
-                      <li>Number: <%= auction.bill.id%></li>
-                      <li><%= auction.bill.price%></li>
+                      <div class="text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class="text-center"><%= auction.bill.category.name%></div>
+                      <div class="text-center">Number: <%= auction.bill.id%></div>
+                      <div class="text-center"><%= auction.bill.price%></div>
+                      <div class="text-center"><%= auction.bill.price%></div>
+                      <div class="text-center"><%= auction.category.price_cents%></div>
 
 
-                      <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction) %>
-                      <% end %>
+
 
 
                       <% if @bids.present? %>
@@ -209,21 +212,16 @@
             </div>
             <div class="panel-body text-left">
               <div id="cart">
-              </div>
-              <% if @pending_order %>
-                <% @pending_order.bids.each do |bid| %>
-                  <div>
-                    Auction: <%= bid.auction.id %>
-                    <br>
-                    Price: <%= humanized_money_with_symbol(bid.bill.category.price) %>
-                  </div>
+                <% if @pending_order %>
+                  <% @pending_order.bids.each do |bid| %>
+                    <%= render "basket_item", bid: bid %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
               <div class="clearfix">&nbsp;</div>
                 <% if @pending_order %>
                   <%= form_tag order_payments_path(@pending_order) do %>
                     Total: <%= humanized_money_with_symbol(@pending_order.amount) %>
-
                     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                       data-name="Won Auction(s)"
@@ -253,14 +251,15 @@
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
 
-                      <li><%= auction.client.first_name%><%= auction.client.last_name%></li>
-                      <li><%= auction.bill.category.name%></li>
-                      <li>Number: <%= auction.bill.id%></li>
-                      <li><%= auction.bill.price%></li>
+                      <div class="text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class="text-center"><%= auction.bill.category.name%></div>
+                      <div class="text-center">Number: <%= auction.bill.id%></div>
+                      <div class="text-center"><%= auction.bill.price%></div>
+                      <div class="text-center"><%= auction.category.price_cents%></div>
 
 
                       <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction) %>
+                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "center" %>
                       <% end %>
 
 
