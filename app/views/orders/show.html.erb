@@ -1,6 +1,16 @@
 <h1>Order</h1>
 <ul>
   <li>Status: <%= @order.state %></li>
-  <li>Item: <%= @order.category_name %></li>
   <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
 <ul>
+
+<div>
+  <h2>bids</h2>
+  <% @order.bids.each do |bid| %>
+    <div>
+      Auction: <%= bid.auction.id %>
+      <br>
+      Price: <%= humanized_money_with_symbol(bid.bill.category.price) %>
+    </div>
+  <% end %>
+</div>
