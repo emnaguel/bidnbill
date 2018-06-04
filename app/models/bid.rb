@@ -2,6 +2,7 @@ class Bid < ApplicationRecord
   after_initialize :init
   belongs_to :auction
   belongs_to :provider, class_name: "User", foreign_key: "user_id"
+  belongs_to :order, optional: true
   has_one :bill, through: :auction
   has_one :client, through: :auction
 

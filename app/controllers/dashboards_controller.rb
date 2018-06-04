@@ -17,6 +17,8 @@ class DashboardsController < ApplicationController
     @won_auctions = current_user.won_auctions
     @my_clients = current_user.my_clients
 
+    @pending_order = current_user.orders.where(state: "pending").first
+
     @markers = @other_auctions.map do |auction|
       {
         lat: auction.bill.latitude,
