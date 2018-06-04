@@ -13,16 +13,17 @@
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 
-    color: #000000;
-    background-color: rgb(13,135,135);
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    cursor: default;
+  color: #000000;
+  background-color: #045050;
+  cursor: default;
+  border: none;
+  width: 209px;
+  margin-left: -20px;
 }
 
 .form-inline {
-    margin-left: 33px;
-    margin-top: 47px;
+  margin-left: 33px;
+  margin-top: 47px;
 }
 // .nav {
 //   width: 200px;
@@ -53,6 +54,9 @@
   right: 0px;
   height: 608px;
   position: fixed;
+  font-weight: bolder;
+  font-size: 21px;
+  text-align: center;
 }
 
 .contain {
@@ -89,9 +93,7 @@
 
 /* change border radius for the tab , apply corners on top*/
 
-#exTab3 .nav-pills > li > a {
-  border-radius: 4px 4px 0 0 ;
-}
+
 
 #exTab3 .tab-content {
   //color : white;
@@ -112,7 +114,7 @@
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
  color: white;
- background-color: #9c9494;
+
     /* margin-top: 10px; */
     opacity: 1;
 
@@ -140,6 +142,8 @@
   }
 
 
+
+
   li {
     list-style-type:none;
 
@@ -163,7 +167,8 @@
       padding: 0;
       min-height: calc(100vh - 70px - 80px);
       li {
-        padding: 15px 20px;
+        padding: 15px 18px;
+        width: 209px;
       }
     }
     .dashboard-container {
@@ -197,3 +202,14 @@
   justify-content: space-between;
 
 }
+
+
+#cart{
+  margin-top: 32px;
+}
+
+
+.first {
+  margin-top: 30px;
+}
+

@@ -1,7 +1,16 @@
-#map .little-map {
+#map .little-map, #second_map .little-map {
  width: 414px;
  top: 70px;
  right: 0px;
  height: 578px;
  position: fixed;
+}
+#second_map {
+  width: 100% !important;
+  height: 103% !important;
+}
+
+#third_map {
+  width: 100% !important;
+  height: 103% !important;
 }

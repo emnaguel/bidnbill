@@ -1,0 +1,40 @@
+
+.form-new {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    width: 30%;
+    border: none;
+    margin-bottom: 20px;
+    background-color: #0d8787;
+    color: white;
+    margin-right: 27px;
+  }
+}
+
+.back {
+  color: #0d8787;
+  text-decoration: none;
+  font-size: 19px;
+  margin-top: 4px;
+}
+
+
+.back-i {
+  margin-left: -8px;
+  margin-top: 3px;
+  color: #0d8787;
+}
+
+.form-n {
+  margin-top: 75px;
+}
