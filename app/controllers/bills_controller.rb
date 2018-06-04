@@ -42,6 +42,9 @@ class BillsController < ApplicationController
     @bill.client = current_user
     authorize @bill
     if @bill.save
+      @auction = Auction.new
+      @auction.bill = @bill
+      @auction.save
       redirect_to dashboard_path
     else
       render :new

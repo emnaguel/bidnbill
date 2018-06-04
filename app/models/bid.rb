@@ -1,4 +1,5 @@
 class Bid < ApplicationRecord
+  after_create :send_bid_email
   after_initialize :init
   belongs_to :auction
   belongs_to :provider, class_name: "User", foreign_key: "user_id"
@@ -12,4 +13,10 @@ class Bid < ApplicationRecord
 
   STATUS = ["cancelled","pending", "completed"]
   PAYMENT_STATUS = ["cancelled","pending", "completed"]
+
+  private
+
+  def send_bid_email
+    BidMailer.new_bid(self).deliver_now
+  end
 end
