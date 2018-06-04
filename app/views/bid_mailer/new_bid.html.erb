@@ -1,0 +1,7 @@
+<p>Hi <%= @client.first_name %>,</p>
+
+<p>You have received a new bid from <%= @bid.provider.email %></p>
+<p>Here are the details of the bid</p>
+<p><strong>Status:</strong><%= @bid.status %></p>
+<p><strong>Content:</strong><%= @bid.content %></p>
+<p>You can select this bid throught the following link: http://bidnbill.herokuapp.com/bids/<%= @bid.id %>/select</p>
