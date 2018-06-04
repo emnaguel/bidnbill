@@ -4,10 +4,11 @@ class OrdersController < ApplicationController
   before_action :find_or_create_order, only: [:create]
 
   def create
-    bid = current_user.bids.find(params[:bid_id])
-    add_bid_to_order(bid)
+    @bid = current_user.bids.find(params[:bid_id])
 
-    redirect_to provider_dashboard_path
+    add_bid_to_order(@bid)
+
+    redirect_to provider_dashboard_path(anchor: "third-a")
   end
 
   def show
