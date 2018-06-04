@@ -30,15 +30,15 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <%# @other_auctions.each do |auction| %>
-                      <div class = "text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class = "text-center first"><%= auction.client.first_name%><%= auction.client.last_name%></div>
                       <div class = "text-center"><%= auction.bill.category.name%></div>
                       <div class = "text-center">Number: <%= auction.bill.id%></div>
                       <div class = "text-center">Address: <%= auction.bill.address%></div>
-                      <div class = "text-center">Number: <%= auction.bill.price%></div>
                       <div class = "text-center"><%= auction.bill.price%></div>
-                      <div class = "text-center"><%= auction.category.price_cents%></div>
+                      <div class = "text-center"><%= auction.bill.price%></div>
+                      <div class = "text-center">€<%= auction.category.price_cents%></div>
                       <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction) %>
+                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
                       <% end %>
                     <%# end %>
                     <% if @bids.present? %>
@@ -79,6 +79,16 @@
     </div>
 
     <div class="tab-pane" id="second-a">
+
+    <div class="dashboard-container-flexbox">
+
+        <div class="first-column">
+          <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
+            <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
+            <%= submit_tag "Search", class: "form-control btn btn-info up" %>
+          <% end %>
+
       <% if @my_auctions.present? %>
         <% @my_auctions.each do |auction| %>
           <div class="card card-auction">
@@ -90,15 +100,15 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
 
-                      <div class = "text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class = "text-center first"><%= auction.client.first_name%><%= auction.client.last_name%></div>
                       <div class = "text-center"><%= auction.bill.category.name%></div>
                       <div class = "text-center">Number: <%= auction.bill.id%></div>
                       <div class = "text-center"><%= auction.bill.price%></div>
-                      <div class = "text-center"><%= auction.category.price_cents%></div>
+                      <div class = "text-center">€<%= auction.category.price_cents * 10%></div>
 
 
                       <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction) %>
+                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
                       <% end %>
 
 
@@ -128,14 +138,21 @@
                       <% end %>
                       <%= link_to 'Back to dashboard', dashboard_path %>
                     <% end %>
+
                   </div>
                 </div>
               </div>
-            </div>
           <% end %>
         <% end %>
       </div>
+    </div>
 
+        <div class="second-column">
+          <div id="second_map" class="little-map" data-markers="<%= @markers.to_json %>"></div>
+        </div>
+
+  </div>
+</div>
 
     <div class="tab-pane" id="third-a">
       <div class="dashboard-container-flexbox">
@@ -161,12 +178,12 @@
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
 
-                      <div class="text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class="text-center first"><%= auction.client.first_name%><%= auction.client.last_name%></div>
                       <div class="text-center"><%= auction.bill.category.name%></div>
                       <div class="text-center">Number: <%= auction.bill.id%></div>
                       <div class="text-center"><%= auction.bill.price%></div>
                       <div class="text-center"><%= auction.bill.price%></div>
-                      <div class="text-center"><%= auction.category.price_cents%></div>
+                      <div class="text-center">€<%= auction.category.price_cents%></div>
 
 
 
@@ -210,7 +227,7 @@
             <div class="panel-heading">
               Basket
             </div>
-            <div class="panel-body text-left">
+            <div class="panel-body">
               <div id="cart">
                 <% if @pending_order %>
                   <% @pending_order.bids.each do |bid| %>
@@ -221,7 +238,7 @@
               <div class="clearfix">&nbsp;</div>
                 <% if @pending_order %>
                   <%= form_tag order_payments_path(@pending_order) do %>
-                    Total: <%= humanized_money_with_symbol(@pending_order.amount) %>
+                    <div class="text-center"> Total: <%= humanized_money_with_symbol(@pending_order.amount) %></div>
                     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                       data-name="Won Auction(s)"
@@ -241,25 +258,35 @@
 
 
     <div class="tab-pane" id="forth-a">
+      <div class="dashboard-container-flexbox">
+        <div class="first-column">
+          <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
+            <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
+            <%= submit_tag "Search", class: "form-control btn btn-info up" %>
+          <% end %>
+
         <% if @my_clients.present? %>
         <% @my_clients.each do |auction| %>
           <div class="card card-auction">
             <div class="card-body">
                 <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
-              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+                <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+              </div>
+            </div>
                  <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
 
-                      <div class="text-center"><%= auction.client.first_name%><%= auction.client.last_name%></div>
+                      <div class="text-center first"><%= auction.client.first_name%><%= auction.client.last_name%></div>
                       <div class="text-center"><%= auction.bill.category.name%></div>
                       <div class="text-center">Number: <%= auction.bill.id%></div>
                       <div class="text-center"><%= auction.bill.price%></div>
-                      <div class="text-center"><%= auction.category.price_cents%></div>
+                      <div class="text-center">€ <%= auction.category.price_cents%></div>
 
 
                       <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "center" %>
+                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
                       <% end %>
 
 
@@ -292,18 +319,21 @@
                   </div>
                 </div>
               </div>
-            </div>
-             </div>
           <% end %>
         <% end %>
+      </div>
+       <div class="second-column">
+          <div id="third_map" class="little-map" style="width: 100%; height: 103%;"; data-markers="<%= @markers.to_json %>"></div>
+        </div>
+      </div>
+    </div>
 
 
 
 
       </div>
     </div>
-  </div>
-</div>
+
 
 
 
