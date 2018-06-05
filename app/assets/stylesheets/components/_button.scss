@@ -54,8 +54,24 @@ button {
 .stripe-button-el {
   background-color: #0d8787;
   margin-top: 99px;
+  span {
+    display: none !important;
+  }
 }
 
 .create {
   margin-top: 10px;
+}
+
+
+
+
+.btn-secondary {
+  border-radius: 45px;
+  background-color: #0d8787;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 29px;
+  width: 159px;
 }

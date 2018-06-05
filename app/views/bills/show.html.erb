@@ -1,5 +1,7 @@
-<div class="container-bill-show">
-  <div class="div-bill-show">
+<div class="wrapper">
+
+<div class="grid">
+  <div class="div-bill-show grid-one">
     <div class="div-bill-info">
       <p><strong>User:</strong>
         <%= @bill.client.email %></p>
@@ -19,8 +21,9 @@
         <%= link_to 'Back to dashboard', dashboard_path %>
       <% end %>
     </div>
+     </div>
 
-    <div class="map-bill">
+    <div class="map-bill grid-two">
       <div
         id="map"
         style="width: 100%;
@@ -28,9 +31,9 @@
         data-markers="<%= @marker.to_json %>"
       ></div>
     </div>
-  </div>
 
-  <div class="div-auction-show">
+
+  <div class="div-auction-show grid-three">
     <% unless @auction == nil %>
       <h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category.name%> bill number <%= @auction.bill.id%></h1>
 
@@ -63,6 +66,9 @@
       <% end %>
     <% end %>
   </div>
-</div>
+
     <br><br>
 <%= cl_image_tag @bill.photo %>
+
+</div>
+</div>
