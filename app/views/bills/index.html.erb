@@ -40,14 +40,14 @@
               <% end %>
             <% else %>
               <% if policy(Auction).create? %>
-                <%= form_tag auctions_path do %>
+                <%= form_tag auctions_path, class:'create_auction_form' do %>
                   <%= hidden_field_tag 'bill_id', bill.id %>
                   <%= submit_tag 'Create an auction', class: 'card-bill-bids-new' %>
                 <% end %>
               <% end %>
             <% end %>
           </div>
-          <%= cl_image_tag bill.client.photo, width: 75, height: 75, crop: :thumb, gravity: :face, class: "card-bill-user" %>
+          <%= cl_image_tag bill.client.photo, width: 60, height: 60, crop: :thumb, gravity: :face, class: "card-bill-user" %>
           <% if policy(bill).show? %>
             <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
           <% end %>
