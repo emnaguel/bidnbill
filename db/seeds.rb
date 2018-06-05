@@ -1,8 +1,8 @@
 puts "Cleaning database..."
 Bid.destroy_all
 Bill.destroy_all
-Category.destroy_all
 ProviderCategory.destroy_all
+Category.destroy_all
 Order.destroy_all
 User.destroy_all
 

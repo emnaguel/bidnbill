@@ -1,0 +1,7 @@
+<p>Hi <%= @provider.first_name %>,</p>
+<%= raise %>
+<p>Your bid on the auction <%= @auction.id %> has been selected by <%= @client.first_name %><%= @client.last_name %></p>
+<p>Here are the details of the bid</p>
+<p><strong>Status:</strong><%= @bid.status %></p>
+<p><strong>Content:</strong><%= @bid.content %></p>
+<p>In order to receive all the necessary informations about this new client and set a new contract, please follow the following <a href="http://bidnbill.com/provider_dashboard#third-a">link</a>.</p>

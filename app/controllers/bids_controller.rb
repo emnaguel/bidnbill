@@ -35,6 +35,7 @@ class BidsController < ApplicationController
     if can_select == true
       @bid.status = 'completed'
       @bid.save
+      SelectionMailer.invitation_to_pay(@bid).deliver_now
     end
     redirect_to auction_path(@bid.auction)
   end
