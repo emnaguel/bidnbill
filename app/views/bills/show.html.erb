@@ -1,74 +1,100 @@
 <div class="wrapper">
 
-<div class="grid">
-  <div class="div-bill-show grid-one">
-    <div class="div-bill-info">
-      <p><strong>User:</strong>
-        <%= @bill.client.email %></p>
-      <p><strong>Category:</strong>
-        <%= @bill.category.name %></p>
-      <p><strong>Current provider:</strong>
-        <%= @bill.current_provider %></p>
-      <p><strong>Address:</strong>
-        <%= @bill.address %></p>
-      <p><strong>Price:</strong>
-        <%= @bill.price %></p>
-    </div>
+  <div class="grid">
+    <div class="div-bill-show grid-one">
+      <div class="div-bill-info">
+        <h3>Your Bill</h3>
+        <p><strong>User:</strong> <%= @bill.client.email %></p>
+      <p><strong>Category:</strong> <%= @bill.category.name %></p>
+      <p><strong>Current provider:</strong> <%= @bill.current_provider %></p>
+      <p><strong>Address:</strong> <%= @bill.address %></p>
+      <p><strong>Price:</strong> <%= @bill.price %></p>
+      <p><strong>Bill number <%= @auction.bill.id%></strong></p>
+      </div>
 
-    <div class="div_bill_edit">
-      <% if policy(@bill).edit? %>
-        <%= link_to 'Edit', edit_bill_path(@bill) %> |
-        <%= link_to 'Back to dashboard', dashboard_path %>
-      <% end %>
-    </div>
-     </div>
-
-    <div class="map-bill grid-two">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 200px;"
-        data-markers="<%= @marker.to_json %>"
-      ></div>
-    </div>
-
-
-  <div class="div-auction-show grid-three">
-    <% unless @auction == nil %>
-      <h1>Auction created by <%= @auction.client.email%> for his <%= @auction.bill.category.name%> bill number <%= @auction.bill.id%></h1>
-
-      <% if policy(Bid).create? %>
-        <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
-      <% end %>
-
-      <% if @bids.present? %>
-        <h2>Bids:</h2>
-        <% @bids.each do |bid| %>
-          <ul>
-            <li>
-              <% if policy(bid).show? %>
-                <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
-              <% end %>
-              <% if policy(bid).select? %>
-                <%= link_to "Select this bid", select_bid_path(bid) %>
-              <% end %>
-              <% if policy(bid).pay? %>
-                <%= link_to "Pay this bid", pay_bid_path(bid) %>
-              <% end %>
-            </li>
-          </ul>
+      <div class="div_bill_edit">
+        <% if policy(@bill).edit? %>
+        <div>
+          <i class="far fa-edit edit"></i><%= link_to 'Edit', edit_bill_path(@bill) %> |
+          <button type="button" class="oeil" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="far fa-eye "></i></button> |
+          <i class="fas fa-undo back-d"></i><%= link_to 'Back', dashboard_path %>
         <% end %>
+        </div>
+      </div>
+    </div>
 
-      <% if policy(@auction).destroy? %>
-        <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <% end %>
-      <%= link_to 'Back to dashboard', dashboard_path %>
-      <% end %>
-    <% end %>
+
+<!-- Eye modal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-image">
+          <%= cl_image_tag @bill.photo %>
+        </div>
+      </div>
+    </div>
+
+    <div class= "grid-two" id="othermap" data-markers="<%= @marker.to_json %>"></div>
+
+      <div class="div-auction-show grid-three">
+        <h3 class= "titre-bid">Your Bid</h3>
+
+           <% unless @auction == nil %>
+              <% if policy(Bid).create? %>
+                <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
+              <% end %>
+                <% if @bids.present? %>
+                  <% @bids.each do |bid| %>
+                    <div class="card card-bill-auction">
+                      <div class="card-body items">
+                        <% if policy(bid).select? %>
+                      <%= link_to "Select", select_bid_path(bid) %> |
+                    <% end %>
+                    <% if policy(bid).show? %>
+
+                      <button type="button" class="bid-show" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="far fa-eye "></i></button>
+
+                    <% end %>
+
+
+                    <% if policy(bid).pay? %>
+                      <%= link_to "Pay this bid", pay_bid_path(bid) %> |
+                    <% end %>
+
+                    <% if policy(@auction).destroy? %>
+                      <%= link_to auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } do %> |
+                        <i class="far fa-trash-alt"></i>
+                      <% end %>
+                    <% end %>
+
+                      </div>
+                     </div>
+
+                <% end %>
+              <% end %>
+            <% end %>
+
+        <div class="modal fade bs-example-modal-sm bid-show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              BID show
+
+            </div>
+          </div>
+        </div>
+
+
+    <div>
+
   </div>
-
-    <br><br>
-<%= cl_image_tag @bill.photo %>
-
+  </div>
 </div>
 </div>
+</div>
+</div>
+
+
+
+
+
+
+

@@ -1,12 +1,32 @@
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
+.button-bill {
+  color: white;
+  background-color:#0d8787;
 }
 
+
+
+
+
+
+
+button {
+  background: none;
+  //border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  //margin: 0.5em;
+  //padding: 1em 2em;
+}
+
+.edit {
+    color: #0d8787!important;
+  }
+
+.back-d {
+  color: #0d8787;
+  font-size: 13px;
+
+}
 
 .btn:hover,
 .btn:focus {
@@ -64,8 +84,6 @@ button {
 }
 
 
-
-
 .btn-secondary {
   border-radius: 45px;
   background-color: #0d8787;
@@ -74,4 +92,13 @@ button {
   font-size: 17px;
   margin-right: 29px;
   width: 159px;
+}
+
+
+.oeil {
+
+      color: #0d8787;
+    /* border-radius: 15px; */
+    border: none;
+
 }
