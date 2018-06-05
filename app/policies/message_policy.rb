@@ -8,7 +8,7 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def new?
-    new?
+    create?
   end
 
   class Scope < Scope
