@@ -53,6 +53,8 @@ a4 = Auction.create(bill: bill_elec3)
 
 puts "Creating bids..."
 Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
+Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
+Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
 Bid.create(auction: a2, provider: provelecgaz, status: "pending", payment_status: "pending")
 Bid.create(auction: a3, provider: provelecgaz, status: "completed", payment_status: "pending")
 Bid.create(auction: a4, provider: provelecgaz, status: "completed", payment_status: "completed")

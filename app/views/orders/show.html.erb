@@ -8,7 +8,7 @@
           <li class= "center"><strong>Amount:</strong> <%= humanized_money_with_symbol(@order.amount) %></li>
         </ul>
       <h2 class= "text-center">Bids</h2>
-      <div class="text-center">
+      <div class="text-center last">
         <% @order.bids.each do |bid| %>
         Auction: <%= bid.auction.id %> | Price: <%= humanized_money_with_symbol(bid.bill.category.price) %>
         <% end %>
