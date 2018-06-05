@@ -1,0 +1,34 @@
+<p>
+  <strong>Auction:</strong>
+  <%= @conversation.auction %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @conversation.provider %> : <%= @conversation.provider.email %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @conversation.client %> : <%= @conversation.client.email %>
+</p>
+
+
+<%= simple_form_for [@conversation, @message] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :content %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: "button" %>
+  </div>
+<% end %>
+
+
+<% if @messages.present? %>
+  <% @messages.each do |message| %>
+    <ul>
+      <li>Sender: <%= message.sender.email %></li>
+      <li>Content: <%= message.content %></li>
+    </ul>
+  <% end %>
+<% end %>
