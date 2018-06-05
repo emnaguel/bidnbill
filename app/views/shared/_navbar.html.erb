@@ -25,7 +25,7 @@
           <% if current_user.photo.blank? %>
             <img src="https://hadeplatform.com/img/default.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <% else %>
-            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.photo, width: 75, height: 75, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
