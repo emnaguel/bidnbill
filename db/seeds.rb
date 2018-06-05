@@ -1,8 +1,8 @@
 puts "Cleaning database..."
 Bid.destroy_all
 Bill.destroy_all
-Category.destroy_all
 ProviderCategory.destroy_all
+Category.destroy_all
 Order.destroy_all
 User.destroy_all
 
@@ -52,6 +52,8 @@ a3 = Auction.create(bill: bill_elec2)
 a4 = Auction.create(bill: bill_elec3)
 
 puts "Creating bids..."
+Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
+Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
 Bid.create(auction: a1, provider: provelec, status: "pending", payment_status: "pending")
 Bid.create(auction: a2, provider: provelecgaz, status: "pending", payment_status: "pending")
 Bid.create(auction: a3, provider: provelecgaz, status: "completed", payment_status: "pending")
