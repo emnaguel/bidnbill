@@ -78,28 +78,28 @@ puts "Creating bids..."
 Bid.create(auction: a1, provider: edf, status: "pending", payment_status: "pending", content: "Price 110")
 Bid.create(auction: a1, provider: total, status: "pending", payment_status: "pending", content: "Price 105")
 Bid.create(auction: a1, provider: edf, status: "pending", payment_status: "pending", content: "Price 100")
-Bid.create(auction: a1, provider: total, status: "completed", payment_status: "pending", content: "Price 95")
+Bid.create(auction: a1, provider: total, status: "pending", payment_status: "pending", content: "Price 95")
 
 Bid.create(auction: a2, provider: edf, status: "pending", payment_status: "pending", content: "Price 55")
 
 Bid.create(auction: a3, provider: edf, status: "pending", payment_status: "pending", content: "Price 40")
 Bid.create(auction: a3, provider: total, status: "pending", payment_status: "pending", content: "Price 37")
-Bid.create(auction: a3, provider: edf, status: "pending", payment_status: "pending", content: "Price 35")
+Bid.create(auction: a3, provider: edf, status: "completed", payment_status: "pending", content: "Price 35")
 
-Bid.create(auction: a4, provider: total, status: "completed", payment_status: "completed", content: "Price 65")
+Bid.create(auction: a4, provider: total, status: "pending", payment_status: "pending", content: "Price 65")
 
 Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "Price 110")
 Bid.create(auction: a5, provider: total, status: "pending", payment_status: "pending", content: "Price 105")
 Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "Price 100")
-Bid.create(auction: a5, provider: total, status: "completed", payment_status: "pending", content: "Price 95")
-Bid.create(auction: a6, provider: edf, status: "pending", payment_status: "pending", content: "Price 110")
+Bid.create(auction: a5, provider: total, status: "completed", payment_status: "completed", content: "Price 95")
+
 Bid.create(auction: a6, provider: total, status: "pending", payment_status: "pending", content: "Price 105")
-Bid.create(auction: a6, provider: edf, status: "pending", payment_status: "pending", content: "Price 100")
 Bid.create(auction: a6, provider: total, status: "completed", payment_status: "pending", content: "Price 95")
+
 Bid.create(auction: a7, provider: edf, status: "pending", payment_status: "pending", content: "Price 110")
 Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "Price 105")
-Bid.create(auction: a7, provider: edf, status: "pending", payment_status: "pending", content: "Price 100")
-Bid.create(auction: a7, provider: total, status: "completed", payment_status: "pending", content: "Price 95")
+Bid.create(auction: a7, provider: edf, status: "completed", payment_status: "completed", content: "Price 100")
+Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "Price 95")
 
 puts "Creating conversations..."
 c1 = Conversation.create(auction: a1, provider: edf)
@@ -123,7 +123,7 @@ Message.create(conversation: c1, sender: edf, content: "As you are a loyal custo
 Message.create(conversation: c2, sender: alex, content: "Hi, could you give me some more details about the bid you made. Will I have exactly the same service that I already have? Thanks")
 Message.create(conversation: c2, sender: total, content: "Hi Alex! Sure, we can keep your contract for a lower price :)")
 
-Message.create(conversation: c1, sender: total, content: "Dear Ayoub, we are pleased to inform you that can offer you 10 euros reduction on your contract. Please let us know if have any question.")
-Message.create(conversation: c1, sender: ayoub, content: "Hi, thanks for your offer, but its not enough. I'm waiting for a lower bid. Thanks")
+Message.create(conversation: c6_t, sender: total, content: "Dear Ayoub, we are pleased to inform you that can offer you 10 euros reduction on your contract. Please let us know if have any question.")
+Message.create(conversation: c6_t, sender: ayoub, content: "Hi, thanks for your offer, but its not enough. I'm waiting for a lower bid. Thanks")
 
 puts "Finished!"

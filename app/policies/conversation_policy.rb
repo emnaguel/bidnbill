@@ -6,10 +6,12 @@ class ConversationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.user_type == "client"
-        scope.all
+        raise
+        scope.where(client: user)
       elsif user.user_type == "provider"
         scope.where(provider: user)
       end
     end
   end
 end
+
