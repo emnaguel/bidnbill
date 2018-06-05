@@ -1,0 +1,29 @@
+<p>
+  <strong>Auction:</strong>
+  <%= @conversation.auction %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @conversation.provider %> : <%= @conversation.provider.email %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @conversation.client %> : <%= @conversation.client.email %>
+</p>
+
+
+
+<% if @messages.present? %>
+  <% @messages.each do |message| %>
+    <ul>
+      <li>Sender: <%= message.sender %></li>
+      <li>Content: <%= message.content %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if policy(Message).new? %>
+  <%= link_to "new message", new_conversation_message(@conversation)  %>
+<% end %>

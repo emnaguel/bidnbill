@@ -18,6 +18,10 @@ class BidsController < ApplicationController
     @bid.status = 'pending'
     authorize @bid
     if @bid.save
+      @conversation = Conversation.new
+      @conversation.auction = @bid.auction
+      @conversation.provider = current_user
+      @conversation.save
       redirect_to auction_path(@bid.auction)
     else
       render :new
