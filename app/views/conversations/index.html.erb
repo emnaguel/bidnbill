@@ -1,0 +1,8 @@
+<% @auctions.each do |auction| %>
+    <h3>Conversations for auction <%= auction.id %></h3>
+    <% auction.conversations.each do |conversation| %>
+      <% if policy(conversation).show? %>
+        <%= link_to "Conversation #{conversation.id}", conversation_path(conversation) %>
+      <% end %>
+    <% end %>
+<% end %>

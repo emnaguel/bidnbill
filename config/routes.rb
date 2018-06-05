@@ -23,8 +23,10 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 
-  resources :conversations, only: [:show] do
+  resources :conversations, only: [:show, :index] do
     resources :messages, only: [:new, :create]
   end
+
+  get "messages", to: "conversations#index"
 end
 

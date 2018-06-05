@@ -1,15 +1,15 @@
 class ConversationPolicy < ApplicationPolicy
   def show?
-    if user.user_type == "client"
-      return scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
-    else
-      return scope.where(:id => record.id).exists? && record.provider == user && record.provider.user_type == "provider"
-    end
+    record.client == user || record.provider == user
   end
 
   class Scope < Scope
     def resolve
-      scope
+      if user.user_type == "client"
+        scope.all
+      elsif user.user_type == "provider"
+        scope.where(provider: user)
+      end
     end
   end
 end
