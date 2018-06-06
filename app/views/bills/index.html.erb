@@ -15,7 +15,7 @@
             </h2>
             <p>Address: <%= bill.address %></p>
           </div>
-          <p class="card-bill-price">Price: <%= bill.price %></p>
+          <p class="card-bill-price">Price: <%= bill.price %> €</p>
           <div class="card-bill-bids">
             <% if bill.auction.present? %>
               <h2><%= bill.auction.bids.count %> BIDS</h2>

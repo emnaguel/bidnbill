@@ -16,7 +16,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def my_auctions
-    auctions - Auction.joins(:bids).where(bids: {status: "completed"})
+    (auctions - Auction.joins(:bids).where(bids: {status: "completed"})).uniq
   end
 
   def won_auctions

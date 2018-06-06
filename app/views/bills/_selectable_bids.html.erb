@@ -1,40 +1,44 @@
 <% bids.each do |bid| %>
-<div class="card card-bill-auction">
-  <div class="card-body items">
-    <div class="bulb" id="light">
-      <% if bid.status == "completed" %>
-        <i class="far fa-lightbulb lights"></i>
-      <% else %>
-        <i class="far fa-lightbulb"></i>
-      <% end %>
-    </div>
+  <div class="card-bill-auction">
+    <div class="card-body items">
+      <div class="bulb" id="light">
+        <% if bid.status == "completed" %>
+          <i class="far fa-lightbulb lights"></i>
+        <% else %>
+          <i class="far fa-lightbulb"></i>
+        <% end %>
+      </div>
+      <div class="card-bid-prov">
+        <%= bid.provider.company %> -
+        <%= bid.content %> €
+      </div>
       <div class="items-right">
         <% if policy(bid).select? %>
           <%= link_to "Select", select_bid_path(bid), id: "buttonselect", method: :patch, remote: true %> |
         <% end %>
-          <% if policy(bid).show? %>
-
-      <button type="button" class="bid-show" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="far fa-eye "></i></button>
-
-
-      <% end %>
-
-
-      <% if policy(bid).pay? %>
-      <%= link_to "Pay this bid", pay_bid_path(bid) %> |
-      <% end %>
-
-      <% if policy(auction).destroy? %>
-      <%= link_to auction_path(auction), method: :delete, data: { confirm: 'Are you sure?' } do %> |
-        <i class="far fa-trash-alt"></i>
-      <% end %>
-      <% end %>
+        <% if policy(bid).show? %>
+          <button type="button" class="bid-show" data-toggle="modal" data-target="#bid<%= bid.id %>">
+            <i class="far fa-eye "></i>
+          </button>
+        <% end %>
+        <% if policy(bid).pay? %>
+          <%= link_to "Pay this bid", pay_bid_path(bid) %> |
+        <% end %>
+        <% if policy(bid).destroy? %>
+          <%= link_to bid_path(bid), method: :delete, data: { confirm: 'Are you sure?' } do %> |
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-
   </div>
-</div>
+  <div id="bid<%= bid.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+       <p><%= bid.id %></p>
+     </div>
+   </div>
+  </div>
 <% end %>
-
-
 
 
