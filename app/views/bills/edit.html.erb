@@ -1,4 +1,19 @@
 <div class="container">
+<!-- <<<<<<< HEAD
+  <div class="container-editing-bill">
+    <div class="row">
+      <div class="row-editing-bill-title" >
+        <h1>Modification de votre facture</h1>
+        <h2>(La modification des données de votre facture entraînera l'annulation de l'enchère qui y est associée)</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-edit">
+        <%#= render 'form', bill: @bill %>
+        <%# if policy(@bill).show? %>
+        <%#= link_to 'Show', bill_path(@bill) %> |
+        <%#= link_to 'Back', dashboard_path %>
+======= -->
   <div class="row">
 
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 edit-form-bill">
@@ -12,7 +27,13 @@
         <% end %>
         <%= link_to dashboard_path do %>
         <i class="fas fa-undo"></i>Back
+<!-- >>>>>>> master -->
         <% end %>
       </div>
     </div>
   </div>
+<!-- <<<<<<< HEAD
+</div>
+
+======= -->
+<!-- >>>>>>> master -->

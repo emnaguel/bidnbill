@@ -19,7 +19,7 @@
           <div class="well">
             <% auction.conversations.each do |conversation| %>
               <% if policy(conversation).show? %>
-                <%= link_to conversation.provider.company, conversation_path(conversation), remote: true   %>
+                <%= link_to "> #{conversation.provider.company}", conversation_path(conversation), remote: true   %> <br>
               <% end %>
             <% end %>
           </div>
