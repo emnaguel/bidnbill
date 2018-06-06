@@ -1,57 +1,91 @@
 
-.container-new-bill {
-  background-color: #ebf1f1;
-  border: 3px solid rgb(13,135,135);
-  padding: 10px;
-  border-shadow: 5px;
-  border-radius: 8px;
-  h3 {
-    margin-top: 5px;
+
+.title-new-bill {
+
+    margin-top: 40px;
+  background-color: #0d8787;
+  color: white;
+  text-transform: uppercase;
+  width: 400px;
+  margin-left: 478px;
+  height: 50px;
+    /* margin-top: 2px; */
+    padding-top: 12px;
+    margin-bottom: 0px;
   }
-}
 
-.back-button-link {
-margin-left: 30px;
-border-radius: 8px;
-}
+    /* margin-top: 2px; */
 
-.small-container {
-  max-width: 400px;
-}
 
-.small-container .button {
-background-color: #ebf1f1;
-color: rgb(13,135,135);
-}
-
-.bill_photo {
-  label {
-    display: block;
-    text-align: center;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.428571429;
+  .container-new-bill {
     background-color: white;
-    border: 1px solid rgb(175,175,175);
-    border-radius: 4px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    padding: 10px;
+    border-shadow: 5px;
+
+
   }
 
-  select {
-    background-color: rgb(175,175,175);
+  .button-create-bill {
+    border: none;
+    color: #0d8787;
+    margin-right: -2px;
   }
 
-  input {
-    display: none;
-  }
-}
+  .back-button-link{
 
-.padded-wrapper {
-  padding: 20px;
-  min-height: calc(100vh - 130px);
-  flex-direction: column;
-  display: flex;
+    margin-top: 6px;
+  }
+
+
+  .small-container {
+    max-width: 400px;
+  }
+
+  .small-container .button {
+    background-color: #ebf1f1;
+    color: rgb(13,135,135);
+  }
+
+  .bill_photo {
+    label {
+      display: block;
+      text-align: center;
+      width: 100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.428571429;
+      background-color: white;
+      border: 1px solid rgb(175,175,175);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+
+    select {
+      background-color: rgb(175,175,175);
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  .padded-wrapper {
+    padding: 20px;
+    min-height: calc(100vh - 130px);
+    flex-direction: column;
+    display: flex;
+  }
+
+
+
+  .trait {
+    padding-left: 6px;
+  }
+
+
+#form-actions-buttons {
+      margin-left: -16px !important;
 }

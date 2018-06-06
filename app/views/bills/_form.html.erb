@@ -1,5 +1,5 @@
 <%= simple_form_for(@bill) do |f| %>
-  <div class="form-inputs">
+  <div class="form-inputs" id= "inputs-form">
     <%= f.association :category, label: "Please select a bill category", prompt: "Select a category", selected: @category&.id %>
     <%= f.input :current_provider, label: "Who is your current provider?", placeholder: 'Please click'  %>
     <%= f.input :address, label: "Please enter your billing address", placeholder: 'Please click'  %>
@@ -7,8 +7,10 @@
     <%= f.input :photo, label: "Upload your bill here"%>
     <%= f.input :photo_cache, as: :hidden %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, class: "button" %>
-    <%= link_to( 'Back', dashboard_path, {class: "btn button back-button-link"} ) %>
+  <div class="form-actions" id ="form-actions-buttons">
+    <%= f.button :submit, class: "button-create-bill" %>
+    <%= link_to( dashboard_path, {class: "back-button-link"} ) do %>
+    |                 <i class="fas fa-undo-alt trait"></i>Back
+    <% end %>
   </div>
 <% end %>

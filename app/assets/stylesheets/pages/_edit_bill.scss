@@ -1,12 +1,24 @@
 
 
 .editing-title {
-    padding-bottom: 11px;
-    color: white;
-    background-color: #0d8787;
-    margin-top: 0px;
-    padding-top: 11px;
-    padding-left: 6px;
-    margin-left: -14px;
-    margin-right: -14px;
+  padding-bottom: 11px;
+
+  color: white !important;
+  background-color: #0d8787;
+  margin-top: 0px;
+  padding-top: 11px;
+  padding-left: 6px;
+  margin-left: -14px;
+  margin-right: -14px;
+  font-size: 28px;
+  width: 391px;
+  margin-left: -15px;
+}
+
+#inputs-form {
+  margin-top: 17px !important;
+}
+.edit-form-bill {
+  margin-top: 50px;
+  height: 500px;
 }
