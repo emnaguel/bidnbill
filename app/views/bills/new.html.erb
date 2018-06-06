@@ -1,10 +1,7 @@
-
-<div class="container">
-  <div class="title text-center">
-    <h3>New Bill</h3>
+<div class="padded-wrapper">
+  <div class="container small-container container-new-bill">
+    <h3 class="text-center">New Bill</h3>
+    <%= render 'form', bill: @bill %>
   </div>
-    <div class="cards">
-      <%= render 'form', bill: @bill %>
-      <%= link_to 'Back', dashboard_path %>
-    </div>
 </div>
+

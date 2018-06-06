@@ -1,0 +1,91 @@
+.wrapper-bill-show {
+  background-color: white;
+  min-height: calc(100vh - 130px);
+  padding: 15px;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+}
+
+// .card-bill {
+//   background-color: #ebf1f1;
+//   padding: 15px;
+//   border: black solid 1px;
+//   border-radius: 4px;
+// }
+
+.display-each-bills {
+  background-color: white;
+  border: 1px solid rgb(175,175,175);
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.display-each-bills:hover {
+}
+
+.card-bill-user-avatar img{
+  border-radius: 50%;
+}
+
+.card-bill-current-provider {
+}
+
+.card-bill-description {
+}
+
+.card-bill-description h2 {
+}
+
+ .card-bill-description p {
+  }
+
+.card-link-to-edit {
+}
+
+.card-link-to-destroy-bill h2 {
+}
+
+.card-bill-create-auction {
+  color: white;
+  background-color: rgb(13,135,135);
+  width: 40%;
+  bottom: 15px;
+  opacity: 1;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-link-to-edit-bill .card-link-to-destroy-bill {
+
+}
+.card-bill-bids
+
+.card-bill-bids h2 {
+  top: 16%;
+  bottom: 13%;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0.9;
+}
+.card-bill-bids i {
+  font-size: 18px;
+  margin-right: 10px;
+  color: white;
+}
+.card-bill-bids-new {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.card-bill-bidsok i {
+  color: white;
+  font-size: 24px;
+  }
+
+

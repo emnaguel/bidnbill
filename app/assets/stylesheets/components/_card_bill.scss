@@ -1,28 +1,25 @@
+
 .card-bill {
-  height: 50vh;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  background-size: cover !important;
-  background-position: center;
-  color: white;
+  height: 30vh;
+  background: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin: 15px 0;
+  border-radius: 4px;
   position: relative;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  border: black solid 1px;
-  border-radius: 20px;
 }
-.card-bill-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  border-radius: 50%;
-}
+
+
 .card-bill-category {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
+  top: 0;
+  left: 0;
+  font-size: 12px;
   text-transform: uppercase;
+  background: #0e8686;
+  color: white;
+  padding: 5px 10px;
 }
+
 .card-bill-description {
   position: absolute;
   bottom: 25%;
@@ -30,35 +27,43 @@
 }
 .card-bill-description h2 {
   font-size: 24px;
+  margin: none;
+  i {
+    font-size: 18px;
+  }
 }
 .card-bill-description p {
   font-size: 14px;
   opacity: 0.9;
+  margin: none;
 }
-.card-bill-alter {
+.card-bill-price {
   position: absolute;
-  bottom: 85%;
-  left: 10px;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+  color: #ffaf2d;
+  font-weight: bolder;
 }
 .card-bill-bids {
   position: absolute;
-  background-color: white;
+  color: white;
+  background-color: #0f8585;
   width: 100%;
-  bottom: 15px;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   opacity: 0.9;
+  right: 0;
+  padding: 10px;
 }
 .card-bill-bids h2 {
-  font-size: 24px;
-  margin-left: 10px;
-  color: black;
-  margin-top: 10px;
-  margin-left: 42%;
+  font-size: 18px;
+  margin: 0;
 }
 .card-bill-bids i {
-  font-size: 24px;
+  font-size: 18px;
   margin-right: 10px;
   color: black;
 }
@@ -80,7 +85,6 @@
 }
 
 .card-bill i {
-  color: white;
   font-size: 24px;
   }
 
