@@ -1,35 +1,21 @@
 <div class="container">
   <div class="row">
     <% @bills.each do |bill| %>
-      <% if bill.category.name == 'Electricité' %>
-        <% cat_img = 'http://www.truemanestates.co.uk/s/cc_images/teaserbox_2447945127.png?t=1477571843' %>
-      <% elsif bill.category.name == 'Gaz' %>
-        <% cat_img = 'https://png.icons8.com/metro/1600/gas.png' %>
-      <% elsif bill.category.name == 'Téléphonie' %>
-        <% cat_img = 'https://library.wwu.edu/files/Icon-Phone.png' %>
-      <% elsif bill.category.name == 'Box Internet' %>
-        <% cat_img = 'https://loewener.dk/wp-content/uploads/2017/09/wifi.png' %>
-      <% end %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="card-bill" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.05)), url(<%= cat_img %>);">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card-bill">
           <div class="card-bill-category"><%= bill.category.name %></div>
           <div class="card-bill-description">
-            <h2><%= bill.current_provider %></h2>
-            <p>Price: <%= bill.price %></p>
+            <h2>
+              <%= bill.current_provider %>
+              <% if policy(bill).edit? %>
+                <%= link_to edit_bill_path(bill) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+              <% end %>
+            </h2>
             <p>Address: <%= bill.address %></p>
           </div>
-          <div class="card-bill-alter">
-            <% if policy(bill).edit? %>
-              <%= link_to edit_bill_path(bill) do %>
-                <i class="far fa-edit"></i>
-              <% end %>
-            <% end %>
-            <% if policy(bill).destroy? %>
-              <%= link_to bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="far fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </div>
+          <p class="card-bill-price">Price: <%= bill.price %></p>
           <div class="card-bill-bids">
             <% if bill.auction.present? %>
               <h2><%= bill.auction.bids.count %> BIDS</h2>
@@ -47,11 +33,6 @@
               <% end %>
             <% end %>
           </div>
-          <% if current_user.photo.blank? %>
-            <img src="https://hadeplatform.com/img/default.png" class="card-bill-user" style="width: 60px; height: 60px">
-          <% else %>
-            <%= cl_image_tag bill.client.photo, width: 60, height: 60, crop: :thumb, gravity: :face, class: "card-bill-user" %>
-          <% end %>
           <% if policy(bill).show? %>
             <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
           <% end %>
