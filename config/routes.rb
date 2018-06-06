@@ -20,8 +20,13 @@ Rails.application.routes.draw do
   get "provider_dashboard", to: "dashboards#dashboard"
 
   resources :orders, only: [:show, :create] do
-  resources :payments, only: [:new, :create]
-end
+    resources :payments, only: [:new, :create]
+  end
 
+  resources :conversations, only: [:show, :index] do
+    resources :messages, only: [:new, :create]
+  end
+
+  get "messages", to: "conversations#index"
 end
 

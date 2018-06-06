@@ -14,7 +14,6 @@
   position: absolute;
   right: 10px;
   top: 10px;
-  width: 40px;
   border-radius: 50%;
 }
 .card-bill-category {
@@ -56,6 +55,7 @@
   margin-left: 10px;
   color: black;
   margin-top: 10px;
+  margin-left: 42%;
 }
 .card-bill-bids i {
   font-size: 24px;
@@ -83,3 +83,9 @@
   color: white;
   font-size: 24px;
   }
+
+.create_auction_form{
+  width:50%;
+  margin:0 auto;
+  text-align:center;
+}
