@@ -1,0 +1,5 @@
+messageList = document.getElementById('message-list');
+messageList.insertAdjacentHTML('afterbegin', "<%= j render 'message_item', message: @message, messages: @messages %>")
+
+messageForm = document.getElementById('message_content');
+messageForm.value = ''

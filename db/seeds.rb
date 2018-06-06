@@ -14,7 +14,7 @@ puts "Creating providers..."
 edf = User.new(user_type: "provider", email: "contact@edf.com", password: "azerty", company: "EDF", address: "Tour Coupole, 2 Pl. Jean Millier, 92078 Paris La Défense", phone_number: "0102030405")
 edf.remote_photo_url = "http://tous-logos.com/wp-content/uploads/2017/08/Logo-EDF.png"
 edf.save
-total = User.new(user_type: "provider", email: "contact@total.com", password: "azerty", company: "EDF", address: "30 Avenue de Wagram, 75008 Paris", phone_number: "0102030405")
+total = User.new(user_type: "provider", email: "contact@total.com", password: "azerty", company: "Total", address: "30 Avenue de Wagram, 75008 Paris", phone_number: "0102030405")
 total.remote_photo_url = "https://www.anthedesign.fr/w2015/wp-content/uploads/2014/08/total-e1408902379554.png"
 total.save
 
