@@ -15,8 +15,9 @@
         <%#= link_to 'Back', dashboard_path %>
 ======= -->
   <div class="row">
+
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 edit-form-bill">
-      <h1 class="text-center">Editing Bill</h1>
+      <h1 class="text-center editing-title">EDIT</h1>
         <h6 class="note"><em>Please note that your auction will be destroyed if you edit your bill</em></h6>
         <%= render 'form', bill: @bill %>
         <% if policy(@bill).show? %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :bids, only: [:index, :show] do
     member do
-      get 'select', to: "bids#select"
+      patch 'select', to: "bids#select"
       get 'pay', to: "bids#pay"
     end
   end
