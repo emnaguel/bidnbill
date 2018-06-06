@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :user_type, :client_type, :company, :first_name, :last_name, :address, :phone_number, :photo, :photo_cache) }
   end
 
+  def default_url_options
+    { host: ENV["HOST"] || "www.bidnbill.com" }
+  end
+
 end
