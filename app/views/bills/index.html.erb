@@ -1,58 +1,69 @@
-<div class="container">
-  <div class="row">
-    <% @bills.each do |bill| %>
-      <% if bill.category.name == 'Electricité' %>
-        <% cat_img = 'http://www.truemanestates.co.uk/s/cc_images/teaserbox_2447945127.png?t=1477571843' %>
-      <% elsif bill.category.name == 'Gaz' %>
-        <% cat_img = 'https://png.icons8.com/metro/1600/gas.png' %>
-      <% elsif bill.category.name == 'Téléphonie' %>
-        <% cat_img = 'https://library.wwu.edu/files/Icon-Phone.png' %>
-      <% elsif bill.category.name == 'Box Internet' %>
-        <% cat_img = 'https://loewener.dk/wp-content/uploads/2017/09/wifi.png' %>
-      <% end %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="card-bill" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.05)), url(<%= cat_img %>);">
-          <div class="card-bill-category"><%= bill.category.name %></div>
-          <div class="card-bill-description">
-            <h2><%= bill.current_provider %></h2>
-            <p>Price: <%= bill.price %></p>
-            <p>Address: <%= bill.address %></p>
-          </div>
-          <div class="card-bill-alter">
-            <% if policy(bill).edit? %>
-              <%= link_to edit_bill_path(bill) do %>
-                <i class="far fa-edit"></i>
+<div class="wrapper-bill-show">
+  <div class="container">
+    <div class="row">
+      <% @bills.each do |bill| %>
+        <div class="container-bills">
+          <% if bill.category.name == 'Electricité' %>
+            <% cat_img = 'http://justinbramwell.com/wp-content/uploads/2013/10/bulb7.jpg' %>
+          <% elsif bill.category.name == 'Gaz' %>
+            <% cat_img = 'http://amppob.com/wp-content/uploads/2016/11/o-NATURAL-GAS-facebook.jpg' %>
+          <% elsif bill.category.name == 'Téléphonie' %>
+            <% cat_img = 'https://library.wwu.edu/files/Icon-Phone.png' %>
+          <% elsif bill.category.name == 'Box Internet' %>
+            <% cat_img = 'https://loewener.dk/wp-content/uploads/2017/09/wifi.png' %>
+          <% end %>
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="card-bill", url(<%= cat_img %>);">
+              <div class="card-bill-category">
+                <%= bill.category.name %>
+              </div>
+            <div class="card-bill-current-provider">
+              <h2><%= bill.current_provider %></h2>
+            </div>
+            <div class="card-bill-description">
+              <p>Price: <%= bill.price %></p>
+              <p>Address: <%= bill.address %></p>
+            </div>
+            <div class="card-link-to-edit-bill">
+              <% if policy(bill).edit? %>
+                <%= link_to edit_bill_path(bill) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if policy(bill).destroy? %>
-              <%= link_to bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="far fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="card-bill-bids">
-            <% if bill.auction.present? %>
-              <h2><%= bill.auction.bids.count %> BIDS</h2>
-              <% if policy(bill.auction).destroy? %>
-                <%= link_to auction_path(bill.auction.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            </div>
+            <div class="card-link-to-destroy-bill">
+              <% if policy(bill).destroy? %>
+                <%= link_to bill_path(bill), method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <i class="far fa-trash-alt"></i>
                 <% end %>
               <% end %>
-            <% else %>
-              <% if policy(Auction).create? %>
-                <%= form_tag auctions_path do %>
-                  <%= hidden_field_tag 'bill_id', bill.id %>
-                  <%= submit_tag 'Create an auction', class: 'card-bill-bids-new' %>
+            </div>
+            <div class="card-bill-bids">
+              <% if bill.auction.present? %>
+                <h2><%= bill.auction.bids.count %> BIDS</h2>
+                  <% if policy(bill.auction).destroy? %>
+                    <%= link_to auction_path(bill.auction.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <% if policy(Auction).create? %>
+                    <%= form_tag auctions_path do %>
+                      <%= hidden_field_tag 'bill_id', bill.id %>
+                      <%= submit_tag 'Create an auction', class: 'card-bill-create-auction' %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
+            <%= cl_image_tag bill.client.photo, width: 60, height: 60, crop: :thumb, gravity: :face, class: 'container-bill-user-avatar' %>
+            <% if policy(bill).show? %>
+             <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
+           <% end %>
           </div>
-          <%= cl_image_tag bill.client.photo, class: "card-bill-user" %>
-          <% if policy(bill).show? %>
-            <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
-          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+

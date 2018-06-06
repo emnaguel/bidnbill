@@ -14,9 +14,17 @@
 }
 
 /* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
-  border-radius: 17 px;
+.navbar-logo-design img {
+  height: 45px;
+  border-radius: 50px;
+  border: solid;
+  border-color: rgb(13, 135, 135);
+}
+
+.navbar-logo-design img:hover {
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
 }
 
 /* User Avatar */
@@ -45,7 +53,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: white;
+  color: rgb(13,135,135);
   opacity: 0.8;
   text-decoration: none;
 }
