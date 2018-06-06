@@ -47,9 +47,6 @@ button {
 .btn-eye {
   color: #fff;
   background-color: #0d8787;
-  position: absolute;
-  top: 3px;
-  right: 10px;
   border-color: none;
   border: none;
 }
@@ -57,12 +54,10 @@ button {
 .add {
   color: #fff;
   background-color: #0d8787;
-  position: absolute;
-  top: 11px;
-  right: 72px;
   border-radius: 3px;
-  height: 31px;
+  padding: 6px 12px;
   border: none;
+  margin-left: 10px;
 
 }
 

@@ -21,9 +21,9 @@
             <% @other_auctions.each do |auction| %>
               <div class="card card-auction">
                 <div class="card-body">
+                  <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
                   <button type="button" class="btn btn-primary btn-eye up" data-toggle="modal" class= "card-auction-right" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i>
                   </button>
-                  <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
                 </div>
               </div>
               <div class="modal fade auction-<%= auction.id %> text-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -94,8 +94,8 @@
             <% @my_auctions.each do |auction| %>
               <div class="card card-auction">
                 <div class="card-body">
-                  <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
                   <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+                  <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
                 </div>
               </div>
 
@@ -164,13 +164,18 @@
             <div class="card card-auction">
               <div class="card-body">
                 <% won_bid = auction.bids.where(status: "completed").first %>
-                <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
-                <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
-                <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price_cents) %></span>
+                <div class="card-body-left">
+                  <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5> |
+                  <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price_cents) %></span>
+                </div>
+                <div class="card-body-actions">
+                  <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
                   <%= form_tag orders_path do %>
                     <%= hidden_field_tag 'bid_id', won_bid.id %>
                     <%= submit_tag 'Add', class: 'add' %>
                   <% end %>
+
+                </div>
               </div>
                 </div>
 
@@ -240,7 +245,7 @@
               <div class="clearfix">&nbsp;</div>
                 <% if @pending_order %>
                   <%= form_tag order_payments_path(@pending_order) do %>
-                    <div class="text-center"> Total: <%= humanized_money_with_symbol(@pending_order.amount) %></div>
+                    <div class="text-right"> Total: <%= humanized_money_with_symbol(@pending_order.amount) %></div>
                     <script src="https://checkout.stripe.com/checkout.js" class ="stripe-button hidden" id = "btntohide"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                       data-name="Won Auction(s)"
@@ -248,7 +253,7 @@
                       data-description="<%= @pending_order.bids.count %> Bids"
                       data-amount="<%= @pending_order.amount_cents %>"
                       data-currency="<%= @pending_order.amount.currency %>"></script>
-                      <button id= "btntoshow" class="btn-secondary">Your order</button>
+                      <button id= "btntoshow" class="btn-secondary">Order</button>
                   <% end %>
                 <% end %>
             </div>
@@ -272,8 +277,8 @@
         <% @my_clients.each do |auction| %>
           <div class="card card-auction">
             <div class="card-body">
-                <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
                 <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+                <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
               </div>
             </div>
                  <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
