@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 form-n">
+      <div class="order-title">
+        <h1 class= "text-center">Your Order</h1>
+      </div>
       <div class="form-new">
-      <h1 class= "text-center">Order</h1>
         <ul>
-          <li class= "center"><strong>Status:</strong> <%= @order.state %></li>
+          <li class= "center"><strong>Status:</strong> <%= @order.state %> <span class="text-blue"><i class="fa fa-check"></i></span> </li>
           <li class= "center"><strong>Amount:</strong> <%= humanized_money_with_symbol(@order.amount) %></li>
         </ul>
-      <h2 class= "text-center">Bids</h2>
+      <h2 class= "text-center">Your Bids</h2>
       <div class="text-center last">
         <% @order.bids.each do |bid| %>
-        Auction: <%= bid.auction.id %> | Price: <%= humanized_money_with_symbol(bid.bill.category.price) %>
+          <div class="order-bid">
+            <span class="text-bold">Auction: <%= bid.auction.id %></span> | Price: <%= humanized_money_with_symbol(bid.bill.category.price) %>
+          </div>
         <% end %>
         </div>
         </div>

@@ -1,53 +1,53 @@
-<div class="wrapper">
 
-  <div class="grid">
-    <div class="div-bill-show grid-one">
-      <div class="div-bill-info">
-        <h3>Your Bill</h3>
-        <p><strong>User:</strong> <%= @bill.client.email %></p>
+
+<div class="grid">
+  <div class="div-bill-show grid-one">
+    <div class="div-bill-info">
+      <h3>Your Bill</h3>
+      <p><strong>User:</strong> <%= @bill.client.email %></p>
       <p><strong>Category:</strong> <%= @bill.category.name %></p>
       <p><strong>Current provider:</strong> <%= @bill.current_provider %></p>
       <p><strong>Address:</strong> <%= @bill.address %></p>
       <p><strong>Price:</strong> <%= @bill.price %></p>
       <p><strong>Bill number <%= @auction.bill.id%></strong></p>
-      </div>
+    </div>
 
-      <div class="div_bill_edit">
-        <% if policy(@bill).edit? %>
-        <div>
-          <i class="far fa-edit edit"></i><%= link_to 'Edit', edit_bill_path(@bill) %> |
-          <button type="button" class="oeil" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="far fa-eye "></i></button> |
-          <i class="fas fa-undo back-d"></i><%= link_to 'Back', dashboard_path %>
-        <% end %>
-        </div>
+    <div class="div_bill_edit">
+      <% if policy(@bill).edit? %>
+      <div>
+        <i class="far fa-edit edit"></i><%= link_to 'Edit', edit_bill_path(@bill) %> |
+        <button type="button" class="oeil" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="far fa-eye "></i></button> |
+        <i class="fas fa-undo back-d"></i><%= link_to 'Back', dashboard_path %>
+      <% end %>
       </div>
     </div>
+  </div>
 
 
 <!-- Eye modal -->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content modal-image">
-          <%= cl_image_tag @bill.photo %>
-        </div>
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-image">
+        <%= cl_image_tag @bill.photo %>
       </div>
     </div>
+  </div>
 
-    <div class= "grid-two" id="othermap" data-markers="<%= @marker.to_json %>"></div>
+  <div class= "grid-two" id="othermap" data-markers="<%= @marker.to_json %>"></div>
+    <div class="div-auction-show grid-three">
+      <h3 class= "titre-bid">Your Bid</h3>
+      <% unless @auction == nil %>
+          <% if policy(Bid).create? %>
+            <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
+          <% end %>
+            <% if @bids.present? %>
+              <% @bids.each do |bid| %>
+                <div class="card card-bill-auction">
+                  <div class="card-body items">
+                    <div class="bulb"><i class="far fa-lightbulb bulb"></i></div>
 
-      <div class="div-auction-show grid-three">
-        <h3 class= "titre-bid">Your Bid</h3>
-
-           <% unless @auction == nil %>
-              <% if policy(Bid).create? %>
-                <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
-              <% end %>
-                <% if @bids.present? %>
-                  <% @bids.each do |bid| %>
-                    <div class="card card-bill-auction">
-                      <div class="card-body items">
-                        <% if policy(bid).select? %>
-                      <%= link_to "Select", select_bid_path(bid) %> |
+                    <% if policy(bid).select? %>
+                      <%= link_to "Select", bill_path(bid), id: "buttonselect" %> |
                     <% end %>
                     <% if policy(bid).show? %>
 
@@ -66,31 +66,50 @@
                       <% end %>
                     <% end %>
 
-                      </div>
-                     </div>
+                  </div>
+                </div>
 
-                <% end %>
-              <% end %>
             <% end %>
+          <% end %>
+      <% end %>
+      <div class="modal fade bs-example-modal-sm bid-show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <p id="notice"><%= notice %></p>
+              <% @bids.each do |bid| %>
+                <p>
+                  <strong>Auction:</strong>
+                  <%= bid.auction.id %>
+                </p>
 
-        <div class="modal fade bs-example-modal-sm bid-show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              BID show
+                <p>
+                  <strong>Provider:</strong>
+                  <%= bid.provider.company %>
+                </p>
+                <p>
+                  <strong>Provider:</strong>
+                  <%= bid.provider.email %>
+                </p>
 
-            </div>
+                <p>
+                  <strong>Status:</strong>
+                  <%= bid.status %>
+                </p>
+
+                <p>
+                  <strong>Content:</strong>
+                  <%= bid.content %>
+                </p>
+
+              <% end %>
           </div>
         </div>
-
-
-    <div>
-
+      </div>
+    </div>
   </div>
-  </div>
+
 </div>
-</div>
-</div>
-</div>
+
 
 
 
