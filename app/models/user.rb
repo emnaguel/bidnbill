@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :provider_categories
   has_many :categories, through: :provider_categories
   has_many :orders
+  has_many :conversations, inverse_of: :provider
 
   USERTYPE = ['client', 'provider']
   CLIENTTYPE = ['particulier', 'professionnel']
@@ -33,6 +34,10 @@ class User < ApplicationRecord
       where("bids.status IS NULL OR bids.status != 'completed'").
       where.not(id: auctions.pluck(:id))
   end
+
+  # def conversations_as_client
+  #   Conversation.joins(auction: { bill: :client }).where(auctions: { bills: { client: self}})
+  # end
 
   private
 

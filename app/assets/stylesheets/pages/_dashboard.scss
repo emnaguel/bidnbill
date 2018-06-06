@@ -1,3 +1,11 @@
+.wrapper {
+  background-color: #ebf1f1 !important;
+}
+
+
+
+
+
 #exTab1 .tab-content {
   color : white;
   background-color: rgb(13,135,135);
@@ -13,16 +21,34 @@
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 
-    color: #000000;
-    background-color: rgb(13,135,135);
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    cursor: default;
+  color: white;
+  background-color: #0d8787;
+  cursor: default;
+  border: none;
+  width: 211px;
+  margin-left: -20px;
 }
 
 .form-inline {
-    margin-left: 33px;
-    margin-top: 47px;
+  display: flex;
+  align-items: center;
+
+  margin-top: 10px;
+  input[type='text'] {
+    flex: 1;
+    border: none;
+    height: 50px;
+    border-radius: 0;
+    &:first-child {
+      border-right: 1px solid #dedede;
+    }
+  }
+  input[type='submit'] {
+    height: 50px;
+    border: none;
+    border-radius: 0;
+    padding: 10px 33px;
+  }
 }
 // .nav {
 //   width: 200px;
@@ -45,14 +71,40 @@
 
 // }
 
+.panel-default > .panel-heading {
+    color: white;
+    background-color: #0d8787;
+    border-color: #ddd;
+    border-radius: 0;
+    text-align: center;
+}
+
+.panel-body {
+  padding: 0 15px;
+  text-align: right;
+}
 
 .panel-default {
-  border-color: #ddd;
-  width: 414px;
+  border-radius: 0;
+  border: none;
+  width: 390px;
   top: 70px;
   right: 0px;
   height: 608px;
   position: fixed;
+  font-weight: bolder;
+  font-size: 21px;
+  text-align: center;
+}
+
+#btntoshow {
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 0;
+  width: inherit;
+  padding: 15px 30px;
+  border: none;
+  text-transform: uppercase;
 }
 
 .contain {
@@ -89,9 +141,7 @@
 
 /* change border radius for the tab , apply corners on top*/
 
-#exTab3 .nav-pills > li > a {
-  border-radius: 4px 4px 0 0 ;
-}
+
 
 #exTab3 .tab-content {
   //color : white;
@@ -106,17 +156,44 @@
   display: flex;
 }
 
-.couleur {
-  background-color: #0d8787;
-}
+
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+
  color: white;
- background-color: #9c9494;
+
     /* margin-top: 10px; */
-    opacity: 1;
+  opacity: 1;
 
   }
+
+  .nav-tabs > li > a:hover {
+    background-color: #0d8787;
+    opacity: 0.33;
+    color: white;
+    border: none;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+
+  }
+
+
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: none;
+    width: 208px;
+    margin-left: -17px;
+    border-radius: 0;
+    padding: 34px 30px;
+    h3 {
+      font-size: 17px;
+      margin: 0;
+    }
+
+}
+
+
+
 
 
   .container-fluid .contain .tab-content .clearfix {
@@ -135,9 +212,11 @@
 
   }
 
-  .black {
-    color: white;
-  }
+a {
+  color: #0d8787;
+}
+
+
 
 
   li {
@@ -146,9 +225,11 @@
   }
 
   span.prix {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 16px;
     display:block;
+    font-weight: bolder;
+    color: #388887;
+    margin-left: 15px;
   }
 
 
@@ -158,16 +239,18 @@
     align-items: stretch;
     > ul {
       flex: 0 0 200px;
-      background-color: #0d8787;;
+      background-color: white;
       margin: 0;
       padding: 0;
       min-height: calc(100vh - 70px - 80px);
       li {
-        padding: 15px 20px;
+        padding: 0px 18px;
+        width: 209px;
       }
     }
     .dashboard-container {
       flex: 1 1 auto;
+      background-color: #ebf1f1;
     }
   }
 
@@ -180,10 +263,11 @@
   display: flex;
   align-items: stretch;
   .first-column {
-    flex: 1 1 auto;
+    width: 65%;
+    padding: 20px;
   }
   .second-column {
-    flex: 0 0 414px;
+    width: 35%;
     #map {
       width: 100%;
       height: 100%;
@@ -197,3 +281,24 @@
   justify-content: space-between;
 
 }
+
+#cart .text-center {
+  padding: 20px 0;
+  font-size: 18px;
+  border-bottom: 1px solid #c5c5c5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .text-bold {
+    font-weight: bolder;
+  }
+  .text-blue {
+    color: #388887;
+  }
+}
+
+
+.first {
+  margin-top: 30px;
+}
+

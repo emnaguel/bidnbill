@@ -1,4 +1,5 @@
 <div class="container">
+<!-- <<<<<<< HEAD
   <div class="container-editing-bill">
     <div class="row">
       <div class="row-editing-bill-title" >
@@ -8,13 +9,30 @@
     </div>
     <div class="row">
       <div class="form-edit">
+        <%#= render 'form', bill: @bill %>
+        <%# if policy(@bill).show? %>
+        <%#= link_to 'Show', bill_path(@bill) %> |
+        <%#= link_to 'Back', dashboard_path %>
+======= -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 edit-form-bill">
+      <h1 class="text-center">Editing Bill</h1>
+        <h6 class="note"><em>Please note that your auction will be destroyed if you edit your bill</em></h6>
         <%= render 'form', bill: @bill %>
         <% if policy(@bill).show? %>
-        <%= link_to 'Show', bill_path(@bill) %> |
-        <%= link_to 'Back', dashboard_path %>
+          <%= link_to bill_path(@bill) do %>
+            <i class="far fa-eye edit-eye "></i> |
+          <% end %>
+        <% end %>
+        <%= link_to dashboard_path do %>
+        <i class="fas fa-undo"></i>Back
+<!-- >>>>>>> master -->
         <% end %>
       </div>
     </div>
   </div>
+<!-- <<<<<<< HEAD
 </div>
 
+======= -->
+<!-- >>>>>>> master -->

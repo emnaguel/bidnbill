@@ -1,12 +1,32 @@
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
+.button-bill {
+  color: white;
+  background-color:#0d8787;
 }
 
+
+
+
+
+
+
+button {
+  background: none;
+  //border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  //margin: 0.5em;
+  //padding: 1em 2em;
+}
+
+.edit {
+    color: #0d8787!important;
+  }
+
+.back-d {
+  color: #0d8787;
+  font-size: 13px;
+
+}
 
 .btn:hover,
 .btn:focus {
@@ -27,9 +47,6 @@ button {
 .btn-eye {
   color: #fff;
   background-color: #0d8787;
-  position: absolute;
-  top: 3px;
-  right: 10px;
   border-color: none;
   border: none;
 }
@@ -37,15 +54,46 @@ button {
 .add {
   color: #fff;
   background-color: #0d8787;
-  position: absolute;
-  top: 11px;
-  right: 72px;
   border-radius: 3px;
-  height: 31px;
+  padding: 6px 12px;
   border: none;
+  margin-left: 10px;
 
 }
 
 .btn-info {
   background-color: #0d8787;
+}
+
+
+.stripe-button-el {
+  background-color: #0d8787;
+  margin-top: 99px;
+  span {
+    display: none !important;
+  }
+}
+
+.create {
+  margin-top: 10px;
+}
+
+
+.btn-secondary {
+  border-radius: 45px;
+  background-color: #0d8787;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 29px;
+  width: 159px;
+}
+
+
+.oeil {
+
+      color: #0d8787;
+    /* border-radius: 15px; */
+    border: none;
+
 }

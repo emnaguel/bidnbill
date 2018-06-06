@@ -1,31 +1,56 @@
-.container-bill-show {
-  display: flex;
+
+.grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 400px 700px 1fr;
+  grid-template-rows: 50% 50%;
 }
+
+.grid-one {
+  grid-row: 1/span 1;
+  grid-column: 2/span 1;
+
+
+}
+
+.grid-two {
+  grid-row: 2/span 1;
+  grid-column: 2/span 1;
+  width: 296px;
+  margin-top: 35px;
+}
+
+.grid-three {
+  grid-row: 1/span2;
+  grid-column: 3/span 1;
+}
+
 .div-bill-show {
-  height: calc(100vh - 70px);
-  flex: 0 0 30%;
-  position: sticky !important;
-  top: 0 !important;
-  border: black solid 1px;
-  display: flex;
-  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  height: 300px;
+  width: 296px;
+  padding-top: 15px;
+  margin-top: 20px;
+  text-align: center;
 }
-.div-bill-info {
-  padding: 10px;
-  flex: 1 1 auto;
-}
+
 .div_bill_edit {
-  padding: 10px !important;
+  margin-top: 28px;
 }
-.map-bill {
-  height: 200px;
-  width: 100%;
-  padding: 10px;
-  flex: 0 0 25vh;
+.modal-image {
+  margin-top: -47px;
+  margin-left: -70px;
 }
-.div-auction-show {
-  flex: 1 1 auto;
-  top: 0;
-  border: black solid 1px;
-  padding: 10px;
+
+.titre-bid {
+  text-align: center;
+  margin-top: 40px;
 }
+
+
+.items {
+  margin-left: 615px;
+  margin-top: 8px;
+}
+
