@@ -120,8 +120,16 @@ Message.create(conversation: c1, sender: edf, content: "Dear Alex, we are please
 Message.create(conversation: c1, sender: alex, content: "Hi, thanks for your offer, but Total has a better offer :) Is it the best you can do?")
 Message.create(conversation: c1, sender: edf, content: "As you are a loyal customer, we generated a bid at 100 euros! Hope you'll stay with :)")
 
+Message.create(conversation: c1_t, sender: total, content: "Dear Alex, we are pleased to inform you that can offer you 10 euros reduction on your contract. Please let us know if have any question.")
+Message.create(conversation: c1_t, sender: alex, content: "Hi, thanks for your offer, but EDF has a better service")
+Message.create(conversation: c1_t, sender: total, content: "As you are a loyal customer, we generated a bid at 100 euros! Hope you'll stay with :)")
+
+
 Message.create(conversation: c2, sender: alex, content: "Hi, could you give me some more details about the bid you made. Will I have exactly the same service that I already have? Thanks")
-Message.create(conversation: c2, sender: total, content: "Hi Alex! Sure, we can keep your contract for a lower price :)")
+Message.create(conversation: c2, sender: edf, content: "Hi Alex! Sure, we can keep your contract for a lower price :)")
+
+Message.create(conversation: c6, sender: edf, content: "Dear Ayoub, we are pleased to inform you that can offer you 10 euros reduction on your contract. Please let us know if have any question.")
+Message.create(conversation: c6, sender: ayoub, content: "Hi, thanks for your offer, but its not enough. I'm waiting for a lower bid. Thanks")
 
 Message.create(conversation: c6_t, sender: total, content: "Dear Ayoub, we are pleased to inform you that can offer you 10 euros reduction on your contract. Please let us know if have any question.")
 Message.create(conversation: c6_t, sender: ayoub, content: "Hi, thanks for your offer, but its not enough. I'm waiting for a lower bid. Thanks")

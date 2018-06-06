@@ -6,8 +6,7 @@ class ConversationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.user_type == "client"
-        raise
-        scope.where(client: user)
+        scope.joins(auction: { bill: :client }).where(auctions: { bills: { client: user}})
       elsif user.user_type == "provider"
         scope.where(provider: user)
       end
