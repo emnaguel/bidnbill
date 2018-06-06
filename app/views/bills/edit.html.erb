@@ -20,15 +20,8 @@
       <h1 class="text-center editing-title">EDIT</h1>
         <h6 class="note"><em>Please note that your auction will be destroyed if you edit your bill</em></h6>
         <%= render 'form', bill: @bill %>
-        <% if policy(@bill).show? %>
-          <%= link_to bill_path(@bill) do %>
-            <i class="far fa-eye edit-eye "></i> |
-          <% end %>
-        <% end %>
-        <%= link_to dashboard_path do %>
-        <i class="fas fa-undo"></i>Back
-<!-- >>>>>>> master -->
-        <% end %>
+
+
       </div>
     </div>
   </div>

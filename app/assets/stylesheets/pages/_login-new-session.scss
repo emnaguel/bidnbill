@@ -1,10 +1,13 @@
-
-
-
 .form-alignment-centered {
-  margin-top: 0;
+
   display: flex;
   justify-content: center;
+  margin-top: -8px;
+  padding-top: 8px;
+
+  background-color: white;
+  width: 237px;
+  margin-left: 40%;
 }
 
 .form-inputs {
@@ -22,6 +25,34 @@
 // }
 
 .other-actions {
-    justify-content: center;
-    font-family: white;
+  justify-content: center;
+  font-family: white;
 }
+
+
+.title-new-session {
+ margin-top: 100px;
+ h2 {
+  text-transform: uppercase;
+  background-color: #0d8787;
+  color: white;
+  padding: 13px 13px;
+
+  width: 237px;
+  margin-left: 40%;
+
+}
+}
+
+.forgotpsw {
+  padding-bottom: 20px;
+  padding-left: 4px;
+
+}
+
+.login {
+    border: none;
+    margin-top: -16px;
+    color: #0d8787;
+    text-transform: uppercase;
+  }
