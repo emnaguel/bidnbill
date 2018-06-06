@@ -1,13 +1,11 @@
 <% if messages.present? %>
   <% if message.sender == current_user %>
   <div class="current-sender">
-    <li>Sender: <%= message.sender.email %></li>
-    <li>Content: <%= message.content %></li>
+    <li><%= message.content %></li>
   </div>
   <% else %>
   <div class="current-receiver">
-    <li>Sender: <%= message.sender.email %></li>
-    <li>Content: <%= message.content %></li>
+    <li><%= message.content %></li>
   </div>
   <% end %>
 <% end %>

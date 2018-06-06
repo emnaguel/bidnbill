@@ -33,15 +33,21 @@
 }
 
 .current-sender {
-  background-color: blue;
+  background-color: #add2c2;
   border-radius: 10px;
   margin-bottom: 15px;
+  li {
+    margin-left: 10px;
+  }
 }
 
 .current-receiver {
-  background-color: green;
+  background-color: #a7d3a6;
   border-radius: 10px;
   margin-bottom: 15px;
+  li {
+    margin-left: 10px;
+  }
 }
 
 .message-list {
