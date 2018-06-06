@@ -47,7 +47,11 @@
               <% end %>
             <% end %>
           </div>
-          <%= cl_image_tag bill.client.photo, width: 60, height: 60, crop: :thumb, gravity: :face, class: "card-bill-user" %>
+          <% if current_user.photo.blank? %>
+            <img src="https://hadeplatform.com/img/default.png" class="card-bill-user" style="width: 60px; height: 60px">
+          <% else %>
+            <%= cl_image_tag bill.client.photo, width: 60, height: 60, crop: :thumb, gravity: :face, class: "card-bill-user" %>
+          <% end %>
           <% if policy(bill).show? %>
             <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
           <% end %>
