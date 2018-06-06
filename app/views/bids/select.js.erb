@@ -1,0 +1,5 @@
+function renderSelectableBids() {
+  const selectableBids = document.getElementById('selectable-bids');
+  selectableBids.innerHTML = '<%= j render "bills/selectable_bids", bids: @bids, auction: @auction %>';
+}
+renderSelectableBids();

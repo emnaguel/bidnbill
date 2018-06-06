@@ -12,7 +12,7 @@ class BidPolicy < ApplicationPolicy
   end
 
   def select?
-    scope.where(:id => record.id).exists? && record.client == user && record.client.user_type == "client"
+    record.client == user && record.auction.bids.where(status: "completed").empty?
   end
 
   def pay?
