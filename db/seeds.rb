@@ -1,12 +1,12 @@
 puts "Cleaning database..."
 Message.destroy_all
 Conversation.destroy_all
-Bid.destroy_all
-Auction.destroy_all
-Bill.destroy_all
-ProviderCategory.destroy_all
-Category.destroy_all
 Order.destroy_all
+Auction.destroy_all
+Bid.destroy_all
+ProviderCategory.destroy_all
+Bill.destroy_all
+Category.destroy_all
 User.destroy_all
 
 

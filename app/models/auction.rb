@@ -19,7 +19,7 @@ class Auction < ApplicationRecord
   has_one :client, through: :bill
   has_many :providers, through: :bids
   has_many :bids, dependent: :destroy
-  has_many :conversations
+  has_many :conversations, dependent: :destroy
 
   validates :bill_id, uniqueness: true
 

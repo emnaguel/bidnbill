@@ -21,7 +21,6 @@ class BillsController < ApplicationController
         lng: @bill.longitude#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }]
-
   end
 
   def new_category

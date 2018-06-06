@@ -2,10 +2,6 @@
   background-color: #ebf1f1 !important;
 }
 
-
-
-
-
 #exTab1 .tab-content {
   color : white;
   background-color: rgb(13,135,135);
@@ -50,26 +46,6 @@
     padding: 10px 33px;
   }
 }
-// .nav {
-//   width: 200px;
-//   position: fixed;
-//   top: 70px;
-//   bottom: 80px;
-//   left: 0;
-//   background: gray;
-//   height: 578px;
-
-// }
-
-// ul .nav .nav-pills .nav-stacked {
-//   width: 200px;
-//   position: fixed !important;
-//   top: 70px;
-//   bottom: 80px;
-//   left: 0;
-//   background: gray;
-
-// }
 
 .panel-default > .panel-heading {
     color: white;
@@ -90,7 +66,7 @@
   width: 390px;
   top: 70px;
   right: 0px;
-  height: 608px;
+  height: calc(100vh - 70px - 60px);
   position: fixed;
   font-weight: bolder;
   font-size: 21px;

@@ -5,6 +5,9 @@ function addTabClassActive() {
       tab.classList.remove("active")
     })
     document.getElementById(anchor).classList.add("active")
+    document.getElementById(`nav-${anchor}`).classList.add("active")
+  } else {
+    document.querySelector(".nav-tabs li").classList.add("active")
   }
 }
 
