@@ -29,7 +29,8 @@
 }
 
 .banner-content h2 {
-  font-size: 28px;
+  font-size: 32px;
+  font-family: italic;
   color: white;
   font-family: $my-font;
   font-weight: bolder;
@@ -75,12 +76,15 @@ font-weight: bolder;
  height: 60px;
  background-color: white;
 }
-// rgb(13,135,135)
+
 .card-icons.invoice img {
   height: 58px;
   margin-top: 5px;
 }
 
-
+.card-icons.eyeglasses img {
+  height: 50px;
+  margin-top: 5px;
+}
 
 
