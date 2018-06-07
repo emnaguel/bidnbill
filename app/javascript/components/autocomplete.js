@@ -6,13 +6,21 @@ function onPlaceChanged() {
   document.getElementById('bill_city').value = components.city;
 }
 
+
 function getAddressComponents(place) {
+  // If you want lat/lng, you can look at:
+  // - place.geometry.location.lat()
+  // - place.geometry.location.lng()
 
   if (window.console && typeof console.log === "function") {
     console.log(place);
   }
+
+  var street_number = null;
+  var route = null;
   var zip_code = null;
   var city = null;
+  var country_code = null;
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {
@@ -32,11 +40,12 @@ function getAddressComponents(place) {
       }
     }
   }
-  console.log(city);
-  console.log(zip_code);
+
   return {
+    address: street_number === null ? route : (street_number + ' ' + route),
     zip_code: zip_code,
     city: city,
+    country_code: country_code
   };
 }
 

@@ -3,8 +3,8 @@
     <%= f.association :category, label: "Please select a bill category", prompt: "Select a category", selected: @category&.id %>
     <%= f.input :current_provider, label: "Who is your current provider?"  %>
     <%= f.input :address, label: "Please enter your billing address" %>
-    <%= f.input :city %>
-    <%= f.input :zip_code %>
+    <%= f.input :city, as: :hidden %>
+    <%= f.input :zip_code, as: :hidden %>
     <%= f.input :price, label: "How much do you pay per month?" %>
     <%= f.input :photo, label: "Upload your bill here"%>
     <%= f.input :photo_cache, as: :hidden %>

@@ -22,7 +22,7 @@ class BidsController < ApplicationController
       @conversation.auction = @bid.auction
       @conversation.provider = current_user
       @conversation.save
-      redirect_to auction_path(@bid.auction)
+      redirect_to provider_dashboard_path(anchor: "second-a")
     else
       render :new
     end
