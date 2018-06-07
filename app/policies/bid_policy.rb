@@ -24,7 +24,7 @@ class BidPolicy < ApplicationPolicy
       if user.user_type == "client"
         scope.all
       else
-        scope.where(user_id: user.id)
+        scope.all
       end
     end
   end
