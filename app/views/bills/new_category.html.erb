@@ -6,7 +6,7 @@
      <div class="col-xs-12 col-md-6">
        <div class="card-wrapper">
          <%= link_to new_bill_path(Bill.new, category: category.name) do %>
-         <div class="card"><h1><%= category.name %></h1></div>
+         <div class="card"><h1><%= category.name.upcase %></h1></div>
          <% end %>
        </div>
      </div>
