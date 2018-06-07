@@ -1,13 +1,13 @@
 <div class="grid">
   <div class="div-bill-show grid-one">
     <div class="div-bill-info">
-      <h3>Your Bill</h3>
-      <p><strong>User:</strong> <%= @bill.client.email %></p>
+      <h3>Bill number <%= @auction.bill.id%></h3>
+      <br>
+      <p><strong>User:</strong> <%= @bill.client.first_name %> <%= @bill.client.last_name %></p>
       <p><strong>Category:</strong> <%= @bill.category.name %></p>
       <p><strong>Current provider:</strong> <%= @bill.current_provider %></p>
+      <p><strong>Current price:</strong> <%= @bill.price %></p>
       <p><strong>Address:</strong> <%= @bill.address %></p>
-      <p><strong>Price:</strong> <%= @bill.price %></p>
-      <p><strong>Bill number <%= @auction.bill.id%></strong></p>
     </div>
 
     <div class="div_bill_edit">
@@ -37,7 +37,7 @@
 
   <div class= "grid-two" id="othermap" data-markers="<%= @marker.to_json %>"></div>
     <div class="div-auction-show grid-three">
-      <h3 class= "titre-bid">Your Bid</h3>
+      <h3 class= "titre-bid">Your Bids</h3>
       <% unless @auction == nil %>
           <% if policy(Bid).create? %>
             <%= link_to "Create a bid", new_auction_bid_path(@auction) %>
@@ -50,11 +50,3 @@
   </div>
 
 </div>
-
-
-
-
-
-
-
-

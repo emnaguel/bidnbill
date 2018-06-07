@@ -10,7 +10,7 @@
       </div>
       <div class="card-bid-prov">
         <%= bid.provider.company %> -
-        <%= bid.content %> €
+        <%= bid.price %> €
       </div>
       <div class="items-right">
         <% if policy(bid).select? %>
@@ -35,9 +35,14 @@
   <div id="bid<%= bid.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-sm">
      <div class="modal-content">
-       <p><%= bid.id %></p>
+       <h3>Bid number <%= bid.id %></h3>
+       <p><strong>Provider: </strong><%= bid.provider.company %></p>
+       <p><strong>Price: </strong><%= bid.price %> €</p>
+       <p><strong>Comment: </strong><%= bid.content %></p>
+       <p><strong>Status: </strong><%= bid.status %></p>
+       <%= link_to "back", bill_path(bid.bill) %>
      </div>
-   </div>
+    </div>
   </div>
 <% end %>
 
