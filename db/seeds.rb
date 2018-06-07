@@ -36,26 +36,26 @@ box = Category.create(name: "Internet", price_cents: 500)
 puts "Creating bills..."
 bill_elec_url = "https://www.fournisseurs-electricite.com/images/fournisseurs/edf/facture/facture-EDF-page-1.jpg"
 bill_gaz_url = "https://www.daurine.com/wp-content/uploads/2016/11/facture-de-gaz-1.jpg"
-bill_alex_elec = Bill.new(client: alex, category: elec, address: "16 villa Gaudelet 75011", current_provider: "EDF", price: 120, consumption: 112)
+bill_alex_elec = Bill.new(client: alex, category: elec, address: "16 villa Gaudelet 75011", city: "Paris", zip_code: "75011", current_provider: "EDF", price: 120, consumption: 112)
 bill_alex_elec.remote_photo_url = bill_elec_url
 bill_alex_elec.save
-bill_alex_elec2 = Bill.new(client: alex, category: elec, address: "20 Rue Robert Fossorier, 14800 Deauville", current_provider: "EDF", price: 60, consumption: 62)
+bill_alex_elec2 = Bill.new(client: alex, category: elec, address: "20 Rue Robert Fossorier, 14800 Deauville", city: "Deauville", zip_code: "14800", current_provider: "EDF", price: 60, consumption: 62)
 bill_alex_elec2.remote_photo_url = bill_elec_url
 bill_alex_elec2.save
-bill_alex_elec3 = Bill.new(client: alex, category: elec, address: "5 Rue de l'Hôtel de ville, Nice", current_provider: "Direct Energie", price: 40, consumption: 30)
+bill_alex_elec3 = Bill.new(client: alex, category: elec, address: "5 Rue de l'Hôtel de ville, Nice", city: "Nice", zip_code: "06300", current_provider: "Direct Energie", price: 40, consumption: 30)
 bill_alex_elec3.remote_photo_url = bill_elec_url
 bill_alex_elec3.save
-bill_alex_gaz = Bill.new(client: alex, category: gaz, address: "16 villa Gaudelet 75011", current_provider: "GDF", price: 80, consumption: 115)
+bill_alex_gaz = Bill.new(client: alex, category: gaz, address: "16 villa Gaudelet 75011", city: "Paris", zip_code: "75011", current_provider: "GDF", price: 80, consumption: 115)
 bill_alex_gaz.remote_photo_url = bill_gaz_url
 bill_alex_gaz.save
-bill_alex_gaz2 = Bill.new(client: alex, category: gaz, address: "20 Rue Robert Fossorier, 14800 Deauville", current_provider: "Total", price: 60, consumption: 25)
+bill_alex_gaz2 = Bill.new(client: alex, category: gaz, address: "20 Rue Robert Fossorier, 14800 Deauville", city: "Deauville", zip_code: "14800", current_provider: "Total", price: 60, consumption: 25)
 bill_alex_gaz2.remote_photo_url = bill_gaz_url
 bill_alex_gaz2.save
 
-bill_ayoub_elec = Bill.new(client: ayoub, category: elec, address: "10 rue Miollis 75015, Paris", current_provider: "EDF", price: 120, consumption: 145)
+bill_ayoub_elec = Bill.new(client: ayoub, category: elec, address: "10 rue Miollis 75015, Paris", city: "Paris", zip_code: "75015", current_provider: "EDF", price: 120, consumption: 145)
 bill_ayoub_elec.remote_photo_url = bill_elec_url
 bill_ayoub_elec.save
-bill_ayoub_elec2 = Bill.new(client: ayoub, category: elec, address: "20 Rue Robert Fossorier, 14800 Deauville", current_provider: "EDF", price: 60, consumption: 70)
+bill_ayoub_elec2 = Bill.new(client: ayoub, category: elec, address: "20 Rue Robert Fossorier, 14800 Deauville", city: "Deauville", zip_code: "14800", current_provider: "EDF", price: 60, consumption: 70)
 bill_ayoub_elec2.remote_photo_url = bill_elec_url
 bill_ayoub_elec2.save
 
