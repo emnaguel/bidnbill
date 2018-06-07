@@ -83,6 +83,11 @@
   text-transform: uppercase;
 }
 
+#btntoshow:hover {
+color:#0d8787;
+background-color: white;
+}
+
 .contain {
  margin-left: 298px;
 }
@@ -206,6 +211,7 @@ a {
     font-weight: bolder;
     color: #388887;
     margin-left: 15px;
+    margin-right: 175px;
   }
 
 
