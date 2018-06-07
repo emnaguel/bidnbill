@@ -1,44 +1,64 @@
-<div class="modal fade auction-<%= auction.id %> text-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content all-auctions-modal">
-
-      <div class= "cross">
-        <%= link_to dashboard_path do %>
-            <i class="fas fa-times"></i>
-          <% end %>
-      </div>
-
-
-        <div class = "text-center"><strong>Current Provider</strong></div>
-          <p><%= auction.bill.current_provider%></p>
-        <div class = "text-center"><strong>Category</strong></div>
-          <p><%= auction.bill.category.name%></p>
-        <div class = "text-center"><strong>Number</strong></div>
-          <p> <%= auction.bill.id%></p>
-        <div class = "text-center"><strong>Address</strong></div>
-          <p><%= auction.bill.address%></p>
-        <div class = "text-center"><strong>Auction Price</strong></div>
-          <p><%= auction.bill.price%>€</p>
-
-        <div class = "text-center"><strong>Created at</strong></div>
-          <p><%= auction.bill.created_at%></p>
-        <div class = "text-center"><strong>Consumption</strong></div>
-          <% if auction.bill.category.name == "Gaz"%>
-            <p><%= auction.bill.consumption %></p>
-          <% elsif auction.bill.category.name == "Electricité"%>
-            <p><%= auction.bill.consumption %>kWh</p>
-           <% end %>
+          <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content modal-my-auctions">
+                <div class= "cross-my-auctions">
+                  <%= link_to dashboard_path do %>
+                  <i class="fas fa-times"></i>
+                  <% end %>
+                </div>
+                <div class="flex-div">
+                 <div class= "first-part">
+                  <div><strong>Current Provider</strong></div>
+                  <p><%= auction.bill.current_provider%></p>
+                  <div><strong>Category</strong></div>
+                  <p><%= auction.bill.category.name%></p>
+                  <p ><%= auction.bill.address%></p>
+                  <div><strong>Current Price</strong></div>
+                  <p><%= auction.bill.price%>€</p>
+                  <div><strong>Consumption</strong></div>
+                  <% if auction.bill.category.name == "Gaz"%>
+                  <p ><%= auction.bill.consumption %></p>
+                  <% elsif auction.bill.category.name == "Electricité"%>
+                  <p ><%= auction.bill.consumption %>kWh</p>
+                  <% end %>
+                  <br><br>
+                  <% if policy(Bid).create? %>
+                  <%= link_to "Bid", new_auction_bid_path(auction), id: "btn-create" %>
+                  <% end %>
+                </div>
 
 
 
-        <% if policy(Bid).create? %>
-          <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
-        <% end %>
+                <div class= "second-part">
+                  <% if auction.bids.present? %>
+                  <% auction.bids.each do |bid| %>
+                    <% if policy(bid).show? %>
+                     <div class="bid">
+                      <div class = "status">
+                        <% if bid.status == "completed" %>
+                           <p><i class="far fa-lightbulb bulb-green"></i>Completed</p>
+                        <% elsif bid.status == "pending"%>
+                           <p class = "black-pending"><i class="far fa-lightbulb bulb-black"></i>Pending</p>
+                        <% end %>
+                         </div>
+                          <div class= "text-center"><%= bid.provider.company %></div>
+                          <div class= "text-center"><%= bid.price %> €</div>
+                        </div>
+                  <% end %>
 
-        <% if policy(auction.bill).show? %>
-          <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
-        <% end %>
+                  <% end %>
 
-    </div>
-  </div>
-</div>
+                  <% if policy(auction).destroy? %>
+                  <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+                  <% end %>
+                  <% if policy(auction.bill).show? %>
+                  <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %>
+                  <% end %>
+
+                  <% end %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>

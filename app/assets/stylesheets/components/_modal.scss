@@ -21,21 +21,26 @@
 
 }
 
+.last-cross {
+  font-size: 24px;
+  margin-left: 379px;
+}
+
 .modal-content{
   border: solid #0d8787;
 }
 
 
 
-.first {
-
-}
 
 #first-element-modal {
  margin-top: -10px !important;
 }
 
 
+.modal-my-auctions {
+  padding-bottom: 30px;
+}
 
 
 //.last-element-modal{
@@ -60,14 +65,23 @@
 
 }
 
-
+.status {
+  p {
+    margin-left: -52px;
+    margin-top: 8px;
+  }
+}
 
 .all-auctions-modal {
   width: 50%;
   margin: auto;
   min-height: 300px;
-  text-align: center;
+
   border: solid #0d8787;
+  text-align: left;
+  padding-left: 42px;
+  padding-bottom: 30px;
+
 }
 
 .create {

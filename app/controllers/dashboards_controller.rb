@@ -19,11 +19,12 @@ class DashboardsController < ApplicationController
 
     @pending_order = current_user.orders.where(state: "pending").first
 
+
     @markers_other_auctions = @other_auctions.map do |auction|
-      {
-        lat: auction.bill.latitude,
-        lng: auction.bill.longitude,
-      }
+        {
+          lat: auction.bill.latitude,
+          lng: auction.bill.longitude,
+        }
     end
 
     @markers_my_auctions = @my_auctions.map do |auction|
