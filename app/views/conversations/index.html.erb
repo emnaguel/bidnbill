@@ -4,7 +4,9 @@
       <% @auctions.each do |auction| %>
           <% auction.conversations.each do |conversation| %>
             <% if policy(conversation).show? %>
-              <%= link_to "#{conversation.client.first_name} #{conversation.client.last_name} (#{auction.category.name} - auction #{auction.id})", conversation_path(conversation), remote: true  %>
+              <%= link_to conversation_path(conversation), remote: true do %>
+                <%= conversation.client.first_name %> <%= conversation.client.last_name %> <br> <%= auction.category.name  %> - auction <%= auction.id %>
+              <% end %>
             <% end %>
           <% end %>
       <% end %>

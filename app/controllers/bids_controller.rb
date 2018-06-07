@@ -31,7 +31,7 @@ class BidsController < ApplicationController
   def select
     authorize @bid
     @auction = @bid.auction
-    @bids = policy_scope(@auction.bids)
+    @bids = policy_scope(@auction.bids).order(created_at: :asc)
     can_select = true
     @bid.auction.bids.each do |bid|
       if bid.status == 'completed'
@@ -45,9 +45,8 @@ class BidsController < ApplicationController
     end
     respond_to do |format|
         format.html { redirect_to bill_path(@bid.bill) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
+        format.js
       end
-
   end
 
   def pay
