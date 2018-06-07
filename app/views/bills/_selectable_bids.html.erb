@@ -46,12 +46,14 @@
         <i class="fas fa-times"></i>
        <% end %>
      </div>
-       <h3 class="text-center" id="first-element-modal">Bid number <%= bid.id %></h3>
-       <div class= "text-center"><strong>Provider </strong></div><p class= "text-center"><%= bid.provider.company %></p>
-       <div class= "text-center"><strong>Price </strong></div><p class= "text-center"><%= bid.price %> €</p>
-       <div class= "text-center"><strong>Comment </strong></div><p class= "text-center"><%= bid.content %></p>
-       <div class= "text-center"><strong>Status </strong></div><p class= "text-center last-element-modal"><%= bid.status %></p>
+     <h3 id="first-element-modal">Bid number <%= bid.id %></h3>
+     <div class= "content">
 
+       <div><strong>Provider </strong></div><p><%= bid.provider.company %></p>
+       <div><strong>Price </strong></div><p><%= bid.price %> €</p>
+       <div><strong>Comment </strong></div><p><%= bid.content %></p>
+       <div><strong>Status </strong></div><p class= "last-element-modal"><%= bid.status %></p>
+    </div>
      </div>
     </div>
   </div>
