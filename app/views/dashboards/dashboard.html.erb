@@ -99,7 +99,7 @@
                 <div class= "second-part">
                   <% if auction.bids.present? %>
                     <% auction.bids.each do |bid| %>
-                      <% if policy(bid).show? %>
+
                         <div class="bid">
                           <div class = "status">
                           <% if bid.status == "completed" %>
@@ -111,17 +111,14 @@
                           <div class= "text-center"><%= bid.provider.company %></div>
                           <div class= "text-center"><%= bid.price %> €</div>
                         </div>
-                  <% end %>
+                    <% end %>
 
-                  <% end %>
-
-                  <% if policy(auction).destroy? %>
-                  <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-                  <% end %>
-                  <% if policy(auction.bill).show? %>
-                  <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %>
-                  <% end %>
-
+                    <% if policy(auction).destroy? %>
+                      <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+                    <% end %>
+                    <% if policy(auction.bill).show? %>
+                      <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %>
+                    <% end %>
                   <% end %>
                 </div>
 
@@ -283,7 +280,6 @@
   </div>
 
 </div>
-
 
 </div>
 
