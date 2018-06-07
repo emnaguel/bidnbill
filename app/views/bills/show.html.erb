@@ -12,6 +12,11 @@
     <div class="div_bill_edit">
       <% if policy(@bill).edit? %>
       <div>
+        <% if policy(@bill).destroy? %>
+          <%= link_to bill_path(@bill.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
         <%= link_to edit_bill_path(@bill) do %>
           <i class="far fa-edit"></i>
       <% end %>
