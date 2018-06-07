@@ -1,12 +1,38 @@
-.modal-dialog {
-      margin-right: 23px;
+.cross {
+  font-size: 24px;
+    /* text-align: right; */
+    margin-left: 395px !important;
+    margin-top: 1px;
+    padding: 4px;
+    margin-bottom: -20px;
+
+  }
+
+
+  .first {
+    margin-top: -8px;
+  }
+
+  .modal-dialog {
+    margin-right: 23px;
     margin-top: 94px;
 
-}
+  }
 
-.modal-content {
-  width: 50%;;
-    min-height: 800px;
+  .all-auctions-modal {
+    width: 50%;;
+    min-height: 300px;
     text-align: center;
+    border: solid #0d8787;
+  }
+
+.create {
+
+    margin-top: 24px;
+    margin-bottom: 33px;
+    color: #0d8787;
+    background: none;
+    text-transform: uppercase;
+    border: none;
 
 }
