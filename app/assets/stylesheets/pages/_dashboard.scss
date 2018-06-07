@@ -48,11 +48,11 @@
 }
 
 .panel-default > .panel-heading {
-    color: white;
-    background-color: #0d8787;
-    border-color: #ddd;
-    border-radius: 0;
-    text-align: center;
+  color: white;
+  background-color: #0d8787;
+  border-color: #ddd;
+  border-radius: 0;
+  text-align: center;
 }
 
 .panel-body {
@@ -139,7 +139,7 @@
  color: white;
 
     /* margin-top: 10px; */
-  opacity: 1;
+    opacity: 1;
 
   }
 
@@ -153,7 +153,7 @@
   }
 
 
-.nav-tabs > li > a {
+  .nav-tabs > li > a {
     margin-right: 2px;
     line-height: 1.428571429;
     border: none;
@@ -166,7 +166,7 @@
       margin: 0;
     }
 
-}
+  }
 
 
 
@@ -188,9 +188,9 @@
 
   }
 
-a {
-  color: #0d8787;
-}
+  a {
+    color: #0d8787;
+  }
 
 
 
@@ -206,6 +206,7 @@ a {
     font-weight: bolder;
     color: #388887;
     margin-left: 15px;
+    margin-right: 171px;
   }
 
 
@@ -280,14 +281,14 @@ a {
 }
 
 .create-bid {
-    background-color: #0d8787;
-    color: white;
-    padding: 7px;
-    border-radius: 4px;
-    margin-right: 5px;
-  }
+  background-color: #0d8787;
+  color: white;
+  padding: 7px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
 
-  .buttons {
-    display: flex;
-  }
+.buttons {
+  display: flex;
+}
 
