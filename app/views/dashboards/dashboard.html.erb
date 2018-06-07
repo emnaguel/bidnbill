@@ -1,52 +1,52 @@
 <div class="wrapper dashboard-flexbox">
 
-<ul class="nav nav-tabs">
-  <li id="nav-first-a"><a  href="#first-a" data-toggle="tab" class = "couleur"><h3 class="black">All auctions</h3></a></li>
-  <li id="nav-second-a"><a href="#second-a" data-toggle="tab" class = "couleur"><h3 class="black">My auctions</h3></a></li>
-  <li id="nav-third-a"><a href="#third-a" data-toggle="tab" class = "couleur"><h3 class="black">Won bids</h3></a></li>
-  <li id="nav-forth-a"><a href="#forth-a" data-toggle="tab" class = "couleur"><h3 class="black">My Clients</h3></a></li>
-</ul>
+  <ul class="nav nav-tabs">
+    <li id="nav-first-a"><a  href="#first-a" data-toggle="tab" class = "couleur"><h3 class="black">All auctions</h3></a></li>
+    <li id="nav-second-a"><a href="#second-a" data-toggle="tab" class = "couleur"><h3 class="black">My auctions</h3></a></li>
+    <li id="nav-third-a"><a href="#third-a" data-toggle="tab" class = "couleur"><h3 class="black">Won bids</h3></a></li>
+    <li id="nav-forth-a"><a href="#forth-a" data-toggle="tab" class = "couleur"><h3 class="black">My Clients</h3></a></li>
+  </ul>
 
-<div class="dashboard-container tab-content">
-  <div class="tab-pane active" id="first-a">
-    <div class="dashboard-container-flexbox">
-      <div class="first-column">
-        <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+  <div class="dashboard-container tab-content">
+    <div class="tab-pane active" id="first-a">
+      <div class="dashboard-container-flexbox">
+        <div class="first-column">
+          <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
           <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
           <%= submit_tag "Search", class: "form-control btn btn-info up" %>
-        <% end %>
-
-        <% if @other_auctions.present? %>
-          <% @other_auctions.each do |auction| %>
-            <div class="card card-auction">
-              <div class="card-body">
-                <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
-                <button type="button" class="btn btn-primary btn-eye up" data-toggle="modal" class= "card-auction-right" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i>
-                </button>
-              </div>
-            </div>
-            <%= render 'modal_show_bill', auction: auction %>
           <% end %>
-        <% end %>
-      </div>
-      <div class="second-column">
-        <div id="map" class="little-map" style="width: 100%; height: 103%;"; data-markers="<%= @markers_other_auctions.to_json %>"></div>
+
+          <% if @other_auctions.present? %>
+          <% @other_auctions.each do |auction| %>
+          <div class="card card-auction">
+            <div class="card-body">
+              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+              <button type="button" class="btn btn-primary btn-eye up" data-toggle="modal" class= "card-auction-right" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <%= render 'modal_show_bill', auction: auction %>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="second-column">
+          <div id="map" class="little-map" style="width: 100%; height: 103%;"; data-markers="<%= @markers_other_auctions.to_json %>"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="tab-pane" id="second-a">
-  <div class="dashboard-container-flexbox">
-    <div class="first-column">
-      <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
-        <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
-        <%= submit_tag "Search", class: "form-control btn btn-info up" %>
-      <% end %>
+    <div class="tab-pane" id="second-a">
+      <div class="dashboard-container-flexbox">
+        <div class="first-column">
+          <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
+          <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
+          <%= submit_tag "Search", class: "form-control btn btn-info up" %>
+          <% end %>
 
-      <% if @my_auctions.present? %>
-        <% @my_auctions.each do |auction| %>
+          <% if @my_auctions.present? %>
+          <% @my_auctions.each do |auction| %>
           <div class="card card-auction">
             <div class="card-body">
               <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
@@ -54,203 +54,234 @@
             </div>
           </div>
 
-              <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-
-
-                  <div class = "text-center first"><%= auction.client.first_name%> <%= auction.client.last_name%></div>
-                  <div class = "text-center"><%= auction.bill.category.name%></div>
-                  <div class = "text-center">Number: <%= auction.bill.id%></div>
-                  <div class = "text-center">Address: <%= auction.bill.address%></div>
-                  <div class = "text-center"><%= auction.bill.price%></div>
-                  <div class = "text-center"><%= auction.bill.price%></div>
-                  <div class = "text-center">€<%= auction.category.price_cents%></div>
-
+          <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content modal-my-auctions">
+                <div class= "cross-my-auctions">
+                  <%= link_to dashboard_path do %>
+                  <i class="fas fa-times"></i>
+                  <% end %>
+                </div>
+                <div class="flex-div">
+                 <div class= "first-part">
+                  <div class = "premier"><strong>Client</strong></div>
+                  <p ><%= auction.client.first_name%> <%= auction.client.last_name%></p>
+                  <div><strong>Current Provider</strong></div>
+                  <p><%= auction.bill.current_provider%></p>
+                  <div><strong>Category</strong></div>
+                  <p><%= auction.bill.category.name%></p>
+                  <div><strong>Number</strong></div>
+                  <p> <%= auction.bill.id%></p>
+                  <div><strong>Address</strong></div>
+                  <p ><%= auction.bill.address%></p>
+                  <div><strong>Auction Price</strong></div>
+                  <p><%= auction.bill.price%>€</p>
+                  <div><strong>Consumption</strong></div>
+                  <% if auction.bill.category.name == "Gaz"%>
+                  <p ><%= auction.bill.consumption %></p>
+                  <% elsif auction.bill.category.name == "Electricité"%>
+                  <p ><%= auction.bill.consumption %>kWh</p>
+                  <% end %>
                   <% if policy(Bid).create? %>
-                    <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
+                  <%= link_to "Create a bid", new_auction_bid_path(auction), id: "btn-create" %>
+                  <% end %>
+                </div>
+
+
+
+                <div class= "second-part">
+                  <% if auction.bids.present? %>
+                  <% auction.bids.each do |bid| %>
+                  <% if policy(bid).show? %>
+                  <div class="bid">
+                    <% if bid.status == "completed" %>
+                    <i class="far fa-lightbulb bulb-green"></i>
+                    <% elsif bid.status == "pending"%>
+                    <i class="far fa-lightbulb bulb-red"></i>
+                    <% end %>
+                    <div class= "text-center"><%= bid.provider.company %></div>
+                    <div class= "text-center"><%= bid.price %> €</div>
+                  </div>
                   <% end %>
 
-                <% if auction.bids.present? %>
-                  <h2>Bids:</h2>
-                  <ul>
-                    <% auction.bids.each do |bid| %>
-                      <li>
-                        <% if policy(bid).show? %>
-                          <%= link_to "Bid status #{bid.status}", bid_path(bid) %>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
+                  <% end %>
+
                   <% if policy(auction).destroy? %>
-                    <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
+                  <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
                   <% end %>
                   <% if policy(auction.bill).show? %>
-                    <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+                  <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %>
                   <% end %>
-                    <%= link_to 'Back to dashboard', dashboard_path %>
-                <% end %>
+
+                  <% end %>
+                </div>
+
               </div>
             </div>
           </div>
-      <% end %>
-    <% end %>
-     </div>
-
-
-
-        <div class="second-column">
-          <div id="second_map" class="little-map" data-markers="<%= @markers_my_auctions.to_json %>"></div>
         </div>
+        <% end %>
+        <% end %>
+      </div>
+
+
+
+      <div class="second-column">
+        <div id="second_map" class="little-map" data-markers="<%= @markers_my_auctions.to_json %>"></div>
+      </div>
     </div>
   </div>
 
 
-    <div class="tab-pane" id="third-a">
-      <div class="dashboard-container-flexbox">
-        <div class="first-column">
+  <div class="tab-pane" id="third-a">
+    <div class="dashboard-container-flexbox">
+      <div class="first-column">
 
-          <% @won_auctions.each do |auction| %>
-            <div class="card card-auction">
-              <div class="card-body">
-                <% won_bid = auction.bids.where(status: "completed").first %>
-                <div class="card-body-left">
-                  <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5> |
-                  <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price) %></span>
-                </div>
-                <div class="card-body-actions">
-                  <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
-                  <%= form_tag orders_path do %>
-                    <%= hidden_field_tag 'bid_id', won_bid.id %>
-                    <%= submit_tag 'Add', class: 'add' %>
-                  <% end %>
-
-                </div>
-              </div>
-                </div>
-
-
-
-
-
-<%= render 'modal_show_bill', auction: auction %>
-
-
-
-               <% end %>
+        <% @won_auctions.each do |auction| %>
+        <div class="card card-auction">
+          <div class="card-body">
+            <% won_bid = auction.bids.where(status: "completed").first %>
+            <div class="card-body-left">
+              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5> |
+              <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price) %></span>
             </div>
+            <div class="card-body-actions">
+              <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
+              <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'bid_id', won_bid.id %>
+              <%= submit_tag 'Add', class: 'add' %>
+              <% end %>
 
-
-        <div class="second-column">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Basket
-            </div>
-            <div class="panel-body">
-              <div id="cart">
-                <% if @pending_order %>
-                  <% @pending_order.bids.each do |bid| %>
-                    <%= render "basket_item", bid: bid %>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="clearfix">&nbsp;</div>
-                <% if @pending_order %>
-                  <%= form_tag order_payments_path(@pending_order) do %>
-                    <div class="text-right"> Total: <%= humanized_money_with_symbol(@pending_order.amount) %></div>
-                    <script src="https://checkout.stripe.com/checkout.js" class ="stripe-button hidden" id = "btntohide"
-                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                      data-name="Won Auction(s)"
-                      data-email="<%= current_user.email %>"
-                      data-description="<%= @pending_order.bids.count %> Bids"
-                      data-amount="<%= @pending_order.amount_cents %>"
-                      data-currency="<%= @pending_order.amount.currency %>"></script>
-                      <button id= "btntoshow" class="btn-secondary">Order</button>
-                  <% end %>
-                <% end %>
             </div>
           </div>
         </div>
-         </div>
-          </div>
 
 
 
-    <div class="tab-pane" id="forth-a">
-      <div class="dashboard-container-flexbox">
-        <div class="first-column">
-          <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
-            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
-            <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
-            <%= submit_tag "Search", class: "form-control btn btn-info up" %>
-          <% end %>
-
-        <% if @my_clients.present? %>
-        <% @my_clients.each do |auction| %>
-          <div class="card card-auction">
-            <div class="card-body">
-                <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
-                <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
-              </div>
-            </div>
-                 <div class="modal fade auction-<%= auction.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-
-                      <div class="text-center first"><%= auction.client.first_name%><%= auction.client.last_name%></div>
-                      <div class="text-center"><%= auction.bill.category.name%></div>
-                      <div class="text-center">Number: <%= auction.bill.id%></div>
-                      <div class="text-center"><%= auction.bill.price%></div>
-                      <div class="text-center">€ <%= auction.category.price_cents%></div>
 
 
-                      <% if policy(Bid).create? %>
-                        <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
-                      <% end %>
+        <%= render 'modal_show_bill', auction: auction %>
 
 
-                    <% if @bids.present? %>
-                      <h2>Bids:</h2>
-                      <% @bids.each do |bid| %>
-                        <ul>
-                          <li>
-                            <% if policy(bid).show? %>
-                            <%= link_to "Bid status #{bid.status}", bid_path(bid) %> |
-                            <% end %>
-                            <% if policy(bid).select? %>
-                            <%= link_to "Select this bid", select_bid_path(bid) %>
-                            <% end %>
-                            <% if policy(bid).pay? %>
-                            <%= link_to "Pay this bid", pay_bid_path(bid) %>
-                            <% end %>
-                          </li>
-                        </ul>
-                      <% end %>
 
-                      <% if policy(@auction).destroy? %>
-                        <%= link_to 'Destroy Auction', auction_path(@auction), method: :delete, data: { confirm: 'Are you sure?' } %> |
-                      <% end %>
-                      <% if policy(@auction.bill).show? %>
-                        <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
-                      <% end %>
-                      <%= link_to 'Back to dashboard', dashboard_path %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-          <% end %>
         <% end %>
       </div>
-       <div class="second-column">
-          <div id="third_map" class="little-map" style="width: 100%; height: 103%;"; data-markers="<%= @markers_my_clients.to_json %>"></div>
+
+
+      <div class="second-column">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Basket
+          </div>
+          <div class="panel-body">
+            <div id="cart">
+              <% if @pending_order %>
+              <% @pending_order.bids.each do |bid| %>
+              <%= render "basket_item", bid: bid %>
+              <% end %>
+              <% end %>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+            <% if @pending_order %>
+            <%= form_tag order_payments_path(@pending_order) do %>
+            <div class="text-right"> Total: <%= humanized_money_with_symbol(@pending_order.amount) %></div>
+            <script src="https://checkout.stripe.com/checkout.js" class ="stripe-button hidden" id = "btntohide"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="Won Auction(s)"
+            data-email="<%= current_user.email %>"
+            data-description="<%= @pending_order.bids.count %> Bids"
+            data-amount="<%= @pending_order.amount_cents %>"
+            data-currency="<%= @pending_order.amount.currency %>"></script>
+            <button id= "btntoshow" class="btn-secondary">Order</button>
+            <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
+
+
+  <div class="tab-pane" id="forth-a">
+    <div class="dashboard-container-flexbox">
+      <div class="first-column">
+        <%= form_tag provider_dashboard_path, method: :get, multipart: true, class: "form-inline" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an auction"%>
+        <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where?", id: "bill_address"%>
+        <%= submit_tag "Search", class: "form-control btn btn-info up" %>
+        <% end %>
+
+        <% if @my_clients.present? %>
+        <% @my_clients.each do |auction| %>
+        <div class="card card-auction">
+          <div class="card-body">
+            <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+            <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="modal fade auction-<%= auction.id %> text-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content all-auctions-modal">
+
+              <div class= "cross">
+                <%= link_to dashboard_path do %>
+                <i class="fas fa-times"></i>
+                <% end %>
+              </div>
+
+
+              <div class = "text-center first"><strong>Client</strong></div>
+              <p><%= auction.client.first_name%> <%= auction.client.last_name%></p>
+              <div class = "text-center first"><strong>Email</strong></div>
+              <p><%= auction.client.email%>
+              <div class = "text-center"><strong>Current Provider</strong></div>
+              <p><%= auction.bill.current_provider%></p>
+              <div class = "text-center"><strong>Category</strong></div>
+              <p><%= auction.bill.category.name%></p>
+              <div class = "text-center"><strong>Number</strong></div>
+              <p> <%= auction.bill.id%></p>
+              <div class = "text-center"><strong>Address</strong></div>
+              <p><%= auction.bill.address%></p>
+              <div class = "text-center"><strong>Auction Price</strong></div>
+              <p><%= auction.bill.price%>€</p>
+
+              <div class = "text-center"><strong>Created at</strong></div>
+              <p><%= auction.bill.created_at%></p>
+              <div class = "text-center"><strong>Consumption</strong></div>
+              <% if auction.bill.category.name == "Gaz"%>
+              <p><%= auction.bill.consumption %></p>
+              <% elsif auction.bill.category.name == "Electricité"%>
+              <p><%= auction.bill.consumption %>kWh</p>
+              <% end %>
+
+
+
+              <% if policy(Bid).create? %>
+              <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
+              <% end %>
+
+              <% if policy(auction.bill).show? %>
+              <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <% end %>
+        <% end %>
       </div>
-
-
+      <div class="second-column">
+        <div id="third_map" class="little-map" style="width: 100%; height: 103%;"; data-markers="<%= @markers_my_clients.to_json %>"></div>
       </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
 
 
 

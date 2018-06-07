@@ -18,6 +18,7 @@
   grid-column: 2/span 1;
   width: 296px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .grid-three {
@@ -31,17 +32,17 @@
   height: 300px;
   width: 296px;
   padding-top: 15px;
-  margin-top: 20px;
+  margin-top: 86px;
   text-align: center;
 }
 
 .div_bill_edit {
   margin-top: 28px;
 }
-.modal-image {
-  margin-top: -47px;
-      margin-left: -155px;
-}
+// .modal-image {
+//   margin-top: -47px;
+//       margin-left: -155px;
+// }
 
 .titre-bid {
   text-align: center;
@@ -62,4 +63,18 @@
  color: yellow;
 
 }
+
+.bulb-green {
+  font-size: 19px;
+  color: #0d8787;
+}
+
+.bulb-red {
+  font-size: 19px;
+  color: red;
+}
+
+
+
+
 
