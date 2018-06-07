@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
   end
 
   def index
-    @conversations = policy_scope(Conversation).order(created_at: :desc)
+    @conversations = policy_scope(Conversation).order(created_at: :asc)
     @auctions = []
     @conversations.each do |conv|
       unless @auctions.include? conv.auction

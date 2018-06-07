@@ -3,11 +3,11 @@
 }
 
 .message-bar {
-  flex: 0 0 25%;
+  flex: 0 0 18%;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 70px - 60px);
-  position: fixed;
+  // position: fixed;
   overflow: scroll;
   background: #0e8686;
   > a {
@@ -16,6 +16,8 @@
     border-radius: 0;
     border: none;
     padding: 20px 30px;
+    color: white;
+    text-decoration: none;
     &:hover, &:focus {
       background: #0a6363;
       border: none;
@@ -28,20 +30,6 @@
     border-radius: 0;
     margin-bottom: 0;
   }
-  // a {
-  //   background-color: $my-green;
-  //   width: 100%;
-  //   border: none;
-  //   color: white;
-  //   padding: 15px 32px;
-  //   text-align: center;
-  //   text-decoration: none;
-  //   display: inline-block;
-  //   font-size: 16px;
-  //   border-radius: 4px;
-  //   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  //   margin-bottom: 5px;
-  // }
 }
 
 .message-bar a:hover {
@@ -51,7 +39,7 @@
 .conv-show {
   flex: 1 1 auto;
   margin: 20px;
-  margin-left: 150px;
+  // margin-left: 220px;
   form {
     margin-top: 20px;
     display: flex;
@@ -80,23 +68,6 @@
   }
 }
 
-// .current-sender {
-//   background-color: #add2c2;
-//   border-radius: 10px;
-//   margin-bottom: 15px;
-//   li {
-//     margin-left: 10px;
-//   }
-// }
-
-// .current-receiver {
-//   background-color: #a7d3a6;
-//   border-radius: 10px;
-//   margin-bottom: 15px;
-//   li {
-//     margin-left: 10px;
-//   }
-// }
 
 #message-list {
   height: calc(100vh - 150px - 70px - 60px);

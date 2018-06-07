@@ -1,47 +1,46 @@
-
 .wrapper-category {
-    min-height: calc(100vh - 70px - 60px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    background-color: rgb(220,220,220);
+   min-height: calc(100vh - 70px - 60px);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   text-align: center;
+   background-color: #ebf1f1 !important;
 }
 
 .container h1 {
-  color: rgb(13,135,135);
-  font-size: 28px;
+ color: rgb(13,135,135);
+ font-size: 28px;
 }
 
 .card {
-  padding: 30px 0;
-  border: solid;
-  border-color: white;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  border-weight: 2px;
-  color: #ebf1f1;
-  background-color: #ebf1f1;
-  margin: 16px 0;
-  text-align: center;
-  justify-items: center;
+ padding: 30px 0;
+ border: solid;
+ border-color: white;
+ border-radius: 6px;
+ box-shadow: 0 0 10px rgba(0,0,0,0.2);
+ border-weight: 2px;
+ color: #ebf1f1;
+ background-color: #ebf1f1;
+ margin: 16px 0;
+ text-align: center;
+ justify-items: center;
 }
 
 .card h1 {
-  font-size: 28px;
-  opacity: 0.8;
-  color: rgb(13,135,135);
-  font-family: $my-font;
-  font-weight: bolder;
-  margin: 0;
+ font-size: 28px;
+ opacity: 0.8;
+ color: rgb(13,135,135);
+ font-family: $my-font;
+ font-weight: bolder;
+ margin: 0;
 }
 
 .card:hover {
-   opacity: 0.8;
+  opacity: 0.8;
 }
 
 .card-wrapper a:hover {
-  color: rgb(13,135,135);
-  background-color: white;
-  text-decoration: none !important;
+ color: rgb(13,135,135);
+ background-color: white;
+ text-decoration: none !important;
 }
