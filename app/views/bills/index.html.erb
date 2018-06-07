@@ -4,8 +4,11 @@
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="card-bill">
           <div class="card-bill-category"><%= bill.category.name %></div>
+          <% if policy(bill).show? %>
+            <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
+          <% end %>
           <div class="card-bill-description">
-            <h2>
+            <h2 class="bill-edit">
               <%= bill.current_provider %>
               <% if policy(bill).edit? %>
                 <%= link_to edit_bill_path(bill) do %>
@@ -33,9 +36,6 @@
               <% end %>
             <% end %>
           </div>
-          <% if policy(bill).show? %>
-            <%= link_to '', bill_path(bill) , class: 'card-bill-link' %>
-          <% end %>
         </div>
       </div>
     <% end %>

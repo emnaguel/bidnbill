@@ -20,7 +20,7 @@
  box-shadow: 0 0 10px rgba(0,0,0,0.2);
  border-weight: 2px;
  color: #ebf1f1;
- background-color: #ebf1f1;
+ background-color: rgb(13,135,135);
  margin: 16px 0;
  text-align: center;
  justify-items: center;
@@ -29,14 +29,17 @@
 .card h1 {
  font-size: 28px;
  opacity: 0.8;
- color: rgb(13,135,135);
+ color: white;
  font-family: $my-font;
  font-weight: bolder;
  margin: 0;
 }
 
 .card:hover {
-  opacity: 0.8;
+ background-color: white;
+ h1 {
+  color: rgb(13,135,135);
+}
 }
 
 .card-wrapper a:hover {

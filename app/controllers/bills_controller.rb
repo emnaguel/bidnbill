@@ -12,7 +12,7 @@ class BillsController < ApplicationController
     @auction = @bill.auction
     unless @auction == nil
       authorize @auction
-      @bids = policy_scope(@auction.bids)
+      @bids = policy_scope(@auction.bids).order(created_at: :asc)
     end
     @bills = Bill.where.not(latitude: nil, longitude: nil)
     @marker =
