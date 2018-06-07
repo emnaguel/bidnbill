@@ -83,6 +83,11 @@
   text-transform: uppercase;
 }
 
+#btntoshow:hover {
+color:#0d8787;
+background-color: white;
+}
+
 .contain {
  margin-left: 298px;
 }
@@ -288,7 +293,19 @@
   margin-right: 5px;
 }
 
+
 .buttons {
   display: flex;
 }
+
+.create-bid:hover {
+    color: #0d8787;
+    background-color: white;
+    text-decoration: none;
+  }
+
+
+
+
+
 

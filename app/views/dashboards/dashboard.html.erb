@@ -149,9 +149,11 @@
           <div class="card-body">
             <% won_bid = auction.bids.where(status: "completed").first %>
             <div class="card-body-left">
+
               <span class="prix">Price <%= humanized_money_with_symbol(auction.category.price) %></span>
               <h5 class="black-auction"><%= auction.bill.category.name %></h5>
               <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€) </h5>
+
             </div>
             <div class="card-body-actions">
               <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
@@ -252,7 +254,8 @@
               <div><strong>Client</strong></div>
               <p><%= auction.client.first_name%> <%= auction.client.last_name%></p>
               <p><%= auction.client.email%>
-              <p><%= auction.bill.address%></p>
+              <p><%= auction.bill.city%></p>
+              <p><%= auction.bill.zip_code%></p>
               <div><strong>Current Price</strong></div>
               <p><%= auction.bill.price%>€</p>
               <div><strong>Consumption</strong></div>
