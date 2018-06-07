@@ -149,10 +149,10 @@
           <div class="card-body">
             <% won_bid = auction.bids.where(status: "completed").first %>
             <div class="card-body-left">
-              <span class="prix">Price: <%= humanized_money_with_symbol(auction.category.price) %></span>
-              <div>
-              <h5 class="black-auction"><%= auction.bill.category.name %>  |  <%= auction.bill.current_provider%>: <%= auction.bill.price%>€ </h5>
-            </div>
+
+              <span class="prix">Price <%= humanized_money_with_symbol(auction.category.price) %></span>
+              <h5 class="black-auction"><%= auction.bill.category.name %></h5>
+              <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€) </h5>
 
             </div>
             <div class="card-body-actions">
