@@ -2,12 +2,17 @@
 
   display: flex;
   justify-content: center;
-  margin-top: -8px;
+  margin-top: 0px;
   padding-top: 8px;
-
   background-color: white;
   width: 237px;
   margin-left: 40%;
+
+
+
+  background-color: white;
+
+
 }
 
 .form-inputs {
@@ -32,6 +37,7 @@
 
 .title-new-session {
  margin-top: 100px;
+ margin-bottom: -9px;
  h2 {
   text-transform: uppercase;
   background-color: #0d8787;
@@ -44,6 +50,11 @@
 }
 }
 
+.form-group {
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
 .forgotpsw {
   padding-bottom: 20px;
   padding-left: 4px;
@@ -51,8 +62,8 @@
 }
 
 .login {
-    border: none;
-    margin-top: -16px;
-    color: #0d8787;
-    text-transform: uppercase;
-  }
+  border: none;
+  margin-top: -16px;
+  color: #0d8787;
+  text-transform: uppercase;
+}
