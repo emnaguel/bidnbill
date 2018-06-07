@@ -11,12 +11,12 @@
     text-align: center;
   }
   .btn {
-    width: 30%;
+    width: 100%;
     border: none;
     margin-bottom: 20px;
     background-color: #0d8787;
     color: white;
-    margin-right: 27px;
+    padding: 15px;
   }
   ul {
     padding-left: 0;
@@ -54,4 +54,15 @@
 
 .form-n {
   margin-top: 75px;
+  h3 {
+    background: #388887;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+  }
+  .form-control {
+    width: 100%;
+  }
 }

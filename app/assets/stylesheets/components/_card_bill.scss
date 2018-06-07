@@ -5,7 +5,28 @@
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   margin: 15px 0;
   border-radius: 4px;
+  display: flex;
   position: relative;
+}
+
+.card-bill-filter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.card-bill-img {
+  position: relative;
+  img {
+    width: 155px;
+  }
+}
+
+.card-bill-info {
+  position: relative;
+  width: 100%;
 }
 
 .bill-edit {

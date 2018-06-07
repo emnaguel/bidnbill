@@ -21,9 +21,14 @@
           <% @other_auctions.each do |auction| %>
           <div class="card card-auction">
             <div class="card-body">
-              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+              <h5 class="black-auction"><%= auction.bill.category.name%></h5>
+              <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€)</h5>
+               <div class= "buttons"><% if policy(Bid).create? %>
+                  <%= link_to "Bid", new_auction_bid_path(auction), class: "create-bid" %>
+                  <% end %>
               <button type="button" class="btn btn-primary btn-eye up" data-toggle="modal" class= "card-auction-right" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i>
               </button>
+            </div>
             </div>
           </div>
           <%= render 'modal_show_bill', auction: auction %>
@@ -49,7 +54,8 @@
           <% @my_auctions.each do |auction| %>
           <div class="card card-auction">
             <div class="card-body">
-              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+              <h5 class="black-auction"><%= auction.bill.category.name%></h5>
+              <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€)</h5>
               <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
             </div>
           </div>
@@ -63,44 +69,48 @@
                   <% end %>
                 </div>
                 <div class="flex-div">
-                 <div class= "first-part">
-                  <div class = "premier"><strong>Client</strong></div>
-                  <p ><%= auction.client.first_name%> <%= auction.client.last_name%></p>
-                  <div><strong>Current Provider</strong></div>
-                  <p><%= auction.bill.current_provider%></p>
-                  <div><strong>Category</strong></div>
-                  <p><%= auction.bill.category.name%></p>
-                  <div><strong>Number</strong></div>
-                  <p> <%= auction.bill.id%></p>
-                  <div><strong>Address</strong></div>
-                  <p ><%= auction.bill.address%></p>
-                  <div><strong>Auction Price</strong></div>
-                  <p><%= auction.bill.price%>€</p>
-                  <div><strong>Consumption</strong></div>
-                  <% if auction.bill.category.name == "Gaz"%>
-                  <p ><%= auction.bill.consumption %></p>
-                  <% elsif auction.bill.category.name == "Electricité"%>
-                  <p ><%= auction.bill.consumption %>kWh</p>
-                  <% end %>
-                  <% if policy(Bid).create? %>
-                  <%= link_to "Create a bid", new_auction_bid_path(auction), id: "btn-create" %>
-                  <% end %>
-                </div>
+                  <div class= "first-part">
+                    <div><strong>Current Provider</strong></div>
+                      <% if auction.bill.current_provider == current_user.company %>
+                    <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€) </h5>
+                      <% else %>
+                    <h5>Other Provider(<%= auction.bill.price%>€)</h5>
+                      <% end %>
+                        <p><%= auction.bill.current_provider%></p>
+                        <div><strong>Category</strong></div>
+                        <p><%= auction.bill.category.name%></p>
+                        <p ><%= auction.bill.address%></p>
+                        <div><strong>Current Price</strong></div>
+                        <p><%= auction.bill.price%>€</p>
+                        <div><strong>Consumption</strong></div>
+                        <% if auction.bill.category.name == "Gaz"%>
+                        <p ><%= auction.bill.consumption %></p>
+                        <% elsif auction.bill.category.name == "Electricité"%>
+                        <p ><%= auction.bill.consumption %>kWh</p>
+                        <% end %>
+                        <br><br>
+                        <% if policy(Bid).create? %>
+                        <%= link_to "Bid", new_auction_bid_path(auction), id: "btn-create" %>
+                        <% end %>
+                      </div>
 
 
 
                 <div class= "second-part">
                   <% if auction.bids.present? %>
                     <% auction.bids.each do |bid| %>
-                      <div class="bid">
-                        <% if bid.status == "completed" %>
-                          <i class="far fa-lightbulb bulb-green"></i>
-                        <% elsif bid.status == "pending"%>
-                          <i class="far fa-lightbulb bulb-red"></i>
-                        <% end %>
-                        <div class= "text-center"><%= bid.provider.company %></div>
-                        <div class= "text-center"><%= bid.price %> €</div>
-                      </div>
+
+                        <div class="bid">
+                          <div class = "status">
+                          <% if bid.status == "completed" %>
+                            <p><i class="far fa-lightbulb bulb-green"></i>Completed</p>
+                          <% elsif bid.status == "pending"%>
+                           <p class = "black-pending"><i class="far fa-lightbulb bulb-black"></i>Pending</p>
+                          <% end %>
+                         </div>
+                          <div class= "text-center"><%= bid.provider.company %></div>
+                          <div class= "text-center"><%= bid.price %> €</div>
+                        </div>
                     <% end %>
 
                     <% if policy(auction).destroy? %>
@@ -138,7 +148,8 @@
           <div class="card-body">
             <% won_bid = auction.bids.where(status: "completed").first %>
             <div class="card-body-left">
-              <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5> |
+              <h5 class="black-auction"><%= auction.bill.category.name %></h5>
+              <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€) </h5>
               <span class="prix">Amount: <%= humanized_money_with_symbol(auction.category.price) %></span>
             </div>
             <div class="card-body-actions">
@@ -212,7 +223,10 @@
         <% @my_clients.each do |auction| %>
         <div class="card card-auction">
           <div class="card-body">
-            <h5 class="black-auction"><%= "Auction #{auction.id}" %></h5>
+            <h5><%= auction.client.first_name%> <%= auction.client.last_name%></h5>
+             <h5 class="black-auction"><%= auction.bill.category.name %></h5>
+
+
             <button type="button" class="btn btn-primary btn-eye" data-toggle="modal" data-target=".auction-<%= auction.id %>"><i class="far fa-eye"></i></button>
           </div>
         </div>
@@ -220,42 +234,33 @@
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content all-auctions-modal">
 
-              <div class= "cross">
+              <div class= "last-cross">
                 <%= link_to dashboard_path do %>
                 <i class="fas fa-times"></i>
                 <% end %>
               </div>
 
-
-              <div class = "text-center first"><strong>Client</strong></div>
-              <p><%= auction.client.first_name%> <%= auction.client.last_name%></p>
-              <div class = "text-center first"><strong>Email</strong></div>
-              <p><%= auction.client.email%>
-              <div class = "text-center"><strong>Current Provider</strong></div>
-              <p><%= auction.bill.current_provider%></p>
-              <div class = "text-center"><strong>Category</strong></div>
-              <p><%= auction.bill.category.name%></p>
-              <div class = "text-center"><strong>Number</strong></div>
-              <p> <%= auction.bill.id%></p>
-              <div class = "text-center"><strong>Address</strong></div>
-              <p><%= auction.bill.address%></p>
-              <div class = "text-center"><strong>Auction Price</strong></div>
-              <p><%= auction.bill.price%>€</p>
-
-              <div class = "text-center"><strong>Created at</strong></div>
+               <p><%= auction.bill.category.name%></p>
+                 <% if auction.bill.current_provider == current_user.company %>
+                    <h5><%= auction.bill.current_provider%>(<%= auction.bill.price%>€) </h5>
+                 <% else %>
+                    <h5>Other Provider(<%= auction.bill.price%>€)</h5>
+                 <% end %>
+              <div><strong>Created at</strong></div>
               <p><%= auction.bill.created_at%></p>
-              <div class = "text-center"><strong>Consumption</strong></div>
+              <div><strong>Client</strong></div>
+              <p><%= auction.client.first_name%> <%= auction.client.last_name%></p>
+              <p><%= auction.client.email%>
+              <p><%= auction.bill.address%></p>
+              <div><strong>Current Price</strong></div>
+              <p><%= auction.bill.price%>€</p>
+              <div><strong>Consumption</strong></div>
               <% if auction.bill.category.name == "Gaz"%>
-              <p><%= auction.bill.consumption %></p>
+                <p><%= auction.bill.consumption %></p>
               <% elsif auction.bill.category.name == "Electricité"%>
-              <p><%= auction.bill.consumption %>kWh</p>
+                <p><%= auction.bill.consumption %>kWh</p>
               <% end %>
 
-
-
-              <% if policy(Bid).create? %>
-              <%= link_to "Create a bid", new_auction_bid_path(auction), class: "btn btn-info up create" %>
-              <% end %>
 
               <% if policy(auction.bill).show? %>
               <%= link_to "Back to bill number #{@auction.bill.id}", bill_path(@auction.bill) %> |
