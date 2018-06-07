@@ -1,26 +1,18 @@
 // Specific CSS for your home-page
 
- .Landing-page-logo-colours img {
-  height: 88vh;
+ .banner-content {
+  width: 100%;
+  height: 40vh;
+  background-size: cover !important;
+  background-image: image-url('background-image-true.png');
 }
 .wrapper-landing-page {
   margin-top:0;
   background-color: rgb(13,135,135);
   // min-height: calc(100vh - 130px);
   overflow-y: scroll;
-  margin: 0;
-  padding: 0;
+  padding: 20px;
   align-items: center;
-}
-
-.banner-content {
-  margin-top: 5px;
-  background-color: rgb(13,135,135);
-  color: white;
-  text-align: center;
-  border-radius: 4px;
-  // height: 50vh;
-  // margin-top: 15px;
 }
 
 .banner-content h1 {
@@ -43,7 +35,6 @@
 
 .row-merged {
   background-color: rgb(13,135,135);
-  margin-top: 40px;
   display: flex;
   align-items: stretch;
 }
