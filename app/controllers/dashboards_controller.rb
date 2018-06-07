@@ -19,21 +19,21 @@ class DashboardsController < ApplicationController
 
     @pending_order = current_user.orders.where(state: "pending").first
 
-    @markers_other_auctions = @other_auctions.map do |auction|
+    @markers_other_auctions = @other_auctions.reject { |auction| auction.bill.latitude.nil? || auction.bill.longitude.nil? }.map do |auction|
       {
         lat: auction.bill.latitude,
         lng: auction.bill.longitude,
       }
     end
 
-    @markers_my_auctions = @my_auctions.map do |auction|
+    @markers_my_auctions = @my_auctions.reject { |auction| auction.bill.latitude.nil? || auction.bill.longitude.nil? }.map do |auction|
       {
         lat: auction.bill.latitude,
         lng: auction.bill.longitude,
       }
     end
 
-    @markers_my_clients = @my_clients.map do |auction|
+    @markers_my_clients = @my_clients.reject { |auction| auction.bill.latitude.nil? || auction.bill.longitude.nil? }.map do |auction|
       {
         lat: auction.bill.latitude,
         lng: auction.bill.longitude,
