@@ -12,6 +12,9 @@
         <%= bid.provider.company %> -
         <%= bid.price %> €
       </div>
+      <div class="economy">
+        <%= Integer(bid.bill.price) - Integer(bid.price) %> €
+      </div>
       <div class="items-right">
         <% if policy(bid).select? %>
           <%= link_to "Select", select_bid_path(bid), id: "buttonselect", method: :patch, remote: true %> |

@@ -86,20 +86,20 @@ Bid.create(auction: a3, provider: edf, status: "pending", payment_status: "pendi
 Bid.create(auction: a3, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 37)
 Bid.create(auction: a3, provider: edf, status: "completed", payment_status: "pending", content: "This is the very best offer we can give you. Hope to hear soon from you!", price: 35)
 
-Bid.create(auction: a4, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 65)
+Bid.create(auction: a4, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
 
-Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 110)
-Bid.create(auction: a5, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 105)
-Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 100)
-Bid.create(auction: a5, provider: total, status: "completed", payment_status: "completed", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 95)
+Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 60)
+Bid.create(auction: a5, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 55)
+Bid.create(auction: a5, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 55)
+Bid.create(auction: a5, provider: total, status: "completed", payment_status: "completed", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 52)
 
-Bid.create(auction: a6, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 105)
-Bid.create(auction: a6, provider: total, status: "completed", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 95)
+Bid.create(auction: a6, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 115)
+Bid.create(auction: a6, provider: total, status: "completed", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 115)
 
-Bid.create(auction: a7, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 110)
-Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 105)
-Bid.create(auction: a7, provider: edf, status: "completed", payment_status: "completed", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 100)
-Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "This is the very best offer we can give you. Hope to hear soon from you!", price: 95)
+Bid.create(auction: a7, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 60)
+Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 55)
+Bid.create(auction: a7, provider: edf, status: "completed", payment_status: "completed", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 55)
+Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "This is the very best offer we can give you. Hope to hear soon from you!", price: 50)
 
 puts "Creating conversations..."
 c1 = Conversation.create(auction: a1, provider: edf)
