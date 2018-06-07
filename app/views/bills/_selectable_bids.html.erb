@@ -34,13 +34,18 @@
   </div>
   <div id="bid<%= bid.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-sm">
-     <div class="modal-content">
-       <h3>Bid number <%= bid.id %></h3>
-       <p><strong>Provider: </strong><%= bid.provider.company %></p>
-       <p><strong>Price: </strong><%= bid.price %> €</p>
-       <p><strong>Comment: </strong><%= bid.content %></p>
-       <p><strong>Status: </strong><%= bid.status %></p>
-       <%= link_to "back", bill_path(bid.bill) %>
+     <div class="modal-content" id = "modal-client">
+      <div class = "cross-client">
+      <%= link_to bill_path(bid.bill) do %>
+        <i class="fas fa-times"></i>
+       <% end %>
+     </div>
+       <h3 class="text-center" id="first-element-modal">Bid number <%= bid.id %></h3>
+       <div class= "text-center"><strong>Provider </strong></div><p class= "text-center"><%= bid.provider.company %></p>
+       <div class= "text-center"><strong>Price </strong></div><p class= "text-center"><%= bid.price %> €</p>
+       <div class= "text-center"><strong>Comment </strong></div><p class= "text-center"><%= bid.content %></p>
+       <div class= "text-center"><strong>Status </strong></div><p class= "text-center last-element-modal"><%= bid.status %></p>
+
      </div>
     </div>
   </div>

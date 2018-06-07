@@ -8,31 +8,120 @@
 
   }
 
+  .cross-client {
+   font-size: 24px;
+   margin-left: 272px;
+   margin-top: 0px;
+ }
 
-  .first {
-    margin-top: -8px;
-  }
+ .cross-my-auctions {
 
-  .modal-dialog {
-    margin-right: 23px;
-    margin-top: 94px;
+  font-size: 24px;
+  margin-left: 872px;
 
-  }
+}
 
-  .all-auctions-modal {
-    width: 50%;;
-    min-height: 300px;
-    text-align: center;
-    border: solid #0d8787;
-  }
+.modal-content{
+  border: solid #0d8787;
+}
+
+
+
+.first {
+
+}
+
+#first-element-modal {
+ margin-top: -10px !important;
+}
+
+
+
+
+//.last-element-modal{
+ // margin-bottom: 10px;
+//}
+
+#modal-client {
+  border: solid #0d8787;
+}
+
+.bid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  height: 45px;
+  background-color:#ebf1f1;
+  color: #0d8787;
+
+}
+
+
+
+.all-auctions-modal {
+  width: 50%;
+  margin: auto;
+  min-height: 300px;
+  text-align: center;
+  border: solid #0d8787;
+}
 
 .create {
 
-    margin-top: 24px;
-    margin-bottom: 33px;
-    color: #0d8787;
-    background: none;
-    text-transform: uppercase;
-    border: none;
-
+  margin-top: 24px;
+  margin-bottom: 33px;
+  color: white;
+  background: #0d8787;
+  text-transform: uppercase;
+  border: none;
+  border-radius: none;
 }
+
+
+#btn-create {
+  color: white;
+  background: #0d8787;
+  text-transform: uppercase;
+  border: none;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+    /* margin: auto; */
+
+    border-radius: none;
+  }
+  #btn-create:hover {
+    background: white;
+    color: #0d8787;
+  }
+
+  .create:hover {
+    background: white;
+    color: #0d8787;
+  }
+
+  .flex-div {
+    display: flex;
+  }
+
+  .first-part {
+    flex: 0 0 30%;
+    padding: 20px;
+    border-right: 1px solid #0d8787;
+  }
+
+  .second-part {
+    flex: 0 1 70%;
+    margin-right: 32px;
+    margin-right: 25px;
+    margin-left: 48px;
+  }
+
+
+
+
+
