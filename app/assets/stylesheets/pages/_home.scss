@@ -1,9 +1,12 @@
 // Specific CSS for your home-page
 
+ .Landing-page-logo-colours img {
+  height: 88vh;
+}
 .wrapper-landing-page {
+  margin-top:0;
   background-color: rgb(13,135,135);
-  height: calc(100vh - 130px);
-  overflow-y: scroll;
+  // min-height: calc(100vh - 130px);
   overflow-y: scroll;
   margin: 0;
   padding: 0;
@@ -11,7 +14,7 @@
 }
 
 .banner-content {
-  margin-top: 20px;
+  margin-top: 5px;
   background-color: rgb(13,135,135);
   color: white;
   text-align: center;
@@ -21,6 +24,7 @@
 }
 
 .banner-content h1 {
+  background-color: rgb(13,135,135);
   color: white;
   font-weight: bolder;
   font-size: 88px;
@@ -29,6 +33,7 @@
 }
 
 .banner-content h2 {
+  margin: 0;
   font-size: 32px;
   font-family: italic;
   color: white;
@@ -37,12 +42,14 @@
 }
 
 .row-merged {
+  background-color: rgb(13,135,135);
   margin-top: 40px;
   display: flex;
   align-items: stretch;
 }
 
 .container-cards-landing-page {
+  background-color: rgb(13,135,135);
   align-items: center;
   justify-content: space-around;
 }
@@ -62,13 +69,13 @@
 .card-ui h1 {
   font-family: $my-font;
   color: rgb(13,135,135);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bolder;
 }
 .card-ui p {
 font-family: $my-font;
 color: rgb(13,135,135);
-font-size: 12px;
+font-size: 14px;
 font-weight: bolder;
 }
 
@@ -87,4 +94,17 @@ font-weight: bolder;
   margin-top: 5px;
 }
 
+.call-to-action {
+background-color: white;
+padding: 10px auto;
+}
+
+.call-to-action p {
+color: rgb(13,135,135);
+font-family: $my-font;
+font-size: 20px;
+border: solid white 2px;
+border-radius: 8px;
+border-color: white;
+}
 
