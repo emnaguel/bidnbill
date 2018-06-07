@@ -9,11 +9,14 @@
         <% end %>
       </div>
       <div class="card-bid-prov">
-        <%= bid.provider.company %> -
-        <%= bid.price %> €
+        <strong>
+          <%= bid.provider.company %> -
+          <%= bid.price %> €
+        </strong>
       </div>
       <div class="economy">
-        <%= Integer(bid.bill.price) - Integer(bid.price) %> €
+        <i class="fas fa-money-bill-wave-alt"></i>
+        <%= Integer(bid.price) - Integer(bid.bill.price) %> €
       </div>
       <div class="items-right">
         <% if policy(bid).select? %>
