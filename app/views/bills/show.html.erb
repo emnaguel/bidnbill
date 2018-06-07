@@ -1,8 +1,7 @@
 <div class="grid">
   <div class="div-bill-show grid-one">
+    <h3>Bill number <%= @auction.bill.id%></h3>
     <div class="div-bill-info">
-      <h3>Bill number <%= @auction.bill.id%></h3>
-      <br>
       <p><strong>User:</strong> <%= @bill.client.first_name %> <%= @bill.client.last_name %></p>
       <p><strong>Category:</strong> <%= @bill.category.name %></p>
       <p><strong>Current provider:</strong> <%= @bill.current_provider %></p>
@@ -14,7 +13,7 @@
       <% if policy(@bill).edit? %>
       <div>
         <%= link_to edit_bill_path(@bill) do %>
-          <i class="far fa-edit edit"></i>
+          <i class="far fa-edit"></i>
       <% end %>
         <button type="button" class="oeil" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="far fa-eye "></i></button>
         <%= link_to dashboard_path do %>
@@ -24,7 +23,6 @@
       </div>
     </div>
   </div>
-
 
 <!-- Eye modal -->
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
