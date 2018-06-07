@@ -1,5 +1,5 @@
 <div id="message-list">
-  <% messages.order(created_at: :desc).each do |message| %>
+  <% messages.order(created_at: :asc).each do |message| %>
     <%= render 'messages/message_item', message: message, messages: messages %>
   <% end %>
 </div>
