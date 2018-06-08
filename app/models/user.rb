@@ -16,15 +16,18 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def my_auctions
-    (auctions - Auction.joins(:bids).where(bids: {status: "completed"})).uniq
+    auction_ids = (auctions - Auction.joins(:bids).where(bids: {status: "completed"})).uniq.map(&:id)
+    Auction.where(id: auction_ids)
   end
 
   def won_auctions
-    bids.where(status: "completed", payment_status: "pending").map {|bid| bid.auction}
+    auction_ids = bids.where(status: "completed", payment_status: "pending").map { |bid| bid.auction.id }
+    Auction.where(id: auction_ids)
   end
 
   def my_clients
-    bids.where(status: "completed", payment_status: "completed").map {|bid| bid.auction}
+    auction_ids = bids.where(status: "completed", payment_status: "completed").map { |bid| bid.auction.id }
+    Auction.where(id: auction_ids)
   end
 
   def other_auctions
@@ -42,6 +45,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    # UserMailer.welcome(self).deliver_now
   end
 end

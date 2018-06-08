@@ -8,19 +8,19 @@
                 </div>
                 <div class="flex-div">
                  <div class= "first-part">
-                  <div><strong>Current Provider</strong></div>
-                  <p><%= auction.bill.current_provider%></p>
                   <div><strong>Category</strong></div>
                   <p><%= auction.bill.category.name%></p>
-                 <p><%= auction.bill.city%></p>
-                  <p><%= auction.bill.zip_code%></p>
+                  <div><strong>Current Provider</strong></div>
+                  <p><%= auction.bill.current_provider%></p>
+                  <div><strong>Address</strong></div>
+                  <p><%= auction.bill.zip_code%> - <%= auction.bill.city%></p>
                   <div><strong>Current Price</strong></div>
-                  <p><%= auction.bill.price%>€</p>
+                  <p><%= auction.bill.price%> €</p>
                   <div><strong>Consumption</strong></div>
                   <% if auction.bill.category.name == "Gaz"%>
-                  <p ><%= auction.bill.consumption %></p>
-                  <% elsif auction.bill.category.name == "Electricité"%>
-                  <p ><%= auction.bill.consumption %>kWh</p>
+                  <p ><%= auction.bill.consumption %> m3</p>
+                  <% elsif auction.bill.category.name == "Electricity"%>
+                  <p ><%= auction.bill.consumption %> kWh</p>
                   <% end %>
                   <br><br>
                   <% if policy(Bid).create? %>

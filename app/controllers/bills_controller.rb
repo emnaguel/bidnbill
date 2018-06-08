@@ -53,6 +53,9 @@ class BillsController < ApplicationController
   def update
     authorize @bill
     if @bill.update(bill_params)
+      @auction = Auction.new
+      @auction.bill = @bill
+      @auction.save
       redirect_to dashboard_path
     else
       render :edit

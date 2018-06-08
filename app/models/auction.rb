@@ -26,6 +26,6 @@ class Auction < ApplicationRecord
   private
 
   def send_creation_email
-    AuctionMailer.new_auction(self.client).deliver_now
+    # AuctionMailer.new_auction(self.client).deliver_now
   end
 end

@@ -18,6 +18,6 @@ class Bid < ApplicationRecord
   private
 
   def send_bid_email
-    BidMailer.new_bid(self).deliver_now
+    # BidMailer.new_bid(self).deliver_now
   end
 end
