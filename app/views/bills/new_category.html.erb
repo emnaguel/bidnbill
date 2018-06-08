@@ -1,12 +1,23 @@
 <div class="wrapper-category">
  <div class="container" style="margin-bottom: 100px;">
-   <h1>Select a bill category for which you want to create a bid</h1>
+   <h1 class ="title-category">Select a bill category</h1>
    <div class="row" style="margin-top: 100px;">
      <% Category.all.each do |category| %>
      <div class="col-xs-12 col-md-6">
        <div class="card-wrapper">
          <%= link_to new_bill_path(Bill.new, category: category.name) do %>
-         <div class="card"><h1><%= category.name.upcase %></h1></div>
+          <div class="card">
+
+            <% if category.name == "Gaz" %>
+              <h1><i class="fas fa-gas-pump i-category"></i><%= category.name.upcase %></h1>
+            <% elsif category.name == "Electricity" %>
+              <h1><i class="far fa-lightbulb bulb-category i-category"></i><%= category.name.upcase %></h1>
+            <% elsif category.name == "Phone" %>
+              <h1><i class="fas fa-phone i-category"></i><%= category.name.upcase %></h1>
+            <% elsif category.name == "Internet" %>
+             <h1><i class="fas fa-wifi i-category"></i><%= category.name.upcase %></h1>
+            <% end %>
+          </div>
          <% end %>
        </div>
      </div>
