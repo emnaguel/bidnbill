@@ -1,6 +1,6 @@
 <div class= "text-center">
   <span class="text-bold">
-    Auction <%= bid.auction.id %>
+    <%= bid.bill.category.name %> - <%= bid.bill.zip_code%> - <%= bid.bill.city%>
   </span>
   <span class="text-blue">Price: <%= humanized_money_with_symbol(bid.bill.category.price) %></span>
 
