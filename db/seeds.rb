@@ -12,11 +12,14 @@ User.destroy_all
 
 puts "Creating providers..."
 edf = User.new(user_type: "provider", email: "contact@edf.com", password: "azerty", company: "EDF", address: "Tour Coupole, 2 Pl. Jean Millier, 92078 Paris La Défense", phone_number: "0102030405")
-edf.remote_photo_url = "http://tous-logos.com/wp-content/uploads/2017/08/Logo-EDF.png"
+edf.remote_photo_url = "https://media.glassdoor.com/sqll/1274547/edf-trading-squarelogo-1496816336867.png"
 edf.save
 total = User.new(user_type: "provider", email: "contact@total.com", password: "azerty", company: "Total", address: "30 Avenue de Wagram, 75008 Paris", phone_number: "0102030405")
 total.remote_photo_url = "https://www.anthedesign.fr/w2015/wp-content/uploads/2014/08/total-e1408902379554.png"
 total.save
+eni = User.new(user_type: "provider", email: "contact@eni.com", password: "azerty", company: "ENI", address: "Tour Coupole, 2 Pl. Jean Millier, 92078 Paris La Défense", phone_number: "0102030405")
+eni.remote_photo_url = "http://blog.fr.eni.com/wp-content/uploads/2015/04/Eni-gaz-logo-eni-1.png"
+eni.save
 
 puts "Creating clients..."
 ayoub = User.new(user_type: "client", email: "ayoub@gmail.com", password: "azerty", client_type: "particulier", first_name: "Ayoub", last_name: "Karioun", address: "10 rue Miollis 75015, Paris", phone_number: "0102030405")
@@ -59,6 +62,16 @@ bill_ayoub_elec2 = Bill.new(client: ayoub, category: elec, address: "20 Rue Robe
 bill_ayoub_elec2.remote_photo_url = bill_elec_url
 bill_ayoub_elec2.save
 
+b1 = Bill.new(client: ayoub, category: elec, address: "Avenue Félix Faure, Nice", city: "Nice", zip_code: "06000", current_provider: "Toal", price: 60, consumption: 70)
+b2 = Bill.new(client: ayoub, category: elec, address: "6 Rue des Pays-Bas, 44300 Nantes", city: "Nantes", zip_code: "44300", current_provider: "Toal", price: 60, consumption: 70)
+b3 = Bill.new(client: ayoub, category: elec, address: "306 Avenue du Prado, 13008 Marseille", city: "Marseille", zip_code: "13008", current_provider: "Toal", price: 60, consumption: 70)
+b4 = Bill.new(client: ayoub, category: elec, address: "Rue Auguste Perret, Paris", city: "Paris", zip_code: "75013", current_provider: "Toal", price: 60, consumption: 70)
+b5 = Bill.new(client: ayoub, category: gaz, address: "Avenue Charles de Gaulle, Neuilly-sur-Seine", city: "Neuilly-sur-Seine", zip_code: "92200", current_provider: "Toal", price: 60, consumption: 70)
+b6 = Bill.new(client: ayoub, category: gaz, address: "27 Rue Alexandre Leleux, 59000 Lille", city: "Lille", zip_code: "59000", current_provider: "Toal", price: 60, consumption: 70)
+b7 = Bill.new(client: ayoub, category: gaz, address: "1 Rue du Port-Vieux, 64200 Biarritz", city: "Biarritz", zip_code: "64200", current_provider: "Toal", price: 60, consumption: 70)
+b8 = Bill.new(client: ayoub, category: gaz, address: "20 Avenue Paul Signac, 83990 Saint-Tropez", city: "Saint-Tropez", zip_code: "83990", current_provider: "Toal", price: 60, consumption: 70)
+b9 = Bill.new(client: ayoub, category: gaz, address: "67 Avenue Maréchal de Saxe, 69003 Lyon", city: "Lyon", zip_code: "69003", current_provider: "Toal", price: 60, consumption: 70)
+
 puts "Creating provider_categories..."
 ProviderCategory.create(user:edf, category:elec)
 ProviderCategory.create(user:edf, category:gaz)
@@ -73,6 +86,16 @@ a4 = Auction.create(bill: bill_alex_gaz)
 a5 = Auction.create(bill: bill_alex_gaz2)
 a6 = Auction.create(bill: bill_ayoub_elec)
 a7 = Auction.create(bill: bill_ayoub_elec2)
+
+a11 = Auction.create(bill: b1)
+a12 = Auction.create(bill: b2)
+a13 = Auction.create(bill: b3)
+a14 = Auction.create(bill: b4)
+a15 = Auction.create(bill: b5)
+a16 = Auction.create(bill: b6)
+a17 = Auction.create(bill: b7)
+a18 = Auction.create(bill: b8)
+a19 = Auction.create(bill: b9)
 
 puts "Creating bids..."
 Bid.create(auction: a1, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 110)
@@ -100,6 +123,23 @@ Bid.create(auction: a7, provider: edf, status: "pending", payment_status: "pendi
 Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "We guarantee that more than 20 per cent of the energy os green. Save our planet while you are saving money!", price: 55)
 Bid.create(auction: a7, provider: edf, status: "completed", payment_status: "completed", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 55)
 Bid.create(auction: a7, provider: total, status: "pending", payment_status: "pending", content: "This is the very best offer we can give you. Hope to hear soon from you!", price: 50)
+
+Bid.create(auction: a11, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a12, provider: eni, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a13, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a14, provider: eni, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+
+Bid.create(auction: a15, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a15, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a16, provider: eni, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a16, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a17, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a17, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a18, provider: eni, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a18, provider: edf, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+
+Bid.create(auction: a19, provider: total, status: "pending", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
+Bid.create(auction: a19, provider: edf, status: "completed", payment_status: "pending", content: "We can keep your contract exactly as it currently is for a better price. Don't hesitate to send us a message if you have any question!", price: 75)
 
 puts "Creating conversations..."
 c1 = Conversation.create(auction: a1, provider: edf)
