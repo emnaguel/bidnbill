@@ -20,8 +20,16 @@
 
 .button-create-bill {
   border: none;
-  color: #0d8787;
-  margin-right: -2px;
+  color: white;
+  background-color: #0d8787;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 92%;
+  margin-left: 1%;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .back-button-link{
@@ -43,7 +51,7 @@
   label {
     display: block;
     text-align: center;
-    width: 100%;
+    width: 96%;
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;

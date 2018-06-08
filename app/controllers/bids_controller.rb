@@ -41,7 +41,7 @@ class BidsController < ApplicationController
     if can_select == true
       @bid.status = 'completed'
       @bid.save
-      SelectionMailer.invitation_to_pay(@bid).deliver_now
+      # SelectionMailer.invitation_to_pay(@bid).deliver_now
     end
     respond_to do |format|
         format.html { redirect_to bill_path(@bid.bill) }
