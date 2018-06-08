@@ -22,7 +22,7 @@
           <div class="card card-auction">
             <div class="card-body">
               <h5 class="black-auction"><%= auction.bill.category.name%></h5>
-              <h5><%= auction.bill.zip_code%>-<%= auction.bill.city%></h5>
+              <h5><%= auction.bill.zip_code%> - <%= auction.bill.city%></h5>
                <div class= "buttons"><% if policy(Bid).create? %>
                   <%= link_to "Bid", new_auction_bid_path(auction), class: "create-bid" %>
                   <% end %>
@@ -56,7 +56,7 @@
             <div class="card-body">
               <h5 class="black-auction"><%= auction.bill.category.name%></h5>
 
-              <h5><%= auction.bill.zip_code%>-<%= auction.bill.city%></h5>
+              <h5><%= auction.bill.zip_code%> - <%= auction.bill.city%></h5>
 
               <div class= "buttons"><% if policy(Bid).create? %>
                   <%= link_to "Bid", new_auction_bid_path(auction), class: "create-bid" %>
@@ -70,7 +70,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content modal-my-auctions">
                 <div class= "cross-my-auctions">
-                  <%= link_to dashboard_path do %>
+                  <%= link_to dashboard_path(anchor: "second-a") do %>
                   <i class="fas fa-times"></i>
                   <% end %>
                 </div>
@@ -155,7 +155,7 @@
 
               <span class="prix">Price <%= humanized_money_with_symbol(auction.category.price) %></span>
               <h5 class="black-auction"><%= auction.bill.category.name %></h5>
-             <h5><%= auction.bill.zip_code%>-<%= auction.bill.city%></h5>
+             <h5><%= auction.bill.zip_code%> - <%= auction.bill.city%></h5>
 
             </div>
             <div class="card-body-actions">
@@ -173,7 +173,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content modal-my-auctions">
                 <div class= "cross-my-auctions">
-                  <%= link_to dashboard_path do %>
+                  <%= link_to dashboard_path(anchor: "third-a") do %>
                   <i class="fas fa-times"></i>
                   <% end %>
                 </div>
@@ -298,32 +298,33 @@
             <div class="modal-content all-auctions-modal">
 
               <div class= "last-cross">
-                <%= link_to dashboard_path do %>
+                <%= link_to dashboard_path(anchor: "forth-a") do %>
                 <i class="fas fa-times"></i>
                 <% end %>
               </div>
               <div class="first-title"><strong>Client</strong></div>
-                <p><%= auction.client.first_name%> <%= auction.client.last_name%></p>
-                <p><%= auction.client.email%>
-                <p><%= auction.client.phone_number%>
-                <p><%= auction.bill.address%></p>
+              <br>
+                <p><i class="fas fa-user"></i> : <%= auction.client.first_name%> <%= auction.client.last_name%></p>
+                <p><i class="fas fa-map-marker"></i> : <%= auction.bill.address%></p>
+                <p><i class="fas fa-envelope"></i> : <%= auction.client.email%></p>
+                <p><i class="fas fa-phone"></i> : <%= auction.client.phone_number%></p>
+                <br>
                 <div class="second-title"><strong>Current Provider</strong></div>
-                <h5><%= auction.bill.category.name%></h5>
-                  <% if auction.bill.current_provider == current_user.company %>
-                    <h5><%= auction.bill.current_provider%> - <%= auction.bill.price%>€ </h5>
-                  <% else %>
-                    <h5>Other Provider - <%= auction.bill.price%>€</h5>
+                <br>
+                  <div><strong>Category</strong></div>
+                  <p><%= auction.bill.category.name%></p>
+                  <div><strong>Current Provider</strong></div>
+                  <p><%= auction.bill.current_provider%></p>
+                  <div><strong>Address</strong></div>
+                  <p><%= auction.bill.zip_code%> - <%= auction.bill.city%></p>
+                  <div><strong>Current Price</strong></div>
+                  <p><%= auction.bill.price%> €</p>
+                  <div><strong>Consumption</strong></div>
+                  <% if auction.bill.category.name == "Gaz"%>
+                  <p ><%= auction.bill.consumption %> m3</p>
+                  <% elsif auction.bill.category.name == "Electricity"%>
+                  <p ><%= auction.bill.consumption %> kWh</p>
                   <% end %>
-                <p><strong>Created at: </strong><%= auction.bill.created_at%></p>
-
-                <div><strong>Consumption</strong></div>
-                <% if auction.bill.category.name == "Gaz"%>
-                  <p><%= auction.bill.consumption %></p>
-                <% elsif auction.bill.category.name == "Electricité"%>
-                  <p><%= auction.bill.consumption %>kWh</p>
-                <% end %>
-
-
 
 
 
@@ -349,9 +350,3 @@
 </div>
 
 </div>
-
-
-
-
-
-
