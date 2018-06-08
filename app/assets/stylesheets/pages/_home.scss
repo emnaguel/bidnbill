@@ -118,3 +118,16 @@ border-color: white;
   flex-direction: column;
   min-height: calc(100vh - 130px);
 }
+
+.card-description {
+  padding-left: 18px;
+  padding-right: 18px;
+  h3 {
+    font-size: 23px;
+    color: #0d8787;
+  }
+  p {
+    font-size: 17px;
+    font-weight: normal;
+  }
+}
