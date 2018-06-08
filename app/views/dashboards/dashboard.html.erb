@@ -193,10 +193,6 @@
                   <% elsif auction.bill.category.name == "Electricity"%>
                   <p ><%= auction.bill.consumption %> kWh</p>
                   <% end %>
-                  <br><br>
-                  <% if policy(Bid).create? %>
-                  <%= link_to "Bid", new_auction_bid_path(auction), id: "btn-create" %>
-                  <% end %>
                 </div>
 
 
