@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :conversations, inverse_of: :provider
 
-  USERTYPE = ['client', 'provider']
+  USERTYPE = ['client', 'provider'
   CLIENTTYPE = ['particulier', 'professionnel']
 
   mount_uploader :photo, PhotoUploader
@@ -45,6 +45,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    # UserMailer.welcome(self).deliver_now
   end
 end
