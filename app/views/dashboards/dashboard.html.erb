@@ -304,6 +304,8 @@
                 <p><i class="fas fa-map-marker"></i> : <%= auction.bill.address%></p>
                 <p><i class="fas fa-envelope"></i> : <%= auction.client.email%></p>
                 <p><i class="fas fa-phone"></i> : <%= auction.client.phone_number%></p>
+                <% my_won_bid = auction.bids.select { |bid| bid.payment_status == 'completed' }.first %>
+                <p><i class="fas fa-gavel"></i> : <%= my_won_bid.price %> €</p>
                 <br>
                 <div class="second-title"><strong>Current Provider</strong></div>
                 <br>
@@ -321,9 +323,6 @@
                   <% elsif auction.bill.category.name == "Electricity"%>
                   <p ><%= auction.bill.consumption %> kWh</p>
                   <% end %>
-
-
-
 
 
               <% if policy(auction.bill).show? %>

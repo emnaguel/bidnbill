@@ -6,6 +6,11 @@
       <p><strong>Category:</strong> <%= @bill.category.name %></p>
       <p><strong>Current provider:</strong> <%= @bill.current_provider %></p>
       <p><strong>Current price:</strong> <%= @bill.price %></p>
+      <% if @bill.category.name == 'Electricity' %>
+        <p><strong>Consumption:</strong> <%= @bill.consumption %> kWh</p>
+      <% else %>
+        <p><strong>Consumption:</strong> <%= @bill.consumption %> m3</p>
+      <% end %>
       <p><strong>Address:</strong> <%= @bill.address %></p>
     </div>
 
