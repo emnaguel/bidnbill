@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 .wrapper-landing-page {
   margin-top:0;
-  background-color: rgb(13,135,135);
   overflow-y: scroll;
   padding: 20px;
   align-items: center;
@@ -31,7 +30,6 @@
 }
 
 .row-merged {
-  background-color: rgb(13,135,135);
   display: flex;
   align-items: stretch;
 }
@@ -46,6 +44,7 @@
   // background-image: asset-url('darkdenim3.png');
   // background-repeat: repeat;
   background-color: white;
+  opacity: 0.8;
   text-align: center;
   color: white;
   align-items: center;
@@ -61,10 +60,10 @@
   font-weight: bolder;
 }
 .card-ui p {
-font-family: $my-font;
-color: black;
-font-size: 14px;
-font-weight: bolder;
+  font-family: $my-font;
+  color: black;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .card-icons img {
@@ -83,23 +82,24 @@ font-weight: bolder;
 }
 
 .call-to-action {
-background-color: white;
-padding: 10px auto;
+  background-color: white;
+  padding: 10px auto;
 }
 
 .call-to-action p {
-color: rgb(13,135,135);
-font-family: $my-font;
-font-size: 20px;
-border: solid white 2px;
-border-radius: 8px;
-border-color: white;
+  color: rgb(13,135,135);
+  font-family: $my-font;
+  font-size: 20px;
+  border: solid white 2px;
+  border-radius: 8px;
+  border-color: white;
 }
 
 .banner {
   color: white;
   text-align: center;
   flex: 0 0 40vh;
+  height: 100vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
@@ -117,7 +117,9 @@ border-color: white;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 130px);
+  background-position: 50% 41%;
 }
+
 
 .card-description {
   padding-left: 18px;
