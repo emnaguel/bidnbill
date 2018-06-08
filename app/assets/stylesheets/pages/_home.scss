@@ -21,7 +21,8 @@
 }
 
 .banner-content h2 {
-  margin: 0;
+  margin-bottom: 54px;
+  margin-top: -23px;
   font-size: 32px;
   font-family: italic;
   color: white;
@@ -50,7 +51,7 @@
   align-items: center;
   padding: 28px 19px;
   height: 100%;
-  border-radius: 40px;
+  border-radius: 20px;
 }
 
 .card-ui h1 {
@@ -61,7 +62,7 @@
 }
 .card-ui p {
 font-family: $my-font;
-color: rgb(13,135,135);
+color: black;
 font-size: 14px;
 font-weight: bolder;
 }
@@ -78,7 +79,7 @@ font-weight: bolder;
 
 .card-icons.eyeglasses img {
   height: 50px;
-  margin-top: 5px;
+  margin-top: 14px;
 }
 
 .call-to-action {
