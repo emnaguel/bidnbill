@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :conversations, inverse_of: :provider
 
-  USERTYPE = ['client', 'provider'
+  USERTYPE = ['client', 'provider']
   CLIENTTYPE = ['particulier', 'professionnel']
 
   mount_uploader :photo, PhotoUploader
