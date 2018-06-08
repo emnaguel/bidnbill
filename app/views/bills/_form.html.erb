@@ -6,8 +6,10 @@
     <%= f.input :city, as: :hidden %>
     <%= f.input :zip_code, as: :hidden %>
     <%= f.input :price, label: "How much do you pay per month?" %>
+    <%= f.input :consumption, label: "What is your average monthly consumption?" %>
     <%= f.input :photo, label: "Upload your bill here"%>
     <%= f.input :photo_cache, as: :hidden %>
+
   </div>
   <div class="form-actions" id ="form-actions-buttons">
     <%= f.button :submit, class: "button-create-bill" %>
